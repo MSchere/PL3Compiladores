@@ -5,10 +5,13 @@ prog: (linea NEWLINE|endex)*;
 
 linea: (initex|pushex|addex|movex);
 
-initex: NUML INIT expr;
-pushex: NUML PUSH expr;
-addex: NUML ADD expr;
-movex: NUML MOV expr;
+/*INIT: 0, PUSH: 1, POP: 2, MOV: 3, ADD: 4,  */
+
+initex: '0' expr;
+pushex: '1' expr;
+popex: '2' expr;
+movex: '3' expr;
+addex: '4' expr;
 endex: END;
 
 expr: expr COMA expr
@@ -24,10 +27,10 @@ MOV: 'MOV';
 END: 'END';
 
 WS: [ \t]+ ->skip;
+COMENTARIO_BLOQUE: '/*' .*? '*/' -> skip;
 
 //Elementos básicos.
 
-NUML:INT;
 INT:[0-9]+;
 NEWLINE: [\r\n]+;
 COMA:',';
