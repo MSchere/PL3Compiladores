@@ -21,7 +21,7 @@ expr: PI expr COMA expr PD
     | TIPO
     ;
 
-//Palabras reservadas.
+//Palabras reservadas .
 INIT: '0';
 PUSH: '1';
 POP: '2';
