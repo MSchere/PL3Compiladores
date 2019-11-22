@@ -12,5 +12,4 @@ public class Entrada{
         if(tipo == 0)return false;
         else return true;
     }
-
 }
