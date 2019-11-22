@@ -1,3 +1,4 @@
+//antlr GramProg.g4 && javac *.java && grun GramProg prog -gui EjemploCodigo2.prog
 grammar GramProg;
 prog: (include | definicionFuncion)*;
 
@@ -10,6 +11,7 @@ END: 'end';
 STRINGid: 'cadena';
 INTid: 'numero';
 VOIDid: 'void';
+ARRAYid: 'array';
 INCLUDEid: 'include';
 WHILEid: 'while';
 BOOLid: 'booleano';
@@ -17,8 +19,6 @@ IFid: 'if';
 ELSEid: 'else';
 ENDIFid: 'endif';
 RETURNid: 'return';
-TRUE: 'true';
-FALSE: 'false';
 THENid: 'then';
 FORid: 'for';
 
@@ -36,18 +36,25 @@ MAS: '+';
 MENOS: '-';
 MULTIPLICADO: '*';
 DIVIDIDO: '/';
+ELEVADO: '^';
+SQRT: 'sqrt';
 IGUALIGUAL: '==';
 DISTINTO: '!=';
 MAYOR: '>';
 MENOR: '<';
-AND: '&&';
-OR: '||';
+MENORMAYOR: '<>';
+AND: '&';
+OR: '|';
+ANDAND: '&&';
+OROR: '||';
+MAYORMAYOR: '>>';
+MENORMENOR: '<<';
 
 //Operaciones
 OPERACION: 'cos' | 'sen' | 'tan';
 
 //Cadenas de caracteres
-VAR: [a-zA-Z]+ [a-zA-Z_0-9]*; //Nombre de variable
+VARid: [a-zA-Z]+ [a-zA-Z_0-9]*; //Nombre de variable
 STRING: COMILLAS (ESC | ~('"'))*? COMILLAS;
 fragment ESC: '\\' [btnr"\\]; // Carácteres de escape
 
@@ -56,10 +63,13 @@ INT: DIGITO+;
 FLOAT:
 	DIGITO+ '.' DIGITO* //1. 1.0 1.032434 2323.324424
 	| '.' DIGITO+;
+BOOL: TRUE | FALSE;
 
-//Letras y dígitos
+//Letras, dígitos y estados
 fragment LETRA: [a-zA-Z];
 fragment DIGITO: [0-9];
+fragment TRUE: 'true';
+fragment FALSE: 'false';
 
 //Espacios en blanco, tabuladores...
 WS: [ \t\n\r]+ -> skip;
@@ -75,43 +85,26 @@ COMENTARIO: (
 
 //PARSER:
 
-var: tipodatoid? VAR asignacion? FINSENTENCIA?;
+//Variables
+var: tipodatoid? VARid (asignacion|valor)? FINSENTENCIA?;
 
-asignacion:
-	IGUAL (VAR | numero | llamadaFuncion | expr | cadena);
-//Puntuación en los tokens:
-llamadaFuncion:
-	VAR PI (VAR | numero | llamadaFuncion | expr | cadena | var)? (
-		COMA (
-			VAR
-			| numero
-			| llamadaFuncion
-			| expr
-			| cadena
-			| asignacion
-		)
-	)* PD FINSENTENCIA?;
+asignacion: IGUAL valor;
 
-definicionFuncion:
-	nombreFuncion parametros tipoRetorno contenido;
+valor: VARid | BOOL | llamadaFuncion | expr | cadena;
 
-nombreFuncion: FUNCTIONid VAR;
+//Funciones
+llamadaFuncion: nombreFuncion parametros FINSENTENCIA?;
 
-parametros:
-	PI (var (COMA var)*)? PD;
+definicionFuncion: nombreFuncion parametros tipoRetorno contenido;
 
 tipoRetorno: DOSPUNTOS (STRINGid | INTid | VOIDid | BOOLid);
 
-contenido: (BEGIN | THENid) (ifBloque | var | whileEx | forEx | llamadaFuncion)* returnEx? END?;
+parametros: PI (var (COMA var)*)? PD;
 
-whileEx:
-	WHILEid PI (TRUE | FALSE | expr) PD BEGIN? (
-		ifBloque
-		| llamadaFuncion
-		| var
-		| whileEx
-		| forEx
-	)* END?;
+nombreFuncion: FUNCTIONid? VARid;
+
+//Estructuras de control
+whileEx: WHILEid condicion;
 
 ifBloque: ifEx elseEx* ENDIFid;
 
@@ -119,44 +112,52 @@ ifEx: IFid condicion contenido;
 
 elseEx: ELSEid contenido;
 
-condicion: PI (bool | expr) (comparador (bool | expr))* PD;
+forEx: FORid PI var condicion expr PD FINSENTENCIA?;
 
-forEx:
-	FORid PI (var FINSENTENCIA expr FINSENTENCIA expr) PD FINSENTENCIA;
+condicion: PI? (BOOL | expr) (opBinario (BOOL | expr))* (PD|FINSENTENCIA)?;
 
-asignacionEnFuncion:
-	tipodatoid VAR (
-		VAR
-		| numero
-		| llamadaFuncion
-		| expr
-		| cadena
-	)?;
+contenido: (BEGIN | THENid)? (ifBloque | var | whileEx | forEx | llamadaFuncion)* returnEx? END?;
 
-include: INCLUDEid VAR FINSENTENCIA;
+//Librerías
+include: INCLUDEid VARid FINSENTENCIA;
 
-bool: TRUE | FALSE;
 
+//Expresiones
 expr:
-	expr (MULTIPLICADO | DIVIDIDO) expr
-	| expr (MAS | MENOS) expr
-	| expr (MENOR | DISTINTO | IGUALIGUAL | MAYOR) expr
-	| VAR MAS MAS
-	| numero
+	(VARid MAS MAS
+	| INT
+	| FLOAT
 	| PI expr PD
 	| OPERACION PI (expr? (COMA expr)*) PD
-	| VAR
-	| llamadaFuncion;
+	| VARid
+	| llamadaFuncion
+	)expr2;
 
+expr2:
+	(((MULTIPLICADO | DIVIDIDO)
+	| (MAS | MENOS)
+	| (MENOR | DISTINTO | IGUALIGUAL | MAYOR))expr expr2)?;
+
+
+//Cadenas
 cadena:
-	STRING
-	| cadena MAS cadena
-	| (VAR | INT | FLOAT | bool | llamadaFuncion);
+	(STRING
+	| (VARid | INT | FLOAT | BOOL | llamadaFuncion)
+	)cadena2;
 
-returnEx: RETURNid (bool | VAR | expr | cadena) FINSENTENCIA;
+cadena2:
+	(MAS cadena cadena2)?;
+
+returnEx: RETURNid valor FINSENTENCIA;
+
 //Tipos de datos
-tipodatoid: STRINGid | INTid | VOIDid | BOOLid;
+tipodatoid: STRINGid | INTid | VOIDid | BOOLid | ARRAYid;
 
-comparador: AND | OR | MAYOR | MENOR | IGUALIGUAL | DISTINTO;
+//Operadores lógicos
+opLogico: AND | OR | MAYOR | MENOR | IGUALIGUAL | DISTINTO | MENORMAYOR;
 
-numero: INT | FLOAT;
+//Operadores binarios
+opBinario: MAYORMAYOR | MENORMAYOR | OROR | ANDAND;
+
+//Operadores matemáticos
+opMat: MAS MENOS MULTIPLICADO DIVIDIDO ELEVADO SQRT;

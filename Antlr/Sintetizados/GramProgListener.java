@@ -37,6 +37,16 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitAsignacion(GramProgParser.AsignacionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GramProgParser#valor}.
+	 * @param ctx the parse tree
+	 */
+	void enterValor(GramProgParser.ValorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramProgParser#valor}.
+	 * @param ctx the parse tree
+	 */
+	void exitValor(GramProgParser.ValorContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link GramProgParser#llamadaFuncion}.
 	 * @param ctx the parse tree
 	 */
@@ -57,15 +67,15 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitDefinicionFuncion(GramProgParser.DefinicionFuncionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#nombreFuncion}.
+	 * Enter a parse tree produced by {@link GramProgParser#tipoRetorno}.
 	 * @param ctx the parse tree
 	 */
-	void enterNombreFuncion(GramProgParser.NombreFuncionContext ctx);
+	void enterTipoRetorno(GramProgParser.TipoRetornoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#nombreFuncion}.
+	 * Exit a parse tree produced by {@link GramProgParser#tipoRetorno}.
 	 * @param ctx the parse tree
 	 */
-	void exitNombreFuncion(GramProgParser.NombreFuncionContext ctx);
+	void exitTipoRetorno(GramProgParser.TipoRetornoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramProgParser#parametros}.
 	 * @param ctx the parse tree
@@ -77,25 +87,15 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitParametros(GramProgParser.ParametrosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#tipoRetorno}.
+	 * Enter a parse tree produced by {@link GramProgParser#nombreFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void enterTipoRetorno(GramProgParser.TipoRetornoContext ctx);
+	void enterNombreFuncion(GramProgParser.NombreFuncionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#tipoRetorno}.
+	 * Exit a parse tree produced by {@link GramProgParser#nombreFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void exitTipoRetorno(GramProgParser.TipoRetornoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link GramProgParser#contenido}.
-	 * @param ctx the parse tree
-	 */
-	void enterContenido(GramProgParser.ContenidoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramProgParser#contenido}.
-	 * @param ctx the parse tree
-	 */
-	void exitContenido(GramProgParser.ContenidoContext ctx);
+	void exitNombreFuncion(GramProgParser.NombreFuncionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramProgParser#whileEx}.
 	 * @param ctx the parse tree
@@ -137,16 +137,6 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitElseEx(GramProgParser.ElseExContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#condicion}.
-	 * @param ctx the parse tree
-	 */
-	void enterCondicion(GramProgParser.CondicionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramProgParser#condicion}.
-	 * @param ctx the parse tree
-	 */
-	void exitCondicion(GramProgParser.CondicionContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramProgParser#forEx}.
 	 * @param ctx the parse tree
 	 */
@@ -157,15 +147,25 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitForEx(GramProgParser.ForExContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#asignacionEnFuncion}.
+	 * Enter a parse tree produced by {@link GramProgParser#condicion}.
 	 * @param ctx the parse tree
 	 */
-	void enterAsignacionEnFuncion(GramProgParser.AsignacionEnFuncionContext ctx);
+	void enterCondicion(GramProgParser.CondicionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#asignacionEnFuncion}.
+	 * Exit a parse tree produced by {@link GramProgParser#condicion}.
 	 * @param ctx the parse tree
 	 */
-	void exitAsignacionEnFuncion(GramProgParser.AsignacionEnFuncionContext ctx);
+	void exitCondicion(GramProgParser.CondicionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramProgParser#contenido}.
+	 * @param ctx the parse tree
+	 */
+	void enterContenido(GramProgParser.ContenidoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramProgParser#contenido}.
+	 * @param ctx the parse tree
+	 */
+	void exitContenido(GramProgParser.ContenidoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramProgParser#include}.
 	 * @param ctx the parse tree
@@ -177,16 +177,6 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitInclude(GramProgParser.IncludeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#bool}.
-	 * @param ctx the parse tree
-	 */
-	void enterBool(GramProgParser.BoolContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramProgParser#bool}.
-	 * @param ctx the parse tree
-	 */
-	void exitBool(GramProgParser.BoolContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
 	 */
@@ -197,6 +187,16 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitExpr(GramProgParser.ExprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link GramProgParser#expr2}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr2(GramProgParser.Expr2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramProgParser#expr2}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr2(GramProgParser.Expr2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link GramProgParser#cadena}.
 	 * @param ctx the parse tree
 	 */
@@ -206,6 +206,16 @@ public interface GramProgListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCadena(GramProgParser.CadenaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramProgParser#cadena2}.
+	 * @param ctx the parse tree
+	 */
+	void enterCadena2(GramProgParser.Cadena2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramProgParser#cadena2}.
+	 * @param ctx the parse tree
+	 */
+	void exitCadena2(GramProgParser.Cadena2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramProgParser#returnEx}.
 	 * @param ctx the parse tree
@@ -227,23 +237,33 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitTipodatoid(GramProgParser.TipodatoidContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#comparador}.
+	 * Enter a parse tree produced by {@link GramProgParser#opLogico}.
 	 * @param ctx the parse tree
 	 */
-	void enterComparador(GramProgParser.ComparadorContext ctx);
+	void enterOpLogico(GramProgParser.OpLogicoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#comparador}.
+	 * Exit a parse tree produced by {@link GramProgParser#opLogico}.
 	 * @param ctx the parse tree
 	 */
-	void exitComparador(GramProgParser.ComparadorContext ctx);
+	void exitOpLogico(GramProgParser.OpLogicoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#numero}.
+	 * Enter a parse tree produced by {@link GramProgParser#opBinario}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumero(GramProgParser.NumeroContext ctx);
+	void enterOpBinario(GramProgParser.OpBinarioContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#numero}.
+	 * Exit a parse tree produced by {@link GramProgParser#opBinario}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumero(GramProgParser.NumeroContext ctx);
+	void exitOpBinario(GramProgParser.OpBinarioContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link GramProgParser#opMat}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpMat(GramProgParser.OpMatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GramProgParser#opMat}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpMat(GramProgParser.OpMatContext ctx);
 }
