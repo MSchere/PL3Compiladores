@@ -7,7 +7,6 @@ public class ListenerTripletas extends GramJInsBaseListener {
     private ArrayList<Integer> sentencia = new ArrayList<Integer>();
 
     private ArrayList<ArrayList<Integer>> arrays = new ArrayList<ArrayList<Integer>>();
-    private int i = 0;
 
     public ArrayList<ArrayList<Integer>> getArray() {
         return arrays;

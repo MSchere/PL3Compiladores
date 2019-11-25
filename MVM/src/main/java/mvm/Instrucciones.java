@@ -19,6 +19,9 @@ public class Instrucciones{
         pila.add(ini);
         prueba.setCpila(pila.size()-1);
     }
+    public void jmp(int desp){
+        prueba.setCprog(prueba.getCprog()+desp);
+    }
     public void movRR(int pos1, int pos2){ //mov origen destino
         registros[pos2] = registros[pos1];
         }
@@ -241,5 +244,29 @@ public class Instrucciones{
     }
     public void or(int r1, int r2){
         registros[0] = new Bool(((Bool)registros[r1]).getValor()||((Bool)registros[r2]).getValor());
+    }
+    public void copiaCadena(int origen,int destino){
+        ((Cadena)pila.get(destino)).setValor(((Cadena)pila.get(origen)).getValor());
+    }
+    public void concat(int r1, int r2){
+        registros[0] = new Cadena(((Cadena)registros[r1]).getValor()+((Cadena)registros[r2]).getValor());
+    }
+    //La cadena afectada se debe encontrar en el registro 1
+    public void extraerCad(int posIni,int posFin){
+        String cadena = ((Cadena)registros[1]).getValor();
+        registros[0] = new Cadena(cadena.substring(posIni, posFin));
+    }
+    public void getCharAtPos(int r, int pos){
+        String cadena = ((Cadena)registros[r]).getValor();
+        cadena = Character.toString(cadena.charAt(pos));
+        registros[0] = new Cadena(cadena);
+    }
+    //La cadena afectada se debe encontrar en el registro 1
+    public void cambiaChar(int pos, char letra){
+        String cadena = ((Cadena)registros[1]).getValor();
+        char[] chars = cadena.toCharArray();
+        chars[pos]=letra;
+        cadena = String.valueOf(chars);
+        registros[0] = new Cadena(cadena);
     }
 }
