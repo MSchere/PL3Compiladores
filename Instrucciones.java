@@ -43,6 +43,7 @@ public class Instrucciones{
     }
     public void end(){
         while(!pila.get(pila.size()-1).esControl()){
+            System.out.println("He borrado");
             pop();
         }
         int nParams = ((Control)pila.get(maquina.getCpila())).getNParams();

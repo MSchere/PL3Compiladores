@@ -9,15 +9,35 @@ public class Mv {
     private int cpila = -1;
     private int cprog = 0;
     private ArrayList<Entrada> pila = new ArrayList<Entrada>();
-    private ArrayList<
+    private ArrayList<ArrayList<Integer>> memoria;
     private Instrucciones inst = new Instrucciones(this,registros,pila);
+
+    public Mv(ArrayList<ArrayList<Integer>> memoria){
+        this.memoria = memoria;
+    }
+
+    private int[] convertirArray(ArrayList<Integer> tripletas){
+        int[] trip = new int[3];
+        for(int i=0;i<tripletas.size();i++){
+            trip[i] = tripletas.get(i);
+        }
+        return trip;
+    }
+
+    public void ejecutar(){
+        while(cprog<memoria.size()){
+            ArrayList<Integer> triple = memoria.get(cprog);
+            TraducirYEjecutar(convertirArray(triple));
+            cprog++;
+        }
+    }
 
     public int getCpila(){return cpila;}
     public void setCpila(int cpila){this.cpila = cpila;}
     public int getCprog(){return cprog;}
     public void setCprog(int cprog){this.cprog = cprog;}
     
-    public void TraducirYEjecutar(int[] Triple) {
+    private void TraducirYEjecutar(int[] Triple) {
         int First = Triple[0];
         switch (First) {
             case 0:
@@ -47,6 +67,7 @@ public class Mv {
             case 6:
                 System.out.println("END");
                 inst.end();
+                if(cpila == 0) cprog = memoria.size();
                 break;
             case 7:
                 System.out.println("Add con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
@@ -139,6 +160,12 @@ public class Mv {
             case 29:
                 System.out.println("Cambia caracter en una posición con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
                 inst.cambiaChar(Triple[1], Triple[2]);
+                break;
+            case 30:
+                System.out.println("Resultado = "+((Bool)registros[0]).getValor());
+                break;
+            case 31: //Debug
+                System.out.println(pila);
                 break;
         }
     }

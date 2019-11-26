@@ -9,11 +9,7 @@ prog: (linea NEWLINE)*;
     JUMP: 24, COPIACADENA: 25, CONCAT: 26, EXTRAERCAD: 27
     GETCHARATPOS: 28, CAMBIACHAR: 29 MREG: 69 *SOLO EJEMPLO* */
 
-linea: CI INT COMA expr (COMA expr)? CD;
-
-expr: VAR
-    | INT
-    ;
+linea: CI INT (COMA INT)? (COMA INT)? CD;
 
 //Palabras reservadas .
 CI: '[';
@@ -27,8 +23,3 @@ COMENTARIO_BLOQUE: '/*' .*? '*/' -> skip;
 INT: [0-9]+;
 NEWLINE: [\r\n]+;
 COMA:',';
-VAR: (ID_LETRA|DIGITO|SUM|RES)+;
-fragment ID_LETRA: [a-zA-Z];
-fragment DIGITO: [0-9];
-fragment SUM: '+';
-fragment RES: '-';

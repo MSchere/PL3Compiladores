@@ -23,18 +23,14 @@ public class ListenerTripletas extends GramJInsBaseListener {
     @Override
     public void visitTerminal(TerminalNode node) {
         switch (node.getSymbol().getType()) {
-        case 9:
+        case 5:
             meteValor(Integer.parseInt(node.getText()));
-            System.out.println("mete número: " + node.getText());
-
             break;
         }
-
     }
 
     @Override
     public void exitLinea(GramJInsParser.LineaContext ctx) {
-        System.out.println("exitLinea");
         ArrayList<Integer> aux = new ArrayList<Integer>(sentencia);
         meteArray(aux);
         sentencia.clear();

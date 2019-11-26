@@ -29,10 +29,9 @@ public class PruebaTrip {
         ParseTreeWalker walker = new ParseTreeWalker();
         walker.walk(nv,tree);
 
-        System.out.println(nv.getArray().toString());
-       // System.out.println(nv.getPrograma());
-       // Log log = new Log();
-       // log.crear_txt(nv.getPrograma());
-    
+        System.out.println(nv.getArray());
+
+        Mv maquina = new Mv(nv.getArray());
+        maquina.ejecutar();
     }
 }
