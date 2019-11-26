@@ -38,7 +38,5 @@ public class ListenerTripletas extends GramJInsBaseListener {
         ArrayList<Integer> aux = new ArrayList<Integer>(sentencia);
         meteArray(aux);
         sentencia.clear();
-        
     }
-
 }
