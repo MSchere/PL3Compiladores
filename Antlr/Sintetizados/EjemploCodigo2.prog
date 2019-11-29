@@ -29,7 +29,7 @@ end
 
 function unpar(numero x):numero
 begin
-    numero temp := x*nopar()
+    numero temp := x*nopar();
     return temp;
 end
 

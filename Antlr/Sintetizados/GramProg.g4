@@ -1,163 +1,139 @@
 //antlr GramProg.g4 && javac *.java && grun GramProg prog -gui EjemploCodigo2.prog
 grammar GramProg;
-prog: (include | definicionFuncion)*;
 
-//LEXER:
+//Parser
 
-//Keywords del lenguaje. /Siempre van al principio de los símbolos terminales!
-FUNCTIONid: 'function';
-BEGIN: 'begin';
-END: 'end';
-STRINGid: 'cadena';
-INTid: 'numero';
-VOIDid: 'void';
-ARRAYid: 'array';
-INCLUDEid: 'include';
-WHILEid: 'while';
-BOOLid: 'booleano';
-IFid: 'if';
-ELSEid: 'else';
-ENDIFid: 'endif';
-RETURNid: 'return';
-THENid: 'then';
-FORid: 'for';
+prog: (include|funcion)*;
 
-//Signos de puntuación varios
-PI: '(';
-PD: ')';
-COMILLAS: '"';
-COMA: ',';
-FINSENTENCIA: ';';
-DOSPUNTOS: ':';
+include: INCLUDE ID FIN;
 
-//Operandos
-IGUAL: ':=';
-MAS: '+';
-MENOS: '-';
-MULTIPLICADO: '*';
-DIVIDIDO: '/';
-ELEVADO: '^';
-SQRT: 'sqrt';
-IGUALIGUAL: '==';
-DISTINTO: '!=';
-MAYOR: '>';
-MENOR: '<';
-MENORMAYOR: '<>';
-AND: '&';
-OR: '|';
-ANDAND: '&&';
-OROR: '||';
-MAYORMAYOR: '>>';
-MENORMENOR: '<<';
+funcion: defineFuncion bloqueFuncion;
 
-//Operaciones
-OPERACION: 'cos' | 'sen' | 'tan';
+defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo;
 
-//Cadenas de caracteres
-VARid: [a-zA-Z]+ [a-zA-Z_0-9]*; //Nombre de variable
-STRING: COMILLAS (ESC | ~('"'))*? COMILLAS;
-fragment ESC: '\\' [btnr"\\]; // Carácteres de escape
+parametros: declaracion (COMA declaracion)*;
 
-//Números
-INT: DIGITO+;
-FLOAT:
-	DIGITO+ '.' DIGITO* //1. 1.0 1.032434 2323.324424
-	| '.' DIGITO+;
-BOOL: TRUE | FALSE;
+bloqueFuncion: BEGIN bloqueCodigo END;
 
-//Letras, dígitos y estados
-fragment LETRA: [a-zA-Z];
-fragment DIGITO: [0-9];
-fragment TRUE: 'true';
-fragment FALSE: 'false';
+bucle: WHILE PI expr PD bloqueCodigoBucle;
 
-//Espacios en blanco, tabuladores...
-WS: [ \t\n\r]+ -> skip;
-NEWLINE: [\r\n]+;
+bloqueCodigoBucle: (BEGIN bloqueCodigo END)|sentencia?;
+
+ifex: IF PI expr PD bloqueCodigoIf;
+
+bloqueCodigoIf: THEN bloqueCodigo (ELSE bloqueCodigo)? ENDIF;
+
+forEx: defineFor bloqueCodigoBucle;
+
+defineFor: FOR PI (declararYasignar|asignacion) FIN expr FIN expr PD;
+
+bloqueCodigo: sentencia*;
+
+sentencia:  (declararYasignar FIN)
+            |(declaracion FIN)
+            |(asignacion FIN)
+            |bucle
+            |ifex
+            |forEx
+            |devolver
+            |(expr FIN)
+            |FIN;
+
+declararYasignar: tipo ID ASIG expr;
+
+declaracion: tipo ID;
+
+asignacion: ID ASIG expr;
+
+devolver: DEVOLVER expr FIN;
+
+llamadaFuncion: ID PI (expr (COMA expr)*)? PD;
+
+tipo: (TIPO_NUMERO|TIPO_CADENA|TIPO_BOOL|TIPO_VOID) (CORCHIZ CORCHD)?;
+
+expr:	llamadaFuncion
+    |   expr (MUL|DIV|MOD) expr
+    |   expr (INC| DEC)
+    |	expr (SUM|REST) expr
+    |   expr (MENQ|MAYQ|MENIG|MAYIG|IGUAL|DIF) expr
+    |	NEG expr
+    |	expr (AND|OR) expr
+    |	PI expr PD
+    |   CADENA
+    |   numero
+    |	ID
+;
+
+numero: INT|FLOAT;
+
+//Lexer
 
 //Comentarios
-COMENTARIO: (
-		'//' .*? '\n'
-		| '/*' .*? '*/'
-		| '/**' .? '**/'
-		| '/***' .? '***/'
-	) -> skip;
 
-//PARSER:
+COMENTARIO  :   ('//' .*? '\n'
+            |   '/*' .*? '*/'
+            |   '/**' .*? '**/'
+            |   '/***' .*? '***/')-> skip
+            ;
+            
+//Keywords
 
-//Variables
-var: tipodatoid? VARid (asignacion|valor)? FINSENTENCIA?;
+INCLUDE: 'include';
+FUNCION: 'function';
+BEGIN: 'begin';
+END: 'end';
+DEVOLVER: 'return';
+TIPO_NUMERO: 'numero';
+TIPO_CADENA: 'cadena';
+TIPO_BOOL: 'booleano';
+TIPO_VOID: 'void';
+WHILE: 'while';
+IF: 'if';
+THEN: 'then';
+ENDIF:'endif';
+ELSE: 'else';
+FOR: 'for';
 
-asignacion: IGUAL valor;
+//Numeros y palabras
 
-valor: VARid | BOOL | llamadaFuncion | expr | cadena;
+FLOAT: [0-9]+'.'[0-9]+;
+INT: [0-9]+;
+ID: [a-zA-Z][a-zA-Z_0-9]*;
+CADENA: DCOMILLAS .*? DCOMILLAS;
 
-//Funciones
-llamadaFuncion: nombreFuncion parametros FINSENTENCIA?;
+//Caracteres
 
-definicionFuncion: nombreFuncion parametros tipoRetorno contenido;
+ESC: '\\'[btnr"\\];
+ESPECIAL: ('á'|'é'|'í'|'ó'|'ú'|'Á'|'É'|'Í'|'Ó'|'Ú'|'ñ'|'Ñ');
+ASIG: ':=';
+PI: '(';
+PD: ')';
+CORCHIZ: '[';
+CORCHD: ']';
+FIN: ';';
+WS: [ \t\r\n]+ ->skip;
+PUNTO: '.';
+DPUNTO: ':';
+COMA: ',';
+BARRAINV: '\\';
+DCOMILLAS: '"';
+INTERG: '?';
 
-tipoRetorno: DOSPUNTOS (STRINGid | INTid | VOIDid | BOOLid);
+//Operadores
 
-parametros: PI (var (COMA var)*)? PD;
-
-nombreFuncion: FUNCTIONid? VARid;
-
-//Estructuras de control
-whileEx: WHILEid condicion;
-
-ifBloque: ifEx elseEx* ENDIFid;
-
-ifEx: IFid condicion contenido;
-
-elseEx: ELSEid contenido;
-
-forEx: FORid PI var condicion expr PD FINSENTENCIA?;
-
-condicion: PI? (BOOL | expr) (opBinario (BOOL | expr))* (PD|FINSENTENCIA)?;
-
-contenido: (BEGIN | THENid)? (ifBloque | var | whileEx | forEx | llamadaFuncion)* returnEx? END?;
-
-//Librerías
-include: INCLUDEid VARid FINSENTENCIA;
-
-
-//Expresiones
-expr:
-	(VARid MAS MAS
-	| INT
-	| FLOAT
-	| PI expr PD
-	| OPERACION PI (expr? (COMA expr)*) PD
-	| VARid
-	| llamadaFuncion
-	)expr2;
-
-expr2:
-	(((MULTIPLICADO | DIVIDIDO)
-	| (MAS | MENOS)
-	| (MENOR | DISTINTO | IGUALIGUAL | MAYOR))expr expr2)?;
-
-
-//Cadenas
-cadena:
-	(STRING
-	| (VARid | INT | FLOAT | BOOL | llamadaFuncion)
-	)cadena2;
-
-cadena2:
-	(MAS cadena cadena2)?;
-
-returnEx: RETURNid valor FINSENTENCIA;
-
-//Tipos de datos
-tipodatoid: STRINGid | INTid | VOIDid | BOOLid | ARRAYid;
-
-//Operadores lógicos
-opLogico: AND | OR | MAYOR | MENOR | IGUALIGUAL | DISTINTO | MENORMAYOR;
-
-//Operadores binarios
-opBinario: MAYORMAYOR | MENORMAYOR | OROR | ANDAND;
-
-//Operadores matemáticos
-opMat: MAS MENOS MULTIPLICADO DIVIDIDO ELEVADO SQRT;
+DIF: '!=';
+IGUAL: '==';
+MENIG: '<=';
+MAYIG: '>=';
+MAYQ: '>';
+MENQ: '<';
+NEG: '!';
+AND: '&&';
+OR: '||';
+INC: '++';
+DEC: '--';
+SUM: '+';
+REST: '-';
+MUL: '*';
+DIV: '/';
+MOD: '%';

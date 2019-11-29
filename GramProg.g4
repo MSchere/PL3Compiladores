@@ -1,3 +1,4 @@
+//antlr GramProg.g4 && javac *.java && grun GramProg prog -gui EjemploCodigo2.prog
 grammar GramProg;
 
 //Parser

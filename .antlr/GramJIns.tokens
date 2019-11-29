@@ -1,0 +1,10 @@
+CI=1
+CD=2
+WS=3
+COMENTARIO_BLOQUE=4
+INT=5
+NEWLINE=6
+COMA=7
+'['=1
+']'=2
+','=7
