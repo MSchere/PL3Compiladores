@@ -1,55 +1,54 @@
-//antlr GramProg.g4 && javac *.java && grun GramProg prog -gui EjemploCodigo2.prog
 grammar GramProg;
 
 //Parser
 
-prog: (include|funcion)* #progPrincipal;
+prog: (include|funcion)*;
 
-include: INCLUDE ID FIN #incluir;
+include: INCLUDE ID FIN;
 
-funcion: defineFuncion bloqueFuncion #func;
+funcion: defineFuncion bloqueFuncion;
 
-defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo #definirFunc;
+defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo;
 
-parametros: declaracion (COMA declaracion)* #param;
+parametros: declaracion (COMA declaracion)*;
 
-bloqueFuncion: BEGIN bloqueCodigo END #bloqueFunc;
+bloqueFuncion: BEGIN bloqueCodigo END;
 
-bucle: WHILE PI expr PD bloqueCodigoBucle #bucleWhile;
+bucle: WHILE PI expr PD bloqueCodigoBucle;
 
-bloqueCodigoBucle: ((BEGIN bloqueCodigo END)|sentencia? )#bloqueBucleWhile;
+bloqueCodigoBucle: (BEGIN bloqueCodigo END)|sentencia?;
 
-ifex: IF PI expr PD bloqueCodigoIf #ifEex;
+ifex: IF PI expr PD bloqueCodigoIf;
 
-bloqueCodigoIf: THEN bloqueCodigo (ELSE bloqueCodigo)? ENDIF #bloqueBucleIf;
+bloqueCodigoIf: THEN bloqueCodigo (ELSE bloqueCodigo)? ENDIF;
 
-forEx: defineFor bloqueCodigoBucle #forEex;
+forEx: defineFor bloqueCodigoBucle;
 
-defineFor: FOR PI (declararYasignar|asignacion) FIN expr FIN expr PD #definirFor;
+defineFor: FOR PI (declararYasignar|asignacion) FIN expr FIN expr PD;
 
-bloqueCodigo: sentencia* #bloqueCod;
+bloqueCodigo: sentencia*;
 
-sentencia:  (declararYasignar FIN) 
-            |(declaracion FIN) 
-            |(asignacion FIN) 
-            |bucle 
+sentencia:  (declararYasignar FIN)
+            |(declaracion FIN)
+            |(asignacion FIN)
+            |bucle
             |ifex
             |forEx
             |devolver
             |(expr FIN)
             |FIN;
 
-declararYasignar: tipo ID ASIG expr #declararYasign;
+declararYasignar: tipo ID ASIG expr;
 
-declaracion: tipo ID #declarar;
+declaracion: tipo ID;
 
-asignacion: ID ASIG expr #asignar;
+asignacion: ID ASIG expr;
 
-devolver: DEVOLVER expr FIN #devolv;
+devolver: DEVOLVER expr FIN;
 
-llamadaFuncion: ID PI (expr (COMA expr)*)? PD #llamadaFunc;
+llamadaFuncion: ID PI (expr (COMA expr)*)? PD;
 
-tipo: (TIPO_NUMERO|TIPO_CADENA|TIPO_BOOL|TIPO_VOID) (CORCHIZ CORCHD)? #tip;
+tipo: (TIPO_NUMERO|TIPO_CADENA|TIPO_BOOL|TIPO_VOID) (CORCHIZ CORCHD)?;
 
 expr:	llamadaFuncion
     |   expr (MUL|DIV|MOD) expr
@@ -64,7 +63,7 @@ expr:	llamadaFuncion
     |	ID
     ;
 
-numero: INT|FLOAT #num;
+numero: INT|FLOAT;
 
 //Lexer
 
@@ -118,7 +117,9 @@ COMA: ',';
 BARRAINV: '\\';
 DCOMILLAS: '"';
 INTERG: '?';
+
 //Operadores
+
 DIF: '!=';
 IGUAL: '==';
 MENIG: '<=';
