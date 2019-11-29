@@ -26,17 +26,8 @@ public class Instrucciones{
     public void movMR(int pos1, int pos2){ //mov origen destino
         registros[pos2] = pila.get(maquina.getCpila()+pos1);
     }
-    public void push(int num){
-        pila.add(new Int(num));
-    }
-    public void push(double num){
-        pila.add(new Float(num));
-    }
-    public void push(boolean bol){
-        pila.add(new Bool(bol));
-    }
-    public void push(String cadena){
-        pila.add(new Cadena(cadena));
+    public void push(int nRegistro){
+        pila.add(registros[nRegistro]);
     }
     public void pop(){
         pila.remove(pila.size()-1);
@@ -242,7 +233,7 @@ public class Instrucciones{
         registros[0] = new Bool(((Bool)registros[r1]).getValor()||((Bool)registros[r2]).getValor());
     }
     public void jump(int desp){
-        maquina.setCprog(maquina.getCprog()+desp);
+        maquina.setCprog(desp);
     }
     public void copiaCadena(int origen,int destino){
         ((Cadena)pila.get(destino)).setValor(((Cadena)pila.get(origen)).getValor());

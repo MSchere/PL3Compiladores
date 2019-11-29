@@ -138,7 +138,7 @@ public class Mv {
                 inst.or(Triple[1], Triple[2]);
                 break;
             case 24:
-                System.out.println("Copiar cadena con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
+                System.out.println("Jump con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
                 inst.jump(Triple[1]);
                 break; 
             case 25:
