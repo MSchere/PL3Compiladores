@@ -16,7 +16,7 @@ bloqueFuncion: BEGIN bloqueCodigo END #bloqueFunc;
 
 bucle: WHILE PI expr PD bloqueCodigoBucle #bucleWhile;
 
-bloqueCodigoBucle: (BEGIN bloqueCodigo END)|sentencia? #bloqueBucleWhile;
+bloqueCodigoBucle: ((BEGIN bloqueCodigo END)|sentencia? )#bloqueBucleWhile;
 
 ifex: IF PI expr PD bloqueCodigoIf #ifEex;
 
