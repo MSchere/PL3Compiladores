@@ -1,4 +1,4 @@
-// Generated from c:\Users\Manuel\Desktop\ \Programación\Java\PL3Compiladores\GramProg.g4 by ANTLR 4.7.1
+// Generated from GramProg.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GramProgParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -30,30 +30,39 @@ public class GramProgParser extends Parser {
 		RULE_bloqueCodigo = 12, RULE_sentencia = 13, RULE_declararYasignar = 14, 
 		RULE_declaracion = 15, RULE_asignacion = 16, RULE_devolver = 17, RULE_llamadaFuncion = 18, 
 		RULE_tipo = 19, RULE_expr = 20, RULE_numero = 21;
-	public static final String[] ruleNames = {
-		"prog", "include", "funcion", "defineFuncion", "parametros", "bloqueFuncion", 
-		"bucle", "bloqueCodigoBucle", "ifex", "bloqueCodigoIf", "forEx", "defineFor", 
-		"bloqueCodigo", "sentencia", "declararYasignar", "declaracion", "asignacion", 
-		"devolver", "llamadaFuncion", "tipo", "expr", "numero"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"prog", "include", "funcion", "defineFuncion", "parametros", "bloqueFuncion", 
+			"bucle", "bloqueCodigoBucle", "ifex", "bloqueCodigoIf", "forEx", "defineFor", 
+			"bloqueCodigo", "sentencia", "declararYasignar", "declaracion", "asignacion", 
+			"devolver", "llamadaFuncion", "tipo", "expr", "numero"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, null, "'include'", "'function'", "'begin'", "'end'", "'return'", 
-		"'numero'", "'cadena'", "'booleano'", "'void'", "'while'", "'if'", "'then'", 
-		"'endif'", "'else'", "'for'", null, null, null, null, null, null, "':='", 
-		"'('", "')'", "'['", "']'", "';'", null, "'.'", "':'", "','", "'\\'", 
-		"'\"'", "'?'", "'!='", "'=='", "'<='", "'>='", "'>'", "'<'", "'!'", "'&&'", 
-		"'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'%'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "COMENTARIO", "INCLUDE", "FUNCION", "BEGIN", "END", "DEVOLVER", 
-		"TIPO_NUMERO", "TIPO_CADENA", "TIPO_BOOL", "TIPO_VOID", "WHILE", "IF", 
-		"THEN", "ENDIF", "ELSE", "FOR", "FLOAT", "INT", "ID", "CADENA", "ESC", 
-		"ESPECIAL", "ASIG", "PI", "PD", "CORCHIZ", "CORCHD", "FIN", "WS", "PUNTO", 
-		"DPUNTO", "COMA", "BARRAINV", "DCOMILLAS", "INTERG", "DIF", "IGUAL", "MENIG", 
-		"MAYIG", "MAYQ", "MENQ", "NEG", "AND", "OR", "INC", "DEC", "SUM", "REST", 
-		"MUL", "DIV", "MOD"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, null, "'include'", "'function'", "'begin'", "'end'", "'return'", 
+			"'numero'", "'cadena'", "'booleano'", "'void'", "'while'", "'if'", "'then'", 
+			"'endif'", "'else'", "'for'", null, null, null, null, null, null, "':='", 
+			"'('", "')'", "'['", "']'", "';'", null, "'.'", "':'", "','", "'\\'", 
+			"'\"'", "'?'", "'!='", "'=='", "'<='", "'>='", "'>'", "'<'", "'!'", "'&&'", 
+			"'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'%'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, "COMENTARIO", "INCLUDE", "FUNCION", "BEGIN", "END", "DEVOLVER", 
+			"TIPO_NUMERO", "TIPO_CADENA", "TIPO_BOOL", "TIPO_VOID", "WHILE", "IF", 
+			"THEN", "ENDIF", "ELSE", "FOR", "FLOAT", "INT", "ID", "CADENA", "ESC", 
+			"ESPECIAL", "ASIG", "PI", "PD", "CORCHIZ", "CORCHD", "FIN", "WS", "PUNTO", 
+			"DPUNTO", "COMA", "BARRAINV", "DCOMILLAS", "INTERG", "DIF", "IGUAL", 
+			"MENIG", "MAYIG", "MAYQ", "MENQ", "NEG", "AND", "OR", "INC", "DEC", "SUM", 
+			"REST", "MUL", "DIV", "MOD"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
@@ -103,6 +112,7 @@ public class GramProgParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
+
 	public static class ProgContext extends ParserRuleContext {
 		public ProgContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -128,6 +138,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(FuncionContext.class,i);
 		}
 		public ProgPrincipalContext(ProgContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterProgPrincipal(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitProgPrincipal(this);
+		}
 	}
 
 	public final ProgContext prog() throws RecognitionException {
@@ -195,6 +213,14 @@ public class GramProgParser extends Parser {
 		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
 		public IncluirContext(IncludeContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterIncluir(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitIncluir(this);
+		}
 	}
 
 	public final IncludeContext include() throws RecognitionException {
@@ -242,6 +268,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(BloqueFuncionContext.class,0);
 		}
 		public FuncContext(FuncionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterFunc(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitFunc(this);
+		}
 	}
 
 	public final FuncionContext funcion() throws RecognitionException {
@@ -292,6 +326,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(ParametrosContext.class,0);
 		}
 		public DefinirFuncContext(DefineFuncionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDefinirFunc(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDefinirFunc(this);
+		}
 	}
 
 	public final DefineFuncionContext defineFuncion() throws RecognitionException {
@@ -360,6 +402,14 @@ public class GramProgParser extends Parser {
 			return getToken(GramProgParser.COMA, i);
 		}
 		public ParamContext(ParametrosContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterParam(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitParam(this);
+		}
 	}
 
 	public final ParametrosContext parametros() throws RecognitionException {
@@ -419,6 +469,14 @@ public class GramProgParser extends Parser {
 		}
 		public TerminalNode END() { return getToken(GramProgParser.END, 0); }
 		public BloqueFuncContext(BloqueFuncionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueFunc(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueFunc(this);
+		}
 	}
 
 	public final BloqueFuncionContext bloqueFuncion() throws RecognitionException {
@@ -469,6 +527,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(BloqueCodigoBucleContext.class,0);
 		}
 		public BucleWhileContext(BucleContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBucleWhile(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBucleWhile(this);
+		}
 	}
 
 	public final BucleContext bucle() throws RecognitionException {
@@ -522,6 +588,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(SentenciaContext.class,0);
 		}
 		public BloqueBucleWhileContext(BloqueCodigoBucleContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueBucleWhile(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueBucleWhile(this);
+		}
 	}
 
 	public final BloqueCodigoBucleContext bloqueCodigoBucle() throws RecognitionException {
@@ -615,6 +689,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(BloqueCodigoIfContext.class,0);
 		}
 		public IfEexContext(IfexContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterIfEex(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitIfEex(this);
+		}
 	}
 
 	public final IfexContext ifex() throws RecognitionException {
@@ -669,6 +751,14 @@ public class GramProgParser extends Parser {
 		public TerminalNode ENDIF() { return getToken(GramProgParser.ENDIF, 0); }
 		public TerminalNode ELSE() { return getToken(GramProgParser.ELSE, 0); }
 		public BloqueBucleIfContext(BloqueCodigoIfContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueBucleIf(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueBucleIf(this);
+		}
 	}
 
 	public final BloqueCodigoIfContext bloqueCodigoIf() throws RecognitionException {
@@ -729,6 +819,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(BloqueCodigoBucleContext.class,0);
 		}
 		public ForEexContext(ForExContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterForEex(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitForEex(this);
+		}
 	}
 
 	public final ForExContext forEx() throws RecognitionException {
@@ -787,6 +885,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(AsignacionContext.class,0);
 		}
 		public DefinirForContext(DefineForContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDefinirFor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDefinirFor(this);
+		}
 	}
 
 	public final DefineForContext defineFor() throws RecognitionException {
@@ -863,6 +969,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(SentenciaContext.class,i);
 		}
 		public BloqueCodContext(BloqueCodigoContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueCod(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueCod(this);
+		}
 	}
 
 	public final BloqueCodigoContext bloqueCodigo() throws RecognitionException {
@@ -930,6 +1044,14 @@ public class GramProgParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_sentencia; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterSentencia(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitSentencia(this);
+		}
 	}
 
 	public final SentenciaContext sentencia() throws RecognitionException {
@@ -1052,6 +1174,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public DeclararYasignContext(DeclararYasignarContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDeclararYasign(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDeclararYasign(this);
+		}
 	}
 
 	public final DeclararYasignarContext declararYasignar() throws RecognitionException {
@@ -1099,6 +1229,14 @@ public class GramProgParser extends Parser {
 		}
 		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public DeclararContext(DeclaracionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDeclarar(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDeclarar(this);
+		}
 	}
 
 	public final DeclaracionContext declaracion() throws RecognitionException {
@@ -1143,6 +1281,14 @@ public class GramProgParser extends Parser {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public AsignarContext(AsignacionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterAsignar(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitAsignar(this);
+		}
 	}
 
 	public final AsignacionContext asignacion() throws RecognitionException {
@@ -1189,6 +1335,14 @@ public class GramProgParser extends Parser {
 		}
 		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
 		public DevolvContext(DevolverContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDevolv(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDevolv(this);
+		}
 	}
 
 	public final DevolverContext devolver() throws RecognitionException {
@@ -1243,6 +1397,14 @@ public class GramProgParser extends Parser {
 			return getToken(GramProgParser.COMA, i);
 		}
 		public LlamadaFuncContext(LlamadaFuncionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterLlamadaFunc(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitLlamadaFunc(this);
+		}
 	}
 
 	public final LlamadaFuncionContext llamadaFuncion() throws RecognitionException {
@@ -1317,6 +1479,14 @@ public class GramProgParser extends Parser {
 		public TerminalNode CORCHIZ() { return getToken(GramProgParser.CORCHIZ, 0); }
 		public TerminalNode CORCHD() { return getToken(GramProgParser.CORCHD, 0); }
 		public TipContext(TipoContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterTip(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitTip(this);
+		}
 	}
 
 	public final TipoContext tipo() throws RecognitionException {
@@ -1399,6 +1569,14 @@ public class GramProgParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitExpr(this);
+		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {
@@ -1600,6 +1778,14 @@ public class GramProgParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_numero; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterNumero(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitNumero(this);
+		}
 	}
 
 	public final NumeroContext numero() throws RecognitionException {

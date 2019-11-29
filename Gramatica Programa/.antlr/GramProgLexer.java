@@ -1,4 +1,4 @@
-// Generated from c:\Users\Manuel\Desktop\ \Programación\Java\PL3Compiladores\GramProg.g4 by ANTLR 4.7.1
+// Generated from c:\Users\Manuel\Desktop\ \Programación\Java\PL3Compiladores\Gramatica Programa\GramProg.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

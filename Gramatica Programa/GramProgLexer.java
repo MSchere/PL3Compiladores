@@ -1,4 +1,4 @@
-// Generated from c:\Users\Manuel\Desktop\ \Programación\Java\PL3Compiladores\GramProg.g4 by ANTLR 4.7.1
+// Generated from GramProg.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class GramProgLexer extends Lexer {
-	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.2", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -31,33 +31,42 @@ public class GramProgLexer extends Lexer {
 		"DEFAULT_MODE"
 	};
 
-	public static final String[] ruleNames = {
-		"COMENTARIO", "INCLUDE", "FUNCION", "BEGIN", "END", "DEVOLVER", "TIPO_NUMERO", 
-		"TIPO_CADENA", "TIPO_BOOL", "TIPO_VOID", "WHILE", "IF", "THEN", "ENDIF", 
-		"ELSE", "FOR", "FLOAT", "INT", "ID", "CADENA", "ESC", "ESPECIAL", "ASIG", 
-		"PI", "PD", "CORCHIZ", "CORCHD", "FIN", "WS", "PUNTO", "DPUNTO", "COMA", 
-		"BARRAINV", "DCOMILLAS", "INTERG", "DIF", "IGUAL", "MENIG", "MAYIG", "MAYQ", 
-		"MENQ", "NEG", "AND", "OR", "INC", "DEC", "SUM", "REST", "MUL", "DIV", 
-		"MOD"
-	};
+	private static String[] makeRuleNames() {
+		return new String[] {
+			"COMENTARIO", "INCLUDE", "FUNCION", "BEGIN", "END", "DEVOLVER", "TIPO_NUMERO", 
+			"TIPO_CADENA", "TIPO_BOOL", "TIPO_VOID", "WHILE", "IF", "THEN", "ENDIF", 
+			"ELSE", "FOR", "FLOAT", "INT", "ID", "CADENA", "ESC", "ESPECIAL", "ASIG", 
+			"PI", "PD", "CORCHIZ", "CORCHD", "FIN", "WS", "PUNTO", "DPUNTO", "COMA", 
+			"BARRAINV", "DCOMILLAS", "INTERG", "DIF", "IGUAL", "MENIG", "MAYIG", 
+			"MAYQ", "MENQ", "NEG", "AND", "OR", "INC", "DEC", "SUM", "REST", "MUL", 
+			"DIV", "MOD"
+		};
+	}
+	public static final String[] ruleNames = makeRuleNames();
 
-	private static final String[] _LITERAL_NAMES = {
-		null, null, "'include'", "'function'", "'begin'", "'end'", "'return'", 
-		"'numero'", "'cadena'", "'booleano'", "'void'", "'while'", "'if'", "'then'", 
-		"'endif'", "'else'", "'for'", null, null, null, null, null, null, "':='", 
-		"'('", "')'", "'['", "']'", "';'", null, "'.'", "':'", "','", "'\\'", 
-		"'\"'", "'?'", "'!='", "'=='", "'<='", "'>='", "'>'", "'<'", "'!'", "'&&'", 
-		"'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'%'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "COMENTARIO", "INCLUDE", "FUNCION", "BEGIN", "END", "DEVOLVER", 
-		"TIPO_NUMERO", "TIPO_CADENA", "TIPO_BOOL", "TIPO_VOID", "WHILE", "IF", 
-		"THEN", "ENDIF", "ELSE", "FOR", "FLOAT", "INT", "ID", "CADENA", "ESC", 
-		"ESPECIAL", "ASIG", "PI", "PD", "CORCHIZ", "CORCHD", "FIN", "WS", "PUNTO", 
-		"DPUNTO", "COMA", "BARRAINV", "DCOMILLAS", "INTERG", "DIF", "IGUAL", "MENIG", 
-		"MAYIG", "MAYQ", "MENQ", "NEG", "AND", "OR", "INC", "DEC", "SUM", "REST", 
-		"MUL", "DIV", "MOD"
-	};
+	private static String[] makeLiteralNames() {
+		return new String[] {
+			null, null, "'include'", "'function'", "'begin'", "'end'", "'return'", 
+			"'numero'", "'cadena'", "'booleano'", "'void'", "'while'", "'if'", "'then'", 
+			"'endif'", "'else'", "'for'", null, null, null, null, null, null, "':='", 
+			"'('", "')'", "'['", "']'", "';'", null, "'.'", "':'", "','", "'\\'", 
+			"'\"'", "'?'", "'!='", "'=='", "'<='", "'>='", "'>'", "'<'", "'!'", "'&&'", 
+			"'||'", "'++'", "'--'", "'+'", "'-'", "'*'", "'/'", "'%'"
+		};
+	}
+	private static final String[] _LITERAL_NAMES = makeLiteralNames();
+	private static String[] makeSymbolicNames() {
+		return new String[] {
+			null, "COMENTARIO", "INCLUDE", "FUNCION", "BEGIN", "END", "DEVOLVER", 
+			"TIPO_NUMERO", "TIPO_CADENA", "TIPO_BOOL", "TIPO_VOID", "WHILE", "IF", 
+			"THEN", "ENDIF", "ELSE", "FOR", "FLOAT", "INT", "ID", "CADENA", "ESC", 
+			"ESPECIAL", "ASIG", "PI", "PD", "CORCHIZ", "CORCHD", "FIN", "WS", "PUNTO", 
+			"DPUNTO", "COMA", "BARRAINV", "DCOMILLAS", "INTERG", "DIF", "IGUAL", 
+			"MENIG", "MAYIG", "MAYQ", "MENQ", "NEG", "AND", "OR", "INC", "DEC", "SUM", 
+			"REST", "MUL", "DIV", "MOD"
+		};
+	}
+	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
 	/**
