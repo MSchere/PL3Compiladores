@@ -29,6 +29,9 @@ public class Instrucciones{
     public void push(int nRegistro){
         pila.add(registros[nRegistro]);
     }
+    public void store(int tipo,Object valor){ //Almacena el valor en el registro 1
+        afvadfb
+    }
     public void pop(){
         pila.remove(pila.size()-1);
     }

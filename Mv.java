@@ -37,32 +37,32 @@ public class Mv {
     public int getCprog(){return cprog;}
     public void setCprog(int cprog){this.cprog = cprog;}
     
-    private void TraducirYEjecutar(int[] Triple) {
-        int First = Triple[0];
+    private void TraducirYEjecutar(ArrayList<Tripleta> triple) {
+        int First = triple.op;
         switch (First) {
             case 0:
-                System.out.println("Init con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.init(Triple[1], Triple[2]);
+                System.out.println("Init con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.init(triple.var1, triple.var2);
                 break;
             case 1:
-                System.out.println("Push con parametro 1 " + Triple[1]);
-                inst.push(Triple[1]);
+                System.out.println("Push con parametro 1 " + triple.var1);
+                inst.push(triple.var1);
                 break;
             case 2:
-                System.out.println("Pop ");
+                System.out.println("Pop");
                 inst.pop();
                 break;
             case 3:
-                System.out.println("MovRR con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.movRR(Triple[1], Triple[2]);
+                System.out.println("MovRR con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.movRR(triple.var1, triple.var2);
                 break;
             case 4:
-                System.out.println("MovRM con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.movRM(Triple[1], Triple[2]);
+                System.out.println("MovRM con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.movRM(triple.var1, triple.var2);
                 break;
             case 5:
-                System.out.println("MovMR con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.movMR(Triple[1], Triple[2]);
+                System.out.println("MovMR con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.movMR(triple.var1, triple.var2);
                 break;
             case 6:
                 System.out.println("END");
@@ -70,96 +70,96 @@ public class Mv {
                 if(cpila == 0) cprog = memoria.size();
                 break;
             case 7:
-                System.out.println("Add con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.add(Triple[1], Triple[2]);
+                System.out.println("Add con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.add(triple.var1, triple.var2);
                 break;
             case 8:
-                System.out.println("SUB con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.sub(Triple[1], Triple[2]);
+                System.out.println("SUB con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.sub(triple.var1, triple.var2);
                 break;
             case 9:
-                System.out.println("MUL con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.mul(Triple[1], Triple[2]);
+                System.out.println("MUL con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.mul(triple.var1, triple.var2);
                 break;
             case 10:
-                System.out.println("DIV con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.div(Triple[1], Triple[2]);
+                System.out.println("DIV con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.div(triple.var1, triple.var2);
                 break;
             case 11:
-                System.out.println("EXP con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.exp(Triple[1], Triple[2]);
+                System.out.println("EXP con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.exp(triple.var1, triple.var2);
                 break;
             case 12:
-                System.out.println("SQRT con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.sqrt(Triple[1]);
+                System.out.println("SQRT con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.sqrt(triple.var1);
                 break;
             case 13:
-                System.out.println("Menor que con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.menq(Triple[1], Triple[2]);
+                System.out.println("Menor que con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.menq(triple.var1, triple.var2);
                 break;
             case 14:
-                System.out.println("Mayor que con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.mayq(Triple[1], Triple[2]);
+                System.out.println("Mayor que con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.mayq(triple.var1, triple.var2);
                 break;
             case 15:
-                System.out.println("Igual que con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.igual(Triple[1], Triple[2]);
+                System.out.println("Igual que con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.igual(triple.var1, triple.var2);
                 break;
             case 16:
-                System.out.println("No Igual que con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.noIgual(Triple[1], Triple[2]);
+                System.out.println("No Igual que con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.noIgual(triple.var1, triple.var2);
                 break;
             case 17:
-                System.out.println("Dif Bit con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.difBit(Triple[1], Triple[2]);
+                System.out.println("Dif Bit con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.difBit(triple.var1, triple.var2);
                 break;
             case 18:
-                System.out.println("And Bit con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.andBit(Triple[1], Triple[2]);
+                System.out.println("And Bit con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.andBit(triple.var1, triple.var2);
                 break;
             case 19:
-                System.out.println("Or Bit con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.orBit(Triple[1], Triple[2]);
+                System.out.println("Or Bit con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.orBit(triple.var1, triple.var2);
                 break;
             case 20:
-                System.out.println("lShift con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.lShift(Triple[1], Triple[2]);
+                System.out.println("lShift con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.lShift(triple.var1, triple.var2);
                 break;
             case 21:
-                System.out.println("rShift con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.rShift(Triple[1], Triple[2]);
+                System.out.println("rShift con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.rShift(triple.var1, triple.var2);
                 break;
             case 22:
-                System.out.println("And con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.and(Triple[1], Triple[2]);
+                System.out.println("And con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.and(triple.var1, triple.var2);
                 break;
             case 23:
-                System.out.println("Or con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.or(Triple[1], Triple[2]);
+                System.out.println("Or con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.or(triple.var1, triple.var2);
                 break;
             case 24:
-                System.out.println("Jump con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.jump(Triple[1]);
+                System.out.println("Jump con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.jump(triple.var1);
                 break; 
             case 25:
-                System.out.println("Copiar cadena con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.copiaCadena(Triple[1], Triple[2]);
+                System.out.println("Copiar cadena con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.copiaCadena(triple.var1, triple.var2);
                 break;
             case 26:
-                System.out.println("Concatenar con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.concat(Triple[1], Triple[2]);
+                System.out.println("Concatenar con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.concat(triple.var1, triple.var2);
                 break;
             case 27:
-                System.out.println("Extraer cadena con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.extraerCad(Triple[1], Triple[2]);
+                System.out.println("Extraer cadena con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.extraerCad(triple.var1, triple.var2);
                 break;
             case 28:
-                System.out.println("Obtener el carácter en una posición con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.getCharAtPos(Triple[1], Triple[2]);
+                System.out.println("Obtener el carácter en una posición con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.getCharAtPos(triple.var1, triple.var2);
                 break;
             case 29:
-                System.out.println("Cambia caracter en una posición con parametro 1 " + Triple[1] + " parametro 2 " + Triple[2]);
-                inst.cambiaChar(Triple[1], Triple[2]);
+                System.out.println("Cambia caracter en una posición con parametro 1 " + triple.var1 + " parametro 2 " + triple.var2);
+                inst.cambiaChar(triple.var1, triple.var2);
                 break;
             case 30:
                 System.out.println("Resultado = "+((Bool)registros[0]).getValor());
