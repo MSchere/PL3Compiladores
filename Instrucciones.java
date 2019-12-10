@@ -82,10 +82,10 @@ public class Instrucciones{
             registros[0] = new TipoFloat(((Int)registros[r1]).getValor()+((Float)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()+((Int)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()+((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()+((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()+((Float)registros[r2]).getValor());
         }
     }
     public void sub(int r1, int r2){
@@ -98,10 +98,10 @@ public class Instrucciones{
             registros[0] = new TipoFloat(((Int)registros[r1]).getValor()-((Float)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()-((Int)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()-((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()-((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()-((Float)registros[r2]).getValor());
         }
     }
     public void mul(int r1, int r2){
@@ -114,10 +114,10 @@ public class Instrucciones{
             registros[0] = new TipoFloat(((Int)registros[r1]).getValor()*((Float)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()*((Int)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()*((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()*((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()*((Float)registros[r2]).getValor());
         }
     }
     public void div(int r1, int r2){
@@ -130,10 +130,10 @@ public class Instrucciones{
             registros[0] = new TipoFloat(((Int)registros[r1]).getValor()/((Float)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()/((Int)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()/((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((Float)registros[r1]).getValor()/((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()/((Float)registros[r2]).getValor());
         }
     }
     public void exp(int r1, int r2){
@@ -146,10 +146,10 @@ public class Instrucciones{
             registros[0] = new TipoFloat((float)Math.pow(((Int)registros[r1]).getValor(),((Float)registros[r2]).getValor()));
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new TipoFloat((float)Math.pow(((Float)registros[r1]).getValor(),((Int)registros[r2]).getValor()));
+            registros[0] = new TipoFloat((float)Math.pow(((TipoFloat)registros[r1]).getValor(),((Int)registros[r2]).getValor()));
         }
         else{
-            registros[0] = new TipoFloat((float)Math.pow(((Float)registros[r1]).getValor(),((Float)registros[r2]).getValor()));
+            registros[0] = new TipoFloat((float)Math.pow(((TipoFloat)registros[r1]).getValor(),((Float)registros[r2]).getValor()));
         }
     }
     public void sqrt(int r1){
@@ -158,7 +158,7 @@ public class Instrucciones{
             registros[0] = new Int((int)Math.sqrt(Double.parseDouble(Integer.toString(((Int)registros[r1]).getValor()))));
         }
         else{
-            registros[0] = new TipoFloat((float)Math.sqrt(((Float)registros[r1]).getValor()));
+            registros[0] = new TipoFloat((float)Math.sqrt(((TipoFloat)registros[r1]).getValor()));
         }
     }
     public void menq(int r1, int r2){
@@ -168,13 +168,13 @@ public class Instrucciones{
             registros[0] = new Bool(((Int)registros[r1]).getValor()<((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new Bool(((Int)registros[r1]).getValor()<((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((Int)registros[r1]).getValor()<((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new Bool(((Float)registros[r1]).getValor()<((Int)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()<((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new Bool(((Float)registros[r1]).getValor()<((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()<((TipoFloat)registros[r2]).getValor());
         }
     }
     public void mayq(int r1, int r2){
@@ -184,13 +184,13 @@ public class Instrucciones{
             registros[0] = new Bool(((Int)registros[r1]).getValor()>((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new Bool(((Int)registros[r1]).getValor()>((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((Int)registros[r1]).getValor()>((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new Bool(((Float)registros[r1]).getValor()>((Int)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()>((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new Bool(((Float)registros[r1]).getValor()>((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()>((TipoFloat)registros[r2]).getValor());
         }
     }
     public void igual(int r1, int r2){
@@ -200,13 +200,13 @@ public class Instrucciones{
             registros[0] = new Bool(((Int)registros[r1]).getValor()==((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new Bool(((Int)registros[r1]).getValor()==((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((Int)registros[r1]).getValor()==((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new Bool(((Float)registros[r1]).getValor()==((Int)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()==((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new Bool(((Float)registros[r1]).getValor()==((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()==((TipoFloat)registros[r2]).getValor());
         }
     }
     public void noIgual(int r1, int r2){
@@ -216,13 +216,13 @@ public class Instrucciones{
             registros[0] = new Bool(((Int)registros[r1]).getValor()!=((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new Bool(((Int)registros[r1]).getValor()!=((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((Int)registros[r1]).getValor()!=((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new Bool(((Float)registros[r1]).getValor()!=((Int)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()!=((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new Bool(((Float)registros[r1]).getValor()!=((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()!=((TipoFloat)registros[r2]).getValor());
         }
     }
     public void difBit(int r1, int r2){ //<>
@@ -232,13 +232,13 @@ public class Instrucciones{
             registros[0] = new Bool(((Int)registros[r1]).getValor()!=((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new Bool(((Int)registros[r1]).getValor()!=((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((Int)registros[r1]).getValor()!=((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
-            registros[0] = new Bool(((Float)registros[r1]).getValor()!=((Int)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()!=((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new Bool(((Float)registros[r1]).getValor()!=((Float)registros[r2]).getValor());
+            registros[0] = new Bool(((TipoFloat)registros[r1]).getValor()!=((TipoFloat)registros[r2]).getValor());
         }
     }
     public void andBit(int r1, int r2){
@@ -280,6 +280,11 @@ public class Instrucciones{
 
     //Instrucciones de manejo de cadenas
 
+    //La cadena a medir está en el registro r
+    public void cadenaLongitud(int r){
+        String cadena = ((Cadena)registros[r]).getValor();
+        registros[0] = new Int(cadena.length());
+    }
     //r1 contiene la cadena original y r2 la cadena a buscar, guarda la posición en r0
     public void cadenaDonde(int r1,int r2){
         String cadena = ((Cadena)registros[r1]).getValor();
@@ -322,10 +327,11 @@ public class Instrucciones{
         cadena = cadena.substring(pos,cadena.length());
         registros[0] = new Cadena(cadena);
     }
-    //La cadena a cortar se encuentra en el registro r
-    public void cadenaDentro(int r, int pos){
-        String cadena = ((Cadena)registros[r]).getValor();
-        cadena = cadena.substring(0,pos);
+    //La cadena a cortar se encuentra en el registro 1
+    public void cadenaDentro(int pos, int tam){
+        String cadena = ((Cadena)registros[1]).getValor();
+        cadena = cadena.substring(pos+1,cadena.length());
+        cadena = cadena.substring(0, tam);
         registros[0] = new Cadena(cadena);
     }
 
