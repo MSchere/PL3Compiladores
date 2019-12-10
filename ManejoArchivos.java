@@ -1,20 +1,49 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 public class ManejoArchivos{
 
-public void abrir(String ruta){
-    File fichero = new File(((Cadena)registros[r]).getValor());
+    private File fichero;
+    private FileOutputStream salida;
+    private FileInputStream entrada;
+
+    public int abrir(String ruta){
+        int fd = 0;
+        try{
+        fichero = new File(ruta);
         if (!fichero.exists()) fichero.createNewFile();
-        int fd = fichero.hashCode();
-        registros[0] = new Int(fd);
-        cambiar para tener un int como fd
-}
-
-
+        salida = new FileOutputStream(fichero);
+        entrada = new FileInputStream(fichero);
+        fd = fichero.hashCode();
+        }
+        catch(Exception e){}
+        return fd;
     }
-    //En el registro r1 estará el descriptorFichero y en r2 estará lo que se quiera escribir
-    public void escribirFichero(int r1, int r2){
-        FileOutputStream salida = new FileOutputStream(((Int)registros[r1]).getValor());
-        byte[] texto = (((Cadena)registros[r2]).getValor()).getBytes();
-		salida.write(texto);
-        salida.flush();
+
+    public void escribir(String cadena){
+        try{
+            byte[] texto = cadena.getBytes();
+		    salida.write(texto);
+            salida.flush();
+        }
+        catch(Exception e){}
+    }
+
+    public String leer(){
+        String cadena = "";
+        try{
+            int ch = entrada.read();
+            while(ch != -1) {
+                cadena = cadena + (char)ch;
+                ch = entrada.read();
+            }
+        }catch(Exception e){}
+        return cadena;
+    }
+
+    public void cerrar(){
+        entrada.close();
         salida.close();
     }
+}

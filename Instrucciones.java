@@ -1,15 +1,13 @@
 import java.util.ArrayList;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.util.HashMap;
 
 public class Instrucciones{
 
     private Entrada[] registros;
     private ArrayList<Entrada> pila;
     private Mv maquina;
+
+    private HashMap<Integer,ManejoArchivos> archivos = new HashMap<Integer,ManejoArchivos>();
 
     public Instrucciones(Mv maquina, Entrada[] registros, ArrayList<Entrada> pila){
         this.maquina = maquina;
@@ -282,9 +280,14 @@ public class Instrucciones{
 
     //Instrucciones de manejo de cadenas
 
-    public void copiaCadena(int origen,int destino){
-        ((Cadena)pila.get(destino)).setValor(((Cadena)pila.get(origen)).getValor());
+    //r1 contiene la cadena original y r2 la cadena a buscar, guarda la posición en r0
+    public void cadenaDonde(int r1,int r2){
+        String cadena = ((Cadena)registros[r1]).getValor();
+        String subcadena = ((Cadena)registros[r2]).getValor();
+        int pos = cadena.indexOf(subcadena);
+        registros[0] = new Int(pos);
     }
+    //Las cadenas se encontrarán en r1 y r2
     public void concat(int r1, int r2){
         registros[0] = new Cadena(((Cadena)registros[r1]).getValor()+((Cadena)registros[r2]).getValor());
     }
@@ -293,17 +296,36 @@ public class Instrucciones{
         String cadena = ((Cadena)registros[1]).getValor();
         registros[0] = new Cadena(cadena.substring(posIni, posFin));
     }
-    public void getCharAtPos(int r, int pos){
+    //En r se encuentra la cadena a la que hay que quitarle los espacios
+    public void sinEspacios(int r){
         String cadena = ((Cadena)registros[r]).getValor();
-        cadena = Character.toString(cadena.charAt(pos));
+        cadena.trim();
         registros[0] = new Cadena(cadena);
     }
-    //La cadena afectada se debe encontrar en el registro 1 y la letra en el registro 2
-    public void cambiaChar(int pos, int letra){
+    //La cadena afectada se encuentra en registros[1], la subcadena afectada en r1 y la subcadena nueva en r2
+    public void sustituir(int r1, int r2){
         String cadena = ((Cadena)registros[1]).getValor();
-        char[] chars = cadena.toCharArray();
-        chars[pos]= ((Cadena)registros[2]).getValor().charAt(0);
-        cadena = String.valueOf(chars);
+        String vieja = ((Cadena)registros[r1]).getValor();
+        String nueva = ((Cadena)registros[r2]).getValor();
+        cadena.replaceAll(vieja, nueva);
+        registros[0] = new Cadena(cadena);
+    }
+    //La cadena a cortar se encuentra en el registro r
+    public void cadenaI(int r, int pos){
+        String cadena = ((Cadena)registros[r]).getValor();
+        cadena = cadena.substring(0,pos);
+        registros[0] = new Cadena(cadena);
+    }
+    //La cadena a cortar se encuentra en el registro r
+    public void cadenaD(int r, int pos){
+        String cadena = ((Cadena)registros[r]).getValor();
+        cadena = cadena.substring(pos,cadena.length());
+        registros[0] = new Cadena(cadena);
+    }
+    //La cadena a cortar se encuentra en el registro r
+    public void cadenaDentro(int r, int pos){
+        String cadena = ((Cadena)registros[r]).getValor();
+        cadena = cadena.substring(0,pos);
         registros[0] = new Cadena(cadena);
     }
 
@@ -311,21 +333,25 @@ public class Instrucciones{
 
     //En el registro r debe estar la ruta del fichero y deja en r0 el descriptor
     public void abrirFichero(int r){
-        File fichero = new File(((Cadena)registros[r]).getValor());
-        if (!fichero.exists()) fichero.createNewFile();
-        int fd = fichero.hashCode();
+        ManejoArchivos m = new ManejoArchivos();
+        int fd = m.abrir(((Cadena)registros[r]).getValor());
+        archivos.put(fd,m);
         registros[0] = new Int(fd);
     }
     //En el registro r1 estará el descriptorFichero y en r2 estará lo que se quiera escribir
     public void escribirFichero(int r1, int r2){
-        FileOutputStream salida = new FileOutputStream(((Int)registros[r1]).getValor());
-        byte[] texto = (((Cadena)registros[r2]).getValor()).getBytes();
-		salida.write(texto);
-        salida.flush();
-		salida.close();
+        archivos.get(((Int)registros[r1]).getValor()).escribir(((Cadena)registros[r2]).getValor());
+    }
+    //En el registro r estará el descriptorFichero
+    public void leerFichero(int r){
+        String texto = archivos.get(((Int)registros[r]).getValor()).leer();
+        registros[0] = new Cadena(texto);
     }
     //En el registro r estará el descriptor del archivo a cerrar
     public void cerrarFichero(int r){
-
+        archivos.get(((Int)registros[r]).getValor()).cerrar();
+        archivos.remove(((Int)registros[r]).getValor());
     }
+
+    
 }
