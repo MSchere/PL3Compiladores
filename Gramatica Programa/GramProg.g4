@@ -1,54 +1,63 @@
 grammar GramProg;
-//antlr GramProg.g4 && javac *.java && grun GramProg prog -gui EjemploCodigo2.prog
 //Parser
 
-prog: (include|funcion)*;
+prog: (include|funcion)* #progPrincipal;
 
-include: INCLUDE ID FIN;
+include: INCLUDE ID FIN #incluir;
 
-funcion: defineFuncion bloqueFuncion;
+funcion: defineFuncion bloqueFuncion #func;
 
-defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo;
+defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo #definirFunc;
 
-parametros: declaracion (COMA declaracion)*;
+parametros: declaracion (COMA declaracion)* #param;
 
-bloqueFuncion: BEGIN bloqueCodigo END;
+bloqueFuncion: BEGIN bloqueCodigo END #bloqueFunc;
 
-bucle: WHILE PI expr PD bloqueCodigoBucle;
 
-bloqueCodigoBucle: (BEGIN bloqueCodigo END)|sentencia?;
+bucle: WHILE PI expr PD bloqueCodigoBucle #bucleWhile;
 
-ifex: IF PI expr PD bloqueCodigoIf;
 
-bloqueCodigoIf: THEN bloqueCodigo (ELSE bloqueCodigo)? ENDIF;
+bloqueCodigoBucle: ((BEGIN bloqueCodigo END)|sentencia? )#bloqueBucleWhile;
 
-forEx: defineFor bloqueCodigoBucle;
 
-defineFor: FOR PI (declararYasignar|asignacion) FIN expr FIN expr PD;
+ifex: IF PI expr PD bloqueCodigoIf #ifEex;
 
-bloqueCodigo: sentencia*;
 
-sentencia:  (declararYasignar FIN)
-            |(declaracion FIN)
-            |(asignacion FIN)
-            |bucle
+bloqueCodigoIf: THEN bloqueCodigo (ELSE bloqueCodigo)? ENDIF #bloqueBucleIf;
+
+forEx: defineFor bloqueCodigoBucle #forEex;
+
+defineFor: FOR PI (declararYasignar|asignacion) FIN expr FIN expr PD #definirFor;
+
+
+bloqueCodigo: sentencia* #bloqueCod;
+
+
+sentencia:  (declararYasignar FIN) 
+            |(declaracion FIN) 
+            |(asignacion FIN) 
+            |bucle 
             |ifex
             |forEx
             |devolver
             |(expr FIN)
             |FIN;
 
-declararYasignar: tipo ID ASIG expr;
 
-declaracion: tipo ID;
+declararYasignar: tipo ID ASIG expr #declararYasign;
 
-asignacion: ID ASIG expr;
 
-devolver: DEVOLVER expr FIN;
+declaracion: tipo ID #declarar;
 
-llamadaFuncion: ID PI (expr (COMA expr)*)? PD;
 
-tipo: (TIPO_NUMERO|TIPO_CADENA|TIPO_BOOL|TIPO_VOID) (CORCHIZ CORCHD)?;
+asignacion: ID ASIG expr #asignar;
+
+devolver: DEVOLVER expr FIN #devolv;
+
+
+llamadaFuncion: ID PI (expr (COMA expr)*)? PD #llamadaFunc;
+
+tipo: (TIPO_NUMERO|TIPO_CADENA|TIPO_BOOL|TIPO_VOID) (CORCHIZ CORCHD)? #tip;
 
 expr:	llamadaFuncion
     |   expr (MUL|DIV|MOD) expr
@@ -63,12 +72,11 @@ expr:	llamadaFuncion
     |	ID
     ;
 
-numero: INT|FLOAT;
 
+numero: INT|FLOAT #num;
 //Lexer
 
 //Comentarios
-
 COMENTARIO  :   ('//' .*? '\n'
             |   '/*' .*? '*/'
             |   '/**' .*? '**/'
@@ -76,7 +84,6 @@ COMENTARIO  :   ('//' .*? '\n'
             ;
             
 //Keywords
-
 INCLUDE: 'include';
 FUNCION: 'function';
 BEGIN: 'begin';
@@ -92,16 +99,13 @@ THEN: 'then';
 ENDIF:'endif';
 ELSE: 'else';
 FOR: 'for';
-
 //Numeros y palabras
-
 FLOAT: [0-9]+'.'[0-9]+;
 INT: [0-9]+;
 ID: [a-zA-Z][a-zA-Z_0-9]*;
 CADENA: DCOMILLAS .*? DCOMILLAS;
 
 //Caracteres
-
 ESC: '\\'[btnr"\\];
 ESPECIAL: ('á'|'é'|'í'|'ó'|'ú'|'Á'|'É'|'Í'|'Ó'|'Ú'|'ñ'|'Ñ');
 ASIG: ':=';
@@ -117,9 +121,7 @@ COMA: ',';
 BARRAINV: '\\';
 DCOMILLAS: '"';
 INTERG: '?';
-
 //Operadores
-
 DIF: '!=';
 IGUAL: '==';
 MENIG: '<=';
