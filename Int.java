@@ -2,7 +2,7 @@ public class Int extends Dato{
     
     private int valor;
     public Int(){
-        super(0);ponerselo a todas las clases
+        super(0);
     }
     public Int(int valor){
         super(0);

@@ -1,6 +1,9 @@
 public class Bool extends Dato{
     
-    private boolean valor;    
+    private boolean valor;
+    public Bool(){
+        super(0);
+    } 
     public Bool(boolean valor){
         super(3);
         this.valor = valor;
