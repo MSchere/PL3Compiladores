@@ -1,11 +1,11 @@
 
-//javac Executable.java && javac GramProgMiListener.java && java Executable
+//javac Executable.java && java Executable
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.*;
 import java.io.*;
 
-public class Executable {
+public class Executable{
     public static void main(String[] args) throws Exception {
         // Fuerzo la carga del fichero
         String inputFile = "EjemploCodigo2.prog";
@@ -17,10 +17,6 @@ public class Executable {
             is = new FileInputStream(inputFile);
         }
         try {
-            File file = new File("Arbol.txt");
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-
             CharStream input = CharStreams.fromStream(is);
             GramProgLexer lexer = new GramProgLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -31,6 +27,9 @@ public class Executable {
             // Configuramos el listener
             GramProgMiListener tb = new GramProgMiListener();
             ParseTreeWalker walker = new ParseTreeWalker();
+
+            //Abrimos la tabla de símbolos
+            TablaSimbolos ts = new TablaSimbolos();
 
             // Recorremos el arbol
             walker.walk(tb, tree);
@@ -53,7 +52,6 @@ public class Executable {
                             variables.add(tb.arbol.get(i + 1));
                             i = i + 2;
                         }
-                        //System.out.println("VARIABLE EN ARRAY:" + variables.get(variables.size()-1));
                     }
                 }
                 for (int j = 0; j < variables.size(); j++) {
