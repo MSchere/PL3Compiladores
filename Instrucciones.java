@@ -31,8 +31,21 @@ public class Instrucciones{
     public void movMR(int pos1, int pos2){ //mov origen destino
         registros[pos2] = pila.get(maquina.getCpila()+pos1);
     }
-    public void push(int nRegistro){
-        pila.add(registros[nRegistro]);
+    public void push(int tipo, String valor){
+        switch(tipo){
+            case 0:
+            pila.add(new Int(Integer.parseInt(valor)));
+                break;
+            case 1:
+            pila.add(new TipoFloat(new Float(valor)));
+                break;
+            case 2:
+            pila.add(new Cadena(valor));
+                break;
+            case 3:
+            if(valor.equals("true")) pila.add(new Bool(true));
+                else pila.add(new Bool(false));
+        }
     }
     public void store(int tipo, String valor){ //Almacena el valor en el registro 1
         switch(tipo){
