@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.io.InputStream;
 import java.io.FileInputStream;
@@ -23,7 +22,6 @@ public static void main(String[] args)throws Exception{
     ParseTree tree=parser.prog();
     //System.out.println(tree.toStringTree(parser)+"no se que imprimo");
     PrimeraPasada nv=new PrimeraPasada();
-     nv.visit(tree);
-
+    nv.visit(tree);
 }
 }

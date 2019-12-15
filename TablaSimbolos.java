@@ -39,6 +39,6 @@ public class TablaSimbolos extends ContenidoFuncion{
 	}
 	
 	public int getPos(String nombreVariable){
-		
+		return 0;
 	}
 }

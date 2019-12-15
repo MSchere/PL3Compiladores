@@ -11,8 +11,12 @@ public class Array extends Dato{
     }
 
     public void meter(int pos,Dato valor){
-        if(valor.getTipo() == tipo) valores[pos]=valor;
-        else throw new Exception();
+        try{
+            if(valor.getTipo() == tipo) valores[pos]=valor;
+            else throw new Exception();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public Dato getValor(int pos){return valores[pos];}
     public int getLong(){return tam;}
