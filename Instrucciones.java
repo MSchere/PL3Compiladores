@@ -71,8 +71,8 @@ public class Instrucciones{
         pila.remove(pila.size()-1);
     }
     public void cmp(int r1, int r2){
-        int a = ((TipoFloat) registros[r1]).getValor();
-        int b = ((TipoFloat) registros[r2]).getValor();
+        int a = (int)((TipoFloat) registros[r1]).getValor();
+        int b = (int)((TipoFloat) registros[r2]).getValor();
         if(a>b){ rcmp = 1;}
         else if(a<b){ rcmp = -1;}
         else{ rcmp = 0;}
@@ -111,13 +111,13 @@ public class Instrucciones{
             registros[0] = new Int(((Int)registros[r1]).getValor()+((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()+((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()+((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
             registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()+((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()+((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()+((TipoFloat)registros[r2]).getValor());
         }
     }
     public void sub(int r1, int r2){
@@ -127,13 +127,13 @@ public class Instrucciones{
             registros[0] = new Int(((Int)registros[r1]).getValor()-((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()-((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()-((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
             registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()-((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()-((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()-((TipoFloat)registros[r2]).getValor());
         }
     }
     public void mul(int r1, int r2){
@@ -143,13 +143,13 @@ public class Instrucciones{
             registros[0] = new Int(((Int)registros[r1]).getValor()*((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()*((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()*((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
             registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()*((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()*((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()*((TipoFloat)registros[r2]).getValor());
         }
     }
     public void div(int r1, int r2){
@@ -159,13 +159,13 @@ public class Instrucciones{
             registros[0] = new Int(((Int)registros[r1]).getValor()/((Int)registros[r2]).getValor());
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()/((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((Int)registros[r1]).getValor()/((TipoFloat)registros[r2]).getValor());
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
             registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()/((Int)registros[r2]).getValor());
         }
         else{
-            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()/((Float)registros[r2]).getValor());
+            registros[0] = new TipoFloat(((TipoFloat)registros[r1]).getValor()/((TipoFloat)registros[r2]).getValor());
         }
     }
     public void exp(int r1, int r2){
@@ -175,13 +175,13 @@ public class Instrucciones{
             registros[0] = new Int((int)Math.pow(((Int)registros[r1]).getValor(),((Int)registros[r2]).getValor()));
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
-            registros[0] = new TipoFloat((float)Math.pow(((Int)registros[r1]).getValor(),((Float)registros[r2]).getValor()));
+            registros[0] = new TipoFloat((float)Math.pow(((Int)registros[r1]).getValor(),((TipoFloat)registros[r2]).getValor()));
         }
         else if((tipo1 == 1) && (tipo2 == 0)){
             registros[0] = new TipoFloat((float)Math.pow(((TipoFloat)registros[r1]).getValor(),((Int)registros[r2]).getValor()));
         }
         else{
-            registros[0] = new TipoFloat((float)Math.pow(((TipoFloat)registros[r1]).getValor(),((Float)registros[r2]).getValor()));
+            registros[0] = new TipoFloat((float)Math.pow(((TipoFloat)registros[r1]).getValor(),((TipoFloat)registros[r2]).getValor()));
         }
     }
     public void sqrt(int r1){
