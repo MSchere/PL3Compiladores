@@ -22,7 +22,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     public void ImprimirTriple() {
         try {
             File file = new File("TripletaGenerada.txt");
-            if (!file.exists()) {
+            if (file.exists()) {
                 file.delete();
             }
             file.createNewFile();
@@ -37,14 +37,16 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             for (int i = 0; i < PrintPOS.length; i++) {
 
                 System.out.print(PrintPOS[i] + ",");
-            }
+            }bw.write("[");
                 for (int i = 0; i < PrintPOS.length; i++) {
                     if(i!=PrintPOS.length-1){
+                        
                         bw.write(PrintPOS[i]+",");}
                     else{
                         bw.write(PrintPOS[i]);
                     }
-                }bw.write("\n");
+                }bw.write("]");
+                bw.write("\n");
                     
         }bw.close();
     } catch (IOException e) {
