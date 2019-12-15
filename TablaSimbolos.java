@@ -4,12 +4,12 @@ public class TablaSimbolos extends ContenidoFuncion{
 	
 	HashMap<String, ContenidoFuncion> funcion = new HashMap<String, ContenidoFuncion>();
 	
-	//Método al que hay que llamar cuando se detecta una función
+	//Mï¿½todo al que hay que llamar cuando se detecta una funciï¿½n
 	public void rellenaFuncion(String nombreFunc, int numArgumentos, String tipoRetorno) {
-		//Creamos un objeto que tiene el contenido de función y sus características
+		//Creamos un objeto que tiene el contenido de funciï¿½n y sus caracterï¿½sticas
 		ContenidoFuncion cnt = new ContenidoFuncion();
 		
-		//Introduce el número de argumentos
+		//Introduce el nï¿½mero de argumentos
 		cnt.numArgumentos = numArgumentos;
 		
 		//Introduce el tipo de dato de salida
@@ -25,17 +25,20 @@ public class TablaSimbolos extends ContenidoFuncion{
 		funcion.put(nombreFunc, cnt);
 	}
 	
-	//Método al que hay que llamar cuando se detecta una variable
+	//Mï¿½todo al que hay que llamar cuando se detecta una variable
 	public void rellenaFilaPilaVar(String nombreFunc, String nombreVar, String tipoDato){
-		//Se comrpueba si es un argumento de la función y se mete en su pila de argumentos y en la de variables
+		//Se comrpueba si es un argumento de la funciï¿½n y se mete en su pila de argumentos y en la de variables
 		if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato);
 			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
 		}
-		//Si no es un argumentos va a la pila de variables de la función
+		//Si no es un argumentos va a la pila de variables de la funciï¿½n
 		else {
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato);
 		}
 	}
 	
+	public int getPos(String nombreVariable){
+		
+	}
 }

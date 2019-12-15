@@ -47,7 +47,7 @@ public class Instrucciones{
                 else pila.add(new Bool(false));
         }
     }
-    public void store(int tipo, String valor){ //Almacena el valor en el registro 1
+    public void put(int tipo, String valor){ //Almacena el valor en el registro 1
         switch(tipo){
             case 0:
                 registros[1] = new Int(Integer.parseInt(valor));
@@ -62,6 +62,9 @@ public class Instrucciones{
                 if(valor.equals("true")) registros[1] = new Bool(true);
                 else registros[1] = new Bool(false);
         }
+    }
+    public void store(int r, int desp){
+        pila.get(desp) = registros[r];
     }
     public void pop(){
         pila.remove(pila.size()-1);

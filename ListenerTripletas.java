@@ -4,34 +4,38 @@ import org.antlr.v4.runtime.atn.*;
 
 public class ListenerTripletas extends GramJInsBaseListener {
 
-    private ArrayList<Integer> sentencia = new ArrayList<Integer>();
+    private ArrayList<String> sentencia = new ArrayList<String>();
 
-    private ArrayList<ArrayList<Integer>> arrays = new ArrayList<ArrayList<Integer>>();
+    private ArrayList<ArrayList<String>> arrays = new ArrayList<ArrayList<String>>();
 
-    public ArrayList<ArrayList<Integer>> getArray() {
+    public ArrayList<ArrayList<String>> getArray() {
         return arrays;
     }
 
-    private void meteValor(int valor) {
+    private void meteValor(String valor) {
         sentencia.add(valor);
     }
 
-    private void meteArray(ArrayList<Integer> arr) {
+    private void meteArray(ArrayList<String> arr) {
         arrays.add(arr);
     }
 
     @Override
     public void visitTerminal(TerminalNode node) {
         switch (node.getSymbol().getType()) {
-        case 5:
-            meteValor(Integer.parseInt(node.getText()));
+        case 6:
+            meteValor(node.getText());
             break;
-        }
+        
+        case 9:
+            meteValor(node.getText());
+            break;
     }
+}
 
     @Override
     public void exitLinea(GramJInsParser.LineaContext ctx) {
-        ArrayList<Integer> aux = new ArrayList<Integer>(sentencia);
+        ArrayList<String> aux = new ArrayList<String>(sentencia);
         meteArray(aux);
         sentencia.clear();
     }
