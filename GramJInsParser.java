@@ -16,8 +16,8 @@ public class GramJInsParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		CI=1, CD=2, COM=3, WS=4, COMENTARIO_BLOQUE=5, INT=6, NEWLINE=7, COMA=8, 
-		CADENA=9;
+		CI=1, CD=2, COM=3, LVI=4, LVD=5, COMA=6, PUNTO=7, WS=8, COMENTARIO_BLOQUE=9, 
+		INT=10, NEWLINE=11, CADENA=12, ARRAY=13;
 	public static final int
 		RULE_prog = 0, RULE_linea = 1, RULE_tripleta = 2;
 	private static String[] makeRuleNames() {
@@ -29,14 +29,14 @@ public class GramJInsParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'['", "']'", "'\"'", null, null, null, null, "','"
+			null, "'['", "']'", "'\"'", "'{'", "'}'", "','", "'.'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "CI", "CD", "COM", "WS", "COMENTARIO_BLOQUE", "INT", "NEWLINE", 
-			"COMA", "CADENA"
+			null, "CI", "CD", "COM", "LVI", "LVD", "COMA", "PUNTO", "WS", "COMENTARIO_BLOQUE", 
+			"INT", "NEWLINE", "CADENA", "ARRAY"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -210,6 +210,7 @@ public class GramJInsParser extends Parser {
 			return getToken(GramJInsParser.COMA, i);
 		}
 		public TerminalNode CADENA() { return getToken(GramJInsParser.CADENA, 0); }
+		public TerminalNode ARRAY() { return getToken(GramJInsParser.ARRAY, 0); }
 		public TripletaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -256,7 +257,7 @@ public class GramJInsParser extends Parser {
 				match(COMA);
 				setState(25);
 				_la = _input.LA(1);
-				if ( !(_la==INT || _la==CADENA) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << CADENA) | (1L << ARRAY))) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -283,14 +284,14 @@ public class GramJInsParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13!\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17!\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\3\2\3\2\7\2\f\n\2\f\2\16\2\17\13\2\3\3\3\3\3\3\3\3\3\4"+
 		"\3\4\3\4\3\4\5\4\31\n\4\3\4\3\4\5\4\35\n\4\3\4\3\4\3\4\2\2\5\2\4\6\2\3"+
-		"\4\2\b\b\13\13\2 \2\r\3\2\2\2\4\20\3\2\2\2\6\24\3\2\2\2\b\t\5\4\3\2\t"+
-		"\n\7\t\2\2\n\f\3\2\2\2\13\b\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2\2\r\16\3\2"+
+		"\4\2\f\f\16\17\2 \2\r\3\2\2\2\4\20\3\2\2\2\6\24\3\2\2\2\b\t\5\4\3\2\t"+
+		"\n\7\r\2\2\n\f\3\2\2\2\13\b\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2\2\r\16\3\2"+
 		"\2\2\16\3\3\2\2\2\17\r\3\2\2\2\20\21\7\5\2\2\21\22\5\6\4\2\22\23\7\5\2"+
-		"\2\23\5\3\2\2\2\24\25\7\3\2\2\25\30\7\b\2\2\26\27\7\n\2\2\27\31\7\b\2"+
-		"\2\30\26\3\2\2\2\30\31\3\2\2\2\31\34\3\2\2\2\32\33\7\n\2\2\33\35\t\2\2"+
+		"\2\23\5\3\2\2\2\24\25\7\3\2\2\25\30\7\f\2\2\26\27\7\b\2\2\27\31\7\f\2"+
+		"\2\30\26\3\2\2\2\30\31\3\2\2\2\31\34\3\2\2\2\32\33\7\b\2\2\33\35\t\2\2"+
 		"\2\34\32\3\2\2\2\34\35\3\2\2\2\35\36\3\2\2\2\36\37\7\4\2\2\37\7\3\2\2"+
 		"\2\5\r\30\34";
 	public static final ATN _ATN =
