@@ -6,12 +6,6 @@ import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.*;    
 
 public class TextCuartaPasada{
-
-    private TablaSimbolos ts;
-
-    public TextCuartaPasada(TablaSimbolos ts){
-        this.ts = ts;
-    }
 public static void main(String[] args)throws Exception{
 
     String inputFile=null;
@@ -28,7 +22,7 @@ public static void main(String[] args)throws Exception{
     parser.setBuildParseTree(true);
     ParseTree tree=parser.prog();
     //System.out.println(tree.toStringTree(parser)+"no se que imprimo");
-    CuartaPasada nv=new CuartaPasada(ts);
+    CuartaPasada nv=new CuartaPasada();
      nv.visit(tree);
      nv.ImprimirTriple();
 
