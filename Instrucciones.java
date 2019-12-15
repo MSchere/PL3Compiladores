@@ -6,6 +6,7 @@ public class Instrucciones{
     private Entrada[] registros;
     private ArrayList<Entrada> pila;
     private Mv maquina;
+    private int rcmp;
 
     private HashMap<Integer,ManejoArchivos> archivos = new HashMap<Integer,ManejoArchivos>();
 
@@ -64,17 +65,32 @@ public class Instrucciones{
         }
     }
     public void store(int r, int desp){
-        pila.get(desp) = registros[r];
+        pila.set(desp,registros[r]);
     }
     public void pop(){
         pila.remove(pila.size()-1);
     }
+    public void cmp(int r1, int r2){
+        int a = ((TipoFloat) registros[r1]).getValor();
+        int b = ((TipoFloat) registros[r2]).getValor();
+        if(a>b){ rcmp = 1;}
+        else if(a<b){ rcmp = -1;}
+        else{ rcmp = 0;}
+    }
     public void jump(int desp){
         maquina.setCprog(desp);
     }
+    public void jmpgt(int desp){
+        if(rcmp == 1) maquina.setCprog(desp);
+    }
+    public void jmplt(int desp){
+        if(rcmp == -1) maquina.setCprog(desp);
+    }
+    public void jmpeq(int desp){
+        if(rcmp == 0) maquina.setCprog(desp);
+    }
     public void end(){
         while(!pila.get(pila.size()-1).esControl()){
-            System.out.println("He borrado");
             pop();
         }
         int nParams = ((Control)pila.get(maquina.getCpila())).getNParams();
