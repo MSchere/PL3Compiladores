@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Tripletas {
 
-    private int primeraPosicion;
-    private int segundaPosicion;
-    private int terceraPosicion;
-    private String terceraPosicion2;
+    int primeraPosicion;
+    int segundaPosicion;
+    int terceraPosicion;
+    String terceraPosicion2;
 
     public Tripletas() {
 

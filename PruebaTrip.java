@@ -7,13 +7,10 @@ import java.io.InputStream;
 import java.util.*;
 
 public class PruebaTrip {
-    public static void main(String[] args) throws Exception{
-        String inputFile=null;
-        if(args.length>0) inputFile=args[0];
+    public void main(String ruta){
+
         InputStream is = System.in;
-        if(inputFile!=null){
-            is=new FileInputStream(inputFile);
-        }
+        is=new FileInputStream(ruta);
 
         CharStream input = CharStreams.fromStream(is);
         GramJInsLexer lexer = new GramJInsLexer(input);
@@ -50,9 +47,7 @@ public class PruebaTrip {
         }
 
 
-        /*
         Mv maquina = new Mv(nv.getArray());
         maquina.ejecutar();
-        */
     }
 }
