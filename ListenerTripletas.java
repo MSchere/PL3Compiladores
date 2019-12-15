@@ -23,13 +23,17 @@ public class ListenerTripletas extends GramJInsBaseListener {
     @Override
     public void visitTerminal(TerminalNode node) {
         switch (node.getSymbol().getType()) {
-        case 6:
+        case 10:
             meteValor(node.getText());
             break;
         
-        case 9:
-            meteValor(node.getText());
+        case 12:
+            meteValor('"'+node.getText()+'"');
             break;
+
+        case 13:
+            meteValor(node.getText());
+            break;    
     }
 }
 
