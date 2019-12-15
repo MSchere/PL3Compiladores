@@ -43,7 +43,12 @@ public class ManejoArchivos{
     }
 
     public void cerrar(){
-        entrada.close();
-        salida.close();
+        try {
+            entrada.close();
+            salida.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 }
