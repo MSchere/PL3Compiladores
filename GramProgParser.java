@@ -1,4 +1,4 @@
-// Generated from GramProg.g4 by ANTLR 4.7.2
+// Generated from .\GramProg.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -114,6 +114,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class ProgContext extends ParserRuleContext {
+		public ProgContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_prog; }
+	 
+		public ProgContext() { }
+		public void copyFrom(ProgContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ProgPrincipalContext extends ProgContext {
 		public List<IncludeContext> include() {
 			return getRuleContexts(IncludeContext.class);
 		}
@@ -126,17 +137,11 @@ public class GramProgParser extends Parser {
 		public FuncionContext funcion(int i) {
 			return getRuleContext(FuncionContext.class,i);
 		}
-		public ProgContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_prog; }
+		public ProgPrincipalContext(ProgContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterProg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitProg(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitProgPrincipal(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -145,6 +150,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 0, RULE_prog);
 		int _la;
 		try {
+			_localctx = new ProgPrincipalContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(48);
@@ -189,20 +195,25 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class IncludeContext extends ParserRuleContext {
-		public TerminalNode INCLUDE() { return getToken(GramProgParser.INCLUDE, 0); }
-		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
-		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
 		public IncludeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_include; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterInclude(this);
+	 
+		public IncludeContext() { }
+		public void copyFrom(IncludeContext ctx) {
+			super.copyFrom(ctx);
 		}
+	}
+	public static class IncluirContext extends IncludeContext {
+		public TerminalNode INCLUDE() { return getToken(GramProgParser.INCLUDE, 0); }
+		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
+		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
+		public IncluirContext(IncludeContext ctx) { copyFrom(ctx); }
 		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitInclude(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitIncluir(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -210,6 +221,7 @@ public class GramProgParser extends Parser {
 		IncludeContext _localctx = new IncludeContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_include);
 		try {
+			_localctx = new IncluirContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(51);
@@ -232,23 +244,28 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class FuncionContext extends ParserRuleContext {
+		public FuncionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_funcion; }
+	 
+		public FuncionContext() { }
+		public void copyFrom(FuncionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class FuncContext extends FuncionContext {
 		public DefineFuncionContext defineFuncion() {
 			return getRuleContext(DefineFuncionContext.class,0);
 		}
 		public BloqueFuncionContext bloqueFuncion() {
 			return getRuleContext(BloqueFuncionContext.class,0);
 		}
-		public FuncionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_funcion; }
+		public FuncContext(FuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterFuncion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitFuncion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -256,6 +273,7 @@ public class GramProgParser extends Parser {
 		FuncionContext _localctx = new FuncionContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_funcion);
 		try {
+			_localctx = new FuncContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(55);
@@ -276,6 +294,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class DefineFuncionContext extends ParserRuleContext {
+		public DefineFuncionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_defineFuncion; }
+	 
+		public DefineFuncionContext() { }
+		public void copyFrom(DefineFuncionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class DefinirFuncContext extends DefineFuncionContext {
 		public TerminalNode FUNCION() { return getToken(GramProgParser.FUNCION, 0); }
 		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
@@ -287,17 +316,11 @@ public class GramProgParser extends Parser {
 		public ParametrosContext parametros() {
 			return getRuleContext(ParametrosContext.class,0);
 		}
-		public DefineFuncionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_defineFuncion; }
+		public DefinirFuncContext(DefineFuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDefineFuncion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDefineFuncion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDefinirFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -306,6 +329,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 6, RULE_defineFuncion);
 		int _la;
 		try {
+			_localctx = new DefinirFuncContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(58);
@@ -344,6 +368,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class ParametrosContext extends ParserRuleContext {
+		public ParametrosContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_parametros; }
+	 
+		public ParametrosContext() { }
+		public void copyFrom(ParametrosContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ParamContext extends ParametrosContext {
 		public List<DeclaracionContext> declaracion() {
 			return getRuleContexts(DeclaracionContext.class);
 		}
@@ -354,17 +389,11 @@ public class GramProgParser extends Parser {
 		public TerminalNode COMA(int i) {
 			return getToken(GramProgParser.COMA, i);
 		}
-		public ParametrosContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_parametros; }
+		public ParamContext(ParametrosContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterParametros(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitParametros(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitParam(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -373,6 +402,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 8, RULE_parametros);
 		int _la;
 		try {
+			_localctx = new ParamContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(68);
@@ -407,22 +437,27 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class BloqueFuncionContext extends ParserRuleContext {
+		public BloqueFuncionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bloqueFuncion; }
+	 
+		public BloqueFuncionContext() { }
+		public void copyFrom(BloqueFuncionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class BloqueFuncContext extends BloqueFuncionContext {
 		public TerminalNode BEGIN() { return getToken(GramProgParser.BEGIN, 0); }
 		public BloqueCodigoContext bloqueCodigo() {
 			return getRuleContext(BloqueCodigoContext.class,0);
 		}
 		public TerminalNode END() { return getToken(GramProgParser.END, 0); }
-		public BloqueFuncionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_bloqueFuncion; }
+		public BloqueFuncContext(BloqueFuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueFuncion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueFuncion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -430,6 +465,7 @@ public class GramProgParser extends Parser {
 		BloqueFuncionContext _localctx = new BloqueFuncionContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_bloqueFuncion);
 		try {
+			_localctx = new BloqueFuncContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(76);
@@ -452,6 +488,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class BucleContext extends ParserRuleContext {
+		public BucleContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bucle; }
+	 
+		public BucleContext() { }
+		public void copyFrom(BucleContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class BucleWhileContext extends BucleContext {
 		public TerminalNode WHILE() { return getToken(GramProgParser.WHILE, 0); }
 		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
 		public ExprContext expr() {
@@ -461,17 +508,11 @@ public class GramProgParser extends Parser {
 		public BloqueCodigoBucleContext bloqueCodigoBucle() {
 			return getRuleContext(BloqueCodigoBucleContext.class,0);
 		}
-		public BucleContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_bucle; }
+		public BucleWhileContext(BucleContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBucle(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBucle(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBucleWhile(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -479,6 +520,7 @@ public class GramProgParser extends Parser {
 		BucleContext _localctx = new BucleContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_bucle);
 		try {
+			_localctx = new BucleWhileContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(80);
@@ -505,6 +547,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class BloqueCodigoBucleContext extends ParserRuleContext {
+		public BloqueCodigoBucleContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bloqueCodigoBucle; }
+	 
+		public BloqueCodigoBucleContext() { }
+		public void copyFrom(BloqueCodigoBucleContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class BloqueBucleWhileContext extends BloqueCodigoBucleContext {
 		public TerminalNode BEGIN() { return getToken(GramProgParser.BEGIN, 0); }
 		public BloqueCodigoContext bloqueCodigo() {
 			return getRuleContext(BloqueCodigoContext.class,0);
@@ -513,17 +566,11 @@ public class GramProgParser extends Parser {
 		public SentenciaContext sentencia() {
 			return getRuleContext(SentenciaContext.class,0);
 		}
-		public BloqueCodigoBucleContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_bloqueCodigoBucle; }
+		public BloqueBucleWhileContext(BloqueCodigoBucleContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueCodigoBucle(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueCodigoBucle(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueBucleWhile(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -531,11 +578,13 @@ public class GramProgParser extends Parser {
 		BloqueCodigoBucleContext _localctx = new BloqueCodigoBucleContext(_ctx, getState());
 		enterRule(_localctx, 14, RULE_bloqueCodigoBucle);
 		try {
+			_localctx = new BloqueBucleWhileContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
 			setState(93);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case BEGIN:
-				enterOuterAlt(_localctx, 1);
 				{
 				{
 				setState(86);
@@ -565,7 +614,6 @@ public class GramProgParser extends Parser {
 			case PI:
 			case FIN:
 			case NEG:
-				enterOuterAlt(_localctx, 2);
 				{
 				setState(91);
 				_errHandler.sync(this);
@@ -582,6 +630,7 @@ public class GramProgParser extends Parser {
 			default:
 				throw new NoViableAltException(this);
 			}
+			}
 		}
 		catch (RecognitionException re) {
 			_localctx.exception = re;
@@ -595,6 +644,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class IfexContext extends ParserRuleContext {
+		public IfexContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_ifex; }
+	 
+		public IfexContext() { }
+		public void copyFrom(IfexContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class IfEexContext extends IfexContext {
 		public TerminalNode IF() { return getToken(GramProgParser.IF, 0); }
 		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
 		public ExprContext expr() {
@@ -604,17 +664,11 @@ public class GramProgParser extends Parser {
 		public BloqueCodigoIfContext bloqueCodigoIf() {
 			return getRuleContext(BloqueCodigoIfContext.class,0);
 		}
-		public IfexContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_ifex; }
+		public IfEexContext(IfexContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterIfex(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitIfex(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitIfEex(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -622,6 +676,7 @@ public class GramProgParser extends Parser {
 		IfexContext _localctx = new IfexContext(_ctx, getState());
 		enterRule(_localctx, 16, RULE_ifex);
 		try {
+			_localctx = new IfEexContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(95);
@@ -648,6 +703,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class BloqueCodigoIfContext extends ParserRuleContext {
+		public BloqueCodigoIfContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bloqueCodigoIf; }
+	 
+		public BloqueCodigoIfContext() { }
+		public void copyFrom(BloqueCodigoIfContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class BloqueBucleIfContext extends BloqueCodigoIfContext {
 		public TerminalNode THEN() { return getToken(GramProgParser.THEN, 0); }
 		public List<BloqueCodigoContext> bloqueCodigo() {
 			return getRuleContexts(BloqueCodigoContext.class);
@@ -657,17 +723,11 @@ public class GramProgParser extends Parser {
 		}
 		public TerminalNode ENDIF() { return getToken(GramProgParser.ENDIF, 0); }
 		public TerminalNode ELSE() { return getToken(GramProgParser.ELSE, 0); }
-		public BloqueCodigoIfContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_bloqueCodigoIf; }
+		public BloqueBucleIfContext(BloqueCodigoIfContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueCodigoIf(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueCodigoIf(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueBucleIf(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -676,6 +736,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 18, RULE_bloqueCodigoIf);
 		int _la;
 		try {
+			_localctx = new BloqueBucleIfContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(101);
@@ -710,23 +771,28 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class ForExContext extends ParserRuleContext {
+		public ForExContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_forEx; }
+	 
+		public ForExContext() { }
+		public void copyFrom(ForExContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ForEexContext extends ForExContext {
 		public DefineForContext defineFor() {
 			return getRuleContext(DefineForContext.class,0);
 		}
 		public BloqueCodigoBucleContext bloqueCodigoBucle() {
 			return getRuleContext(BloqueCodigoBucleContext.class,0);
 		}
-		public ForExContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_forEx; }
+		public ForEexContext(ForExContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterForEx(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitForEx(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitForEex(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -734,6 +800,7 @@ public class GramProgParser extends Parser {
 		ForExContext _localctx = new ForExContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_forEx);
 		try {
+			_localctx = new ForEexContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(109);
@@ -754,6 +821,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class DefineForContext extends ParserRuleContext {
+		public DefineForContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_defineFor; }
+	 
+		public DefineForContext() { }
+		public void copyFrom(DefineForContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class DefinirForContext extends DefineForContext {
 		public TerminalNode FOR() { return getToken(GramProgParser.FOR, 0); }
 		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
 		public List<TerminalNode> FIN() { return getTokens(GramProgParser.FIN); }
@@ -773,17 +851,11 @@ public class GramProgParser extends Parser {
 		public AsignacionContext asignacion() {
 			return getRuleContext(AsignacionContext.class,0);
 		}
-		public DefineForContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_defineFor; }
+		public DefinirForContext(DefineForContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDefineFor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDefineFor(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDefinirFor(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -791,6 +863,7 @@ public class GramProgParser extends Parser {
 		DefineForContext _localctx = new DefineForContext(_ctx, getState());
 		enterRule(_localctx, 22, RULE_defineFor);
 		try {
+			_localctx = new DefinirForContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(112);
@@ -842,23 +915,28 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class BloqueCodigoContext extends ParserRuleContext {
+		public BloqueCodigoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bloqueCodigo; }
+	 
+		public BloqueCodigoContext() { }
+		public void copyFrom(BloqueCodigoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class BloqueCodContext extends BloqueCodigoContext {
 		public List<SentenciaContext> sentencia() {
 			return getRuleContexts(SentenciaContext.class);
 		}
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
 		}
-		public BloqueCodigoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_bloqueCodigo; }
+		public BloqueCodContext(BloqueCodigoContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueCodigo(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueCodigo(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueCod(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -867,6 +945,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 24, RULE_bloqueCodigo);
 		int _la;
 		try {
+			_localctx = new BloqueCodContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(127);
@@ -927,12 +1006,9 @@ public class GramProgParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_sentencia; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterSentencia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitSentencia(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitSentencia(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1036,6 +1112,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class DeclararYasignarContext extends ParserRuleContext {
+		public DeclararYasignarContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_declararYasignar; }
+	 
+		public DeclararYasignarContext() { }
+		public void copyFrom(DeclararYasignarContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class DeclararYasignContext extends DeclararYasignarContext {
 		public TipoContext tipo() {
 			return getRuleContext(TipoContext.class,0);
 		}
@@ -1044,17 +1131,11 @@ public class GramProgParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public DeclararYasignarContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_declararYasignar; }
+		public DeclararYasignContext(DeclararYasignarContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDeclararYasignar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDeclararYasignar(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDeclararYasign(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1062,6 +1143,7 @@ public class GramProgParser extends Parser {
 		DeclararYasignarContext _localctx = new DeclararYasignarContext(_ctx, getState());
 		enterRule(_localctx, 28, RULE_declararYasignar);
 		try {
+			_localctx = new DeclararYasignContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(149);
@@ -1086,21 +1168,26 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class DeclaracionContext extends ParserRuleContext {
-		public TipoContext tipo() {
-			return getRuleContext(TipoContext.class,0);
-		}
-		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public DeclaracionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_declaracion; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDeclaracion(this);
+	 
+		public DeclaracionContext() { }
+		public void copyFrom(DeclaracionContext ctx) {
+			super.copyFrom(ctx);
 		}
+	}
+	public static class DeclararContext extends DeclaracionContext {
+		public TipoContext tipo() {
+			return getRuleContext(TipoContext.class,0);
+		}
+		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
+		public DeclararContext(DeclaracionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDeclaracion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDeclarar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1108,6 +1195,7 @@ public class GramProgParser extends Parser {
 		DeclaracionContext _localctx = new DeclaracionContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_declaracion);
 		try {
+			_localctx = new DeclararContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(154);
@@ -1128,22 +1216,27 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class AsignacionContext extends ParserRuleContext {
+		public AsignacionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_asignacion; }
+	 
+		public AsignacionContext() { }
+		public void copyFrom(AsignacionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class AsignarContext extends AsignacionContext {
 		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public TerminalNode ASIG() { return getToken(GramProgParser.ASIG, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
-		public AsignacionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_asignacion; }
+		public AsignarContext(AsignacionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterAsignacion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitAsignacion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitAsignar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1151,6 +1244,7 @@ public class GramProgParser extends Parser {
 		AsignacionContext _localctx = new AsignacionContext(_ctx, getState());
 		enterRule(_localctx, 32, RULE_asignacion);
 		try {
+			_localctx = new AsignarContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(157);
@@ -1173,22 +1267,27 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class DevolverContext extends ParserRuleContext {
+		public DevolverContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_devolver; }
+	 
+		public DevolverContext() { }
+		public void copyFrom(DevolverContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class DevolvContext extends DevolverContext {
 		public TerminalNode DEVOLVER() { return getToken(GramProgParser.DEVOLVER, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
 		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
-		public DevolverContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_devolver; }
+		public DevolvContext(DevolverContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDevolver(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDevolver(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDevolv(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1196,6 +1295,7 @@ public class GramProgParser extends Parser {
 		DevolverContext _localctx = new DevolverContext(_ctx, getState());
 		enterRule(_localctx, 34, RULE_devolver);
 		try {
+			_localctx = new DevolvContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(161);
@@ -1218,6 +1318,17 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class LlamadaFuncionContext extends ParserRuleContext {
+		public LlamadaFuncionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_llamadaFuncion; }
+	 
+		public LlamadaFuncionContext() { }
+		public void copyFrom(LlamadaFuncionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class LlamadaFuncContext extends LlamadaFuncionContext {
 		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
 		public TerminalNode PD() { return getToken(GramProgParser.PD, 0); }
@@ -1231,17 +1342,11 @@ public class GramProgParser extends Parser {
 		public TerminalNode COMA(int i) {
 			return getToken(GramProgParser.COMA, i);
 		}
-		public LlamadaFuncionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_llamadaFuncion; }
+		public LlamadaFuncContext(LlamadaFuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterLlamadaFuncion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitLlamadaFuncion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitLlamadaFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1250,6 +1355,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 36, RULE_llamadaFuncion);
 		int _la;
 		try {
+			_localctx = new LlamadaFuncContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(165);
@@ -1298,23 +1404,28 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class TipoContext extends ParserRuleContext {
+		public TipoContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_tipo; }
+	 
+		public TipoContext() { }
+		public void copyFrom(TipoContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class TipContext extends TipoContext {
 		public TerminalNode TIPO_NUMERO() { return getToken(GramProgParser.TIPO_NUMERO, 0); }
 		public TerminalNode TIPO_CADENA() { return getToken(GramProgParser.TIPO_CADENA, 0); }
 		public TerminalNode TIPO_BOOL() { return getToken(GramProgParser.TIPO_BOOL, 0); }
 		public TerminalNode TIPO_VOID() { return getToken(GramProgParser.TIPO_VOID, 0); }
 		public TerminalNode CORCHIZ() { return getToken(GramProgParser.CORCHIZ, 0); }
 		public TerminalNode CORCHD() { return getToken(GramProgParser.CORCHD, 0); }
-		public TipoContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_tipo; }
+		public TipContext(TipoContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterTipo(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitTipo(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitTip(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1323,6 +1434,7 @@ public class GramProgParser extends Parser {
 		enterRule(_localctx, 38, RULE_tipo);
 		int _la;
 		try {
+			_localctx = new TipContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(179);
@@ -1361,49 +1473,161 @@ public class GramProgParser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
-		public LlamadaFuncionContext llamadaFuncion() {
-			return getRuleContext(LlamadaFuncionContext.class,0);
+		public ExprContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
 		}
-		public TerminalNode NEG() { return getToken(GramProgParser.NEG, 0); }
+		@Override public int getRuleIndex() { return RULE_expr; }
+	 
+		public ExprContext() { }
+		public void copyFrom(ExprContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class ParentesisContext extends ExprContext {
+		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public TerminalNode PD() { return getToken(GramProgParser.PD, 0); }
+		public ParentesisContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitParentesis(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class SumaContext extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
-		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
-		public TerminalNode PD() { return getToken(GramProgParser.PD, 0); }
-		public TerminalNode CADENA() { return getToken(GramProgParser.CADENA, 0); }
-		public NumeroContext numero() {
-			return getRuleContext(NumeroContext.class,0);
-		}
-		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
-		public TerminalNode MUL() { return getToken(GramProgParser.MUL, 0); }
-		public TerminalNode DIV() { return getToken(GramProgParser.DIV, 0); }
-		public TerminalNode MOD() { return getToken(GramProgParser.MOD, 0); }
 		public TerminalNode SUM() { return getToken(GramProgParser.SUM, 0); }
 		public TerminalNode REST() { return getToken(GramProgParser.REST, 0); }
+		public SumaContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitSuma(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NegContext extends ExprContext {
+		public TerminalNode NEG() { return getToken(GramProgParser.NEG, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public NegContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitNeg(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CompContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
 		public TerminalNode MENQ() { return getToken(GramProgParser.MENQ, 0); }
 		public TerminalNode MAYQ() { return getToken(GramProgParser.MAYQ, 0); }
 		public TerminalNode MENIG() { return getToken(GramProgParser.MENIG, 0); }
 		public TerminalNode MAYIG() { return getToken(GramProgParser.MAYIG, 0); }
 		public TerminalNode IGUAL() { return getToken(GramProgParser.IGUAL, 0); }
 		public TerminalNode DIF() { return getToken(GramProgParser.DIF, 0); }
+		public CompContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitComp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class MulContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public TerminalNode MUL() { return getToken(GramProgParser.MUL, 0); }
+		public TerminalNode DIV() { return getToken(GramProgParser.DIV, 0); }
+		public TerminalNode MOD() { return getToken(GramProgParser.MOD, 0); }
+		public MulContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitMul(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class AndContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
 		public TerminalNode AND() { return getToken(GramProgParser.AND, 0); }
 		public TerminalNode OR() { return getToken(GramProgParser.OR, 0); }
+		public AndContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitAnd(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class CadenaContext extends ExprContext {
+		public TerminalNode CADENA() { return getToken(GramProgParser.CADENA, 0); }
+		public CadenaContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitCadena(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class NumContext extends ExprContext {
+		public NumeroContext numero() {
+			return getRuleContext(NumeroContext.class,0);
+		}
+		public NumContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitNum(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class LlamafuncionContext extends ExprContext {
+		public LlamadaFuncionContext llamadaFuncion() {
+			return getRuleContext(LlamadaFuncionContext.class,0);
+		}
+		public LlamafuncionContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitLlamafuncion(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IdContext extends ExprContext {
+		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
+		public IdContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitId(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class IncContext extends ExprContext {
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
 		public TerminalNode INC() { return getToken(GramProgParser.INC, 0); }
 		public TerminalNode DEC() { return getToken(GramProgParser.DEC, 0); }
-		public ExprContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expr; }
+		public IncContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitExpr(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitInc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1428,12 +1652,19 @@ public class GramProgParser extends Parser {
 			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
 			case 1:
 				{
+				_localctx = new LlamafuncionContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
 				setState(185);
 				llamadaFuncion();
 				}
 				break;
 			case 2:
 				{
+				_localctx = new NegContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(186);
 				match(NEG);
 				setState(187);
@@ -1442,6 +1673,9 @@ public class GramProgParser extends Parser {
 				break;
 			case 3:
 				{
+				_localctx = new ParentesisContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(188);
 				match(PI);
 				setState(189);
@@ -1452,18 +1686,27 @@ public class GramProgParser extends Parser {
 				break;
 			case 4:
 				{
+				_localctx = new CadenaContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(192);
 				match(CADENA);
 				}
 				break;
 			case 5:
 				{
+				_localctx = new NumContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(193);
 				numero();
 				}
 				break;
 			case 6:
 				{
+				_localctx = new IdContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
 				setState(194);
 				match(ID);
 				}
@@ -1483,7 +1726,7 @@ public class GramProgParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
 					case 1:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new MulContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(197);
 						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
@@ -1503,7 +1746,7 @@ public class GramProgParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new SumaContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(200);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
@@ -1523,7 +1766,7 @@ public class GramProgParser extends Parser {
 						break;
 					case 3:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new CompContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(203);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
@@ -1543,7 +1786,7 @@ public class GramProgParser extends Parser {
 						break;
 					case 4:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new AndContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(206);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
@@ -1563,7 +1806,7 @@ public class GramProgParser extends Parser {
 						break;
 					case 5:
 						{
-						_localctx = new ExprContext(_parentctx, _parentState);
+						_localctx = new IncContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(209);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
@@ -1607,12 +1850,9 @@ public class GramProgParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_numero; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterNumero(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitNumero(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitNumero(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

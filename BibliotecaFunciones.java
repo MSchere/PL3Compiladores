@@ -4,10 +4,9 @@ public class BibliotecaFunciones{
 
     private ArrayList<String[]> tripleta = new ArrayList<String[]>();
     private ArrayList<String> funciones = new ArrayList<String>();;
-    private ArrayList<Entrada> pila;
+    private int cpila;
     
-    public BibliotecaFunciones(ArrayList<Entrada> pila){
-        this.pila = pila;
+    public BibliotecaFunciones(){
         funciones.add("imprimir");
         funciones.add("fopen");
         funciones.add("fwrite");
@@ -24,15 +23,15 @@ public class BibliotecaFunciones{
     public boolean existe(String nombre){
         return funciones.contains(nombre);
     }
-    public ArrayList<String[]> imprimir(){
+    public ArrayList<String[]> imprimir(int[] cpila){
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(pila.size()-1);
+        tri[1] = Integer.toString(cpila[0]);
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri2 = {"",""};
-        tri2[0] = "40";
+        tri2[0] = "42";
         tri2[1] = "1";
         tripleta.add(tri2);
         return tripleta;
@@ -41,7 +40,7 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(pila.size()-1);
+        tri[1] = Integer.toString(cpila-1);
         tri[2] = "1";
         tripleta.add(tri);
         /*String[] tri2 = {"",""};

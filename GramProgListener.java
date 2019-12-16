@@ -1,4 +1,4 @@
-// Generated from GramProg.g4 by ANTLR 4.7.2
+// Generated from .\GramProg.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -7,135 +7,161 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface GramProgListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#prog}.
+	 * Enter a parse tree produced by the {@code progPrincipal}
+	 * labeled alternative in {@link GramProgParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void enterProg(GramProgParser.ProgContext ctx);
+	void enterProgPrincipal(GramProgParser.ProgPrincipalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#prog}.
+	 * Exit a parse tree produced by the {@code progPrincipal}
+	 * labeled alternative in {@link GramProgParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void exitProg(GramProgParser.ProgContext ctx);
+	void exitProgPrincipal(GramProgParser.ProgPrincipalContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#include}.
+	 * Enter a parse tree produced by the {@code incluir}
+	 * labeled alternative in {@link GramProgParser#include}.
 	 * @param ctx the parse tree
 	 */
-	void enterInclude(GramProgParser.IncludeContext ctx);
+	void enterIncluir(GramProgParser.IncluirContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#include}.
+	 * Exit a parse tree produced by the {@code incluir}
+	 * labeled alternative in {@link GramProgParser#include}.
 	 * @param ctx the parse tree
 	 */
-	void exitInclude(GramProgParser.IncludeContext ctx);
+	void exitIncluir(GramProgParser.IncluirContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#funcion}.
+	 * Enter a parse tree produced by the {@code func}
+	 * labeled alternative in {@link GramProgParser#funcion}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncion(GramProgParser.FuncionContext ctx);
+	void enterFunc(GramProgParser.FuncContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#funcion}.
+	 * Exit a parse tree produced by the {@code func}
+	 * labeled alternative in {@link GramProgParser#funcion}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncion(GramProgParser.FuncionContext ctx);
+	void exitFunc(GramProgParser.FuncContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#defineFuncion}.
+	 * Enter a parse tree produced by the {@code definirFunc}
+	 * labeled alternative in {@link GramProgParser#defineFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void enterDefineFuncion(GramProgParser.DefineFuncionContext ctx);
+	void enterDefinirFunc(GramProgParser.DefinirFuncContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#defineFuncion}.
+	 * Exit a parse tree produced by the {@code definirFunc}
+	 * labeled alternative in {@link GramProgParser#defineFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void exitDefineFuncion(GramProgParser.DefineFuncionContext ctx);
+	void exitDefinirFunc(GramProgParser.DefinirFuncContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#parametros}.
+	 * Enter a parse tree produced by the {@code param}
+	 * labeled alternative in {@link GramProgParser#parametros}.
 	 * @param ctx the parse tree
 	 */
-	void enterParametros(GramProgParser.ParametrosContext ctx);
+	void enterParam(GramProgParser.ParamContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#parametros}.
+	 * Exit a parse tree produced by the {@code param}
+	 * labeled alternative in {@link GramProgParser#parametros}.
 	 * @param ctx the parse tree
 	 */
-	void exitParametros(GramProgParser.ParametrosContext ctx);
+	void exitParam(GramProgParser.ParamContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#bloqueFuncion}.
+	 * Enter a parse tree produced by the {@code bloqueFunc}
+	 * labeled alternative in {@link GramProgParser#bloqueFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void enterBloqueFuncion(GramProgParser.BloqueFuncionContext ctx);
+	void enterBloqueFunc(GramProgParser.BloqueFuncContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#bloqueFuncion}.
+	 * Exit a parse tree produced by the {@code bloqueFunc}
+	 * labeled alternative in {@link GramProgParser#bloqueFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void exitBloqueFuncion(GramProgParser.BloqueFuncionContext ctx);
+	void exitBloqueFunc(GramProgParser.BloqueFuncContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#bucle}.
+	 * Enter a parse tree produced by the {@code bucleWhile}
+	 * labeled alternative in {@link GramProgParser#bucle}.
 	 * @param ctx the parse tree
 	 */
-	void enterBucle(GramProgParser.BucleContext ctx);
+	void enterBucleWhile(GramProgParser.BucleWhileContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#bucle}.
+	 * Exit a parse tree produced by the {@code bucleWhile}
+	 * labeled alternative in {@link GramProgParser#bucle}.
 	 * @param ctx the parse tree
 	 */
-	void exitBucle(GramProgParser.BucleContext ctx);
+	void exitBucleWhile(GramProgParser.BucleWhileContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#bloqueCodigoBucle}.
+	 * Enter a parse tree produced by the {@code bloqueBucleWhile}
+	 * labeled alternative in {@link GramProgParser#bloqueCodigoBucle}.
 	 * @param ctx the parse tree
 	 */
-	void enterBloqueCodigoBucle(GramProgParser.BloqueCodigoBucleContext ctx);
+	void enterBloqueBucleWhile(GramProgParser.BloqueBucleWhileContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#bloqueCodigoBucle}.
+	 * Exit a parse tree produced by the {@code bloqueBucleWhile}
+	 * labeled alternative in {@link GramProgParser#bloqueCodigoBucle}.
 	 * @param ctx the parse tree
 	 */
-	void exitBloqueCodigoBucle(GramProgParser.BloqueCodigoBucleContext ctx);
+	void exitBloqueBucleWhile(GramProgParser.BloqueBucleWhileContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#ifex}.
+	 * Enter a parse tree produced by the {@code ifEex}
+	 * labeled alternative in {@link GramProgParser#ifex}.
 	 * @param ctx the parse tree
 	 */
-	void enterIfex(GramProgParser.IfexContext ctx);
+	void enterIfEex(GramProgParser.IfEexContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#ifex}.
+	 * Exit a parse tree produced by the {@code ifEex}
+	 * labeled alternative in {@link GramProgParser#ifex}.
 	 * @param ctx the parse tree
 	 */
-	void exitIfex(GramProgParser.IfexContext ctx);
+	void exitIfEex(GramProgParser.IfEexContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#bloqueCodigoIf}.
+	 * Enter a parse tree produced by the {@code bloqueBucleIf}
+	 * labeled alternative in {@link GramProgParser#bloqueCodigoIf}.
 	 * @param ctx the parse tree
 	 */
-	void enterBloqueCodigoIf(GramProgParser.BloqueCodigoIfContext ctx);
+	void enterBloqueBucleIf(GramProgParser.BloqueBucleIfContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#bloqueCodigoIf}.
+	 * Exit a parse tree produced by the {@code bloqueBucleIf}
+	 * labeled alternative in {@link GramProgParser#bloqueCodigoIf}.
 	 * @param ctx the parse tree
 	 */
-	void exitBloqueCodigoIf(GramProgParser.BloqueCodigoIfContext ctx);
+	void exitBloqueBucleIf(GramProgParser.BloqueBucleIfContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#forEx}.
+	 * Enter a parse tree produced by the {@code forEex}
+	 * labeled alternative in {@link GramProgParser#forEx}.
 	 * @param ctx the parse tree
 	 */
-	void enterForEx(GramProgParser.ForExContext ctx);
+	void enterForEex(GramProgParser.ForEexContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#forEx}.
+	 * Exit a parse tree produced by the {@code forEex}
+	 * labeled alternative in {@link GramProgParser#forEx}.
 	 * @param ctx the parse tree
 	 */
-	void exitForEx(GramProgParser.ForExContext ctx);
+	void exitForEex(GramProgParser.ForEexContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#defineFor}.
+	 * Enter a parse tree produced by the {@code definirFor}
+	 * labeled alternative in {@link GramProgParser#defineFor}.
 	 * @param ctx the parse tree
 	 */
-	void enterDefineFor(GramProgParser.DefineForContext ctx);
+	void enterDefinirFor(GramProgParser.DefinirForContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#defineFor}.
+	 * Exit a parse tree produced by the {@code definirFor}
+	 * labeled alternative in {@link GramProgParser#defineFor}.
 	 * @param ctx the parse tree
 	 */
-	void exitDefineFor(GramProgParser.DefineForContext ctx);
+	void exitDefinirFor(GramProgParser.DefinirForContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#bloqueCodigo}.
+	 * Enter a parse tree produced by the {@code bloqueCod}
+	 * labeled alternative in {@link GramProgParser#bloqueCodigo}.
 	 * @param ctx the parse tree
 	 */
-	void enterBloqueCodigo(GramProgParser.BloqueCodigoContext ctx);
+	void enterBloqueCod(GramProgParser.BloqueCodContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#bloqueCodigo}.
+	 * Exit a parse tree produced by the {@code bloqueCod}
+	 * labeled alternative in {@link GramProgParser#bloqueCodigo}.
 	 * @param ctx the parse tree
 	 */
-	void exitBloqueCodigo(GramProgParser.BloqueCodigoContext ctx);
+	void exitBloqueCod(GramProgParser.BloqueCodContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramProgParser#sentencia}.
 	 * @param ctx the parse tree
@@ -147,75 +173,209 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitSentencia(GramProgParser.SentenciaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#declararYasignar}.
+	 * Enter a parse tree produced by the {@code declararYasign}
+	 * labeled alternative in {@link GramProgParser#declararYasignar}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclararYasignar(GramProgParser.DeclararYasignarContext ctx);
+	void enterDeclararYasign(GramProgParser.DeclararYasignContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#declararYasignar}.
+	 * Exit a parse tree produced by the {@code declararYasign}
+	 * labeled alternative in {@link GramProgParser#declararYasignar}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclararYasignar(GramProgParser.DeclararYasignarContext ctx);
+	void exitDeclararYasign(GramProgParser.DeclararYasignContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#declaracion}.
+	 * Enter a parse tree produced by the {@code declarar}
+	 * labeled alternative in {@link GramProgParser#declaracion}.
 	 * @param ctx the parse tree
 	 */
-	void enterDeclaracion(GramProgParser.DeclaracionContext ctx);
+	void enterDeclarar(GramProgParser.DeclararContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#declaracion}.
+	 * Exit a parse tree produced by the {@code declarar}
+	 * labeled alternative in {@link GramProgParser#declaracion}.
 	 * @param ctx the parse tree
 	 */
-	void exitDeclaracion(GramProgParser.DeclaracionContext ctx);
+	void exitDeclarar(GramProgParser.DeclararContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#asignacion}.
+	 * Enter a parse tree produced by the {@code asignar}
+	 * labeled alternative in {@link GramProgParser#asignacion}.
 	 * @param ctx the parse tree
 	 */
-	void enterAsignacion(GramProgParser.AsignacionContext ctx);
+	void enterAsignar(GramProgParser.AsignarContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#asignacion}.
+	 * Exit a parse tree produced by the {@code asignar}
+	 * labeled alternative in {@link GramProgParser#asignacion}.
 	 * @param ctx the parse tree
 	 */
-	void exitAsignacion(GramProgParser.AsignacionContext ctx);
+	void exitAsignar(GramProgParser.AsignarContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#devolver}.
+	 * Enter a parse tree produced by the {@code devolv}
+	 * labeled alternative in {@link GramProgParser#devolver}.
 	 * @param ctx the parse tree
 	 */
-	void enterDevolver(GramProgParser.DevolverContext ctx);
+	void enterDevolv(GramProgParser.DevolvContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#devolver}.
+	 * Exit a parse tree produced by the {@code devolv}
+	 * labeled alternative in {@link GramProgParser#devolver}.
 	 * @param ctx the parse tree
 	 */
-	void exitDevolver(GramProgParser.DevolverContext ctx);
+	void exitDevolv(GramProgParser.DevolvContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#llamadaFuncion}.
+	 * Enter a parse tree produced by the {@code llamadaFunc}
+	 * labeled alternative in {@link GramProgParser#llamadaFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void enterLlamadaFuncion(GramProgParser.LlamadaFuncionContext ctx);
+	void enterLlamadaFunc(GramProgParser.LlamadaFuncContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#llamadaFuncion}.
+	 * Exit a parse tree produced by the {@code llamadaFunc}
+	 * labeled alternative in {@link GramProgParser#llamadaFuncion}.
 	 * @param ctx the parse tree
 	 */
-	void exitLlamadaFuncion(GramProgParser.LlamadaFuncionContext ctx);
+	void exitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#tipo}.
+	 * Enter a parse tree produced by the {@code tip}
+	 * labeled alternative in {@link GramProgParser#tipo}.
 	 * @param ctx the parse tree
 	 */
-	void enterTipo(GramProgParser.TipoContext ctx);
+	void enterTip(GramProgParser.TipContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#tipo}.
+	 * Exit a parse tree produced by the {@code tip}
+	 * labeled alternative in {@link GramProgParser#tipo}.
 	 * @param ctx the parse tree
 	 */
-	void exitTipo(GramProgParser.TipoContext ctx);
+	void exitTip(GramProgParser.TipContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramProgParser#expr}.
+	 * Enter a parse tree produced by the {@code parentesis}
+	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpr(GramProgParser.ExprContext ctx);
+	void enterParentesis(GramProgParser.ParentesisContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link GramProgParser#expr}.
+	 * Exit a parse tree produced by the {@code parentesis}
+	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpr(GramProgParser.ExprContext ctx);
+	void exitParentesis(GramProgParser.ParentesisContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code suma}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterSuma(GramProgParser.SumaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code suma}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitSuma(GramProgParser.SumaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code neg}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNeg(GramProgParser.NegContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code neg}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNeg(GramProgParser.NegContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code comp}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterComp(GramProgParser.CompContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code comp}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitComp(GramProgParser.CompContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code mul}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterMul(GramProgParser.MulContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code mul}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitMul(GramProgParser.MulContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code and}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd(GramProgParser.AndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code and}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd(GramProgParser.AndContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code cadena}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterCadena(GramProgParser.CadenaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code cadena}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitCadena(GramProgParser.CadenaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code num}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNum(GramProgParser.NumContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code num}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNum(GramProgParser.NumContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code llamafuncion}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterLlamafuncion(GramProgParser.LlamafuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code llamafuncion}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitLlamafuncion(GramProgParser.LlamafuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code id}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterId(GramProgParser.IdContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code id}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitId(GramProgParser.IdContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code inc}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterInc(GramProgParser.IncContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code inc}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitInc(GramProgParser.IncContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link GramProgParser#numero}.
 	 * @param ctx the parse tree

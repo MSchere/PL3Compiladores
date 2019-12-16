@@ -32,6 +32,21 @@ public class Instrucciones{
     public void movMR(int pos1, int pos2){ //mov origen destino
         registros[pos2] = pila.get(maquina.getCpila()+pos1);
     }
+    public void push(int tipo){
+        switch(tipo){
+            case 0:
+            pila.add(new Int());
+                break;
+            case 1:
+            pila.add(new TipoFloat());
+                break;
+            case 2:
+            pila.add(new Cadena());
+                break;
+            case 3:
+            pila.add(new Bool());
+        }
+    }
     public void push(int tipo, String valor){
         switch(tipo){
             case 0:

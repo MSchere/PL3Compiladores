@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.util.*;
 
 public class PruebaTrip {
-    public void main(){
-        String ruta = "./tripletas.txt";
+    public static void main(String[] args){
+        String ruta = "./Tripletas.txt";
         try {
             InputStream is = System.in;
             is=new FileInputStream(ruta);

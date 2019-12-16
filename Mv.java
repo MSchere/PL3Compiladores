@@ -48,8 +48,9 @@ public class Mv {
             inst.init(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 1:
-            System.out.println("Push con parametro 1 " + triple.segundaPosicion);
-            inst.push(triple.segundaPosicion, triple.terceraPosicion2);
+            System.out.println("Push con parametro 1 " + triple.segundaPosicion + "Push con parametro 1 " + triple.terceraPosicion);
+            if(!triple.hayTercero) inst.push(triple.segundaPosicion);
+            else inst.push(triple.segundaPosicion, Integer.toString(triple.terceraPosicion));
             break;
         case 2:
             System.out.println("Pop");
@@ -217,7 +218,7 @@ public class Mv {
             break;
 
         case 42:
-            System.out.println("Resultado = " + ((Bool) registros[0]).getValor());
+            inst.imprimir(triple.segundaPosicion);
             break;
         case 43: // Debug
             System.out.println(pila);

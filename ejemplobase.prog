@@ -1,0 +1,5 @@
+function main():void
+begin
+
+        imprimir(3+2);
+end

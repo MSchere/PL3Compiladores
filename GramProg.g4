@@ -59,17 +59,17 @@ llamadaFuncion: ID PI (expr (COMA expr)*)? PD #llamadaFunc;
 
 tipo: (TIPO_NUMERO|TIPO_CADENA|TIPO_BOOL|TIPO_VOID) (CORCHIZ CORCHD)? #tip;
 
-expr:	llamadaFuncion
-    |   expr (MUL|DIV|MOD) expr
-    |   expr (INC| DEC)
-    |	expr (SUM|REST) expr
-    |   expr (MENQ|MAYQ|MENIG|MAYIG|IGUAL|DIF) expr
-    |	NEG expr
-    |	expr (AND|OR) expr
-    |	PI expr PD
-    |   CADENA
-    |   numero
-    |	ID
+expr:	llamadaFuncion #llamafuncion
+    |   expr (MUL|DIV|MOD) expr #mul
+    |   expr (INC| DEC) #inc
+    |	expr (SUM|REST) expr #suma
+    |   expr (MENQ|MAYQ|MENIG|MAYIG|IGUAL|DIF) expr #comp
+    |	NEG expr #neg
+    |	expr (AND|OR) expr #and
+    |	PI expr PD #parentesis
+    |   CADENA #cadena
+    |   numero #num
+    |	ID #id
     ;
 
 

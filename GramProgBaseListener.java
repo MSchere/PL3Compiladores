@@ -1,4 +1,4 @@
-// Generated from GramProg.g4 by ANTLR 4.7.2
+// Generated from .\GramProg.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -15,157 +15,157 @@ public class GramProgBaseListener implements GramProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(GramProgParser.ProgContext ctx) { }
+	@Override public void enterProgPrincipal(GramProgParser.ProgPrincipalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProg(GramProgParser.ProgContext ctx) { }
+	@Override public void exitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInclude(GramProgParser.IncludeContext ctx) { }
+	@Override public void enterIncluir(GramProgParser.IncluirContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInclude(GramProgParser.IncludeContext ctx) { }
+	@Override public void exitIncluir(GramProgParser.IncluirContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncion(GramProgParser.FuncionContext ctx) { }
+	@Override public void enterFunc(GramProgParser.FuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncion(GramProgParser.FuncionContext ctx) { }
+	@Override public void exitFunc(GramProgParser.FuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefineFuncion(GramProgParser.DefineFuncionContext ctx) { }
+	@Override public void enterDefinirFunc(GramProgParser.DefinirFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefineFuncion(GramProgParser.DefineFuncionContext ctx) { }
+	@Override public void exitDefinirFunc(GramProgParser.DefinirFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParametros(GramProgParser.ParametrosContext ctx) { }
+	@Override public void enterParam(GramProgParser.ParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParametros(GramProgParser.ParametrosContext ctx) { }
+	@Override public void exitParam(GramProgParser.ParamContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloqueFuncion(GramProgParser.BloqueFuncionContext ctx) { }
+	@Override public void enterBloqueFunc(GramProgParser.BloqueFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloqueFuncion(GramProgParser.BloqueFuncionContext ctx) { }
+	@Override public void exitBloqueFunc(GramProgParser.BloqueFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBucle(GramProgParser.BucleContext ctx) { }
+	@Override public void enterBucleWhile(GramProgParser.BucleWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBucle(GramProgParser.BucleContext ctx) { }
+	@Override public void exitBucleWhile(GramProgParser.BucleWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloqueCodigoBucle(GramProgParser.BloqueCodigoBucleContext ctx) { }
+	@Override public void enterBloqueBucleWhile(GramProgParser.BloqueBucleWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloqueCodigoBucle(GramProgParser.BloqueCodigoBucleContext ctx) { }
+	@Override public void exitBloqueBucleWhile(GramProgParser.BloqueBucleWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfex(GramProgParser.IfexContext ctx) { }
+	@Override public void enterIfEex(GramProgParser.IfEexContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfex(GramProgParser.IfexContext ctx) { }
+	@Override public void exitIfEex(GramProgParser.IfEexContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloqueCodigoIf(GramProgParser.BloqueCodigoIfContext ctx) { }
+	@Override public void enterBloqueBucleIf(GramProgParser.BloqueBucleIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloqueCodigoIf(GramProgParser.BloqueCodigoIfContext ctx) { }
+	@Override public void exitBloqueBucleIf(GramProgParser.BloqueBucleIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterForEx(GramProgParser.ForExContext ctx) { }
+	@Override public void enterForEex(GramProgParser.ForEexContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitForEx(GramProgParser.ForExContext ctx) { }
+	@Override public void exitForEex(GramProgParser.ForEexContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefineFor(GramProgParser.DefineForContext ctx) { }
+	@Override public void enterDefinirFor(GramProgParser.DefinirForContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefineFor(GramProgParser.DefineForContext ctx) { }
+	@Override public void exitDefinirFor(GramProgParser.DefinirForContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloqueCodigo(GramProgParser.BloqueCodigoContext ctx) { }
+	@Override public void enterBloqueCod(GramProgParser.BloqueCodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloqueCodigo(GramProgParser.BloqueCodigoContext ctx) { }
+	@Override public void exitBloqueCod(GramProgParser.BloqueCodContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -183,85 +183,205 @@ public class GramProgBaseListener implements GramProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclararYasignar(GramProgParser.DeclararYasignarContext ctx) { }
+	@Override public void enterDeclararYasign(GramProgParser.DeclararYasignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclararYasignar(GramProgParser.DeclararYasignarContext ctx) { }
+	@Override public void exitDeclararYasign(GramProgParser.DeclararYasignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDeclaracion(GramProgParser.DeclaracionContext ctx) { }
+	@Override public void enterDeclarar(GramProgParser.DeclararContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDeclaracion(GramProgParser.DeclaracionContext ctx) { }
+	@Override public void exitDeclarar(GramProgParser.DeclararContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAsignacion(GramProgParser.AsignacionContext ctx) { }
+	@Override public void enterAsignar(GramProgParser.AsignarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAsignacion(GramProgParser.AsignacionContext ctx) { }
+	@Override public void exitAsignar(GramProgParser.AsignarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDevolver(GramProgParser.DevolverContext ctx) { }
+	@Override public void enterDevolv(GramProgParser.DevolvContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDevolver(GramProgParser.DevolverContext ctx) { }
+	@Override public void exitDevolv(GramProgParser.DevolvContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLlamadaFuncion(GramProgParser.LlamadaFuncionContext ctx) { }
+	@Override public void enterLlamadaFunc(GramProgParser.LlamadaFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLlamadaFuncion(GramProgParser.LlamadaFuncionContext ctx) { }
+	@Override public void exitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo(GramProgParser.TipoContext ctx) { }
+	@Override public void enterTip(GramProgParser.TipContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo(GramProgParser.TipoContext ctx) { }
+	@Override public void exitTip(GramProgParser.TipContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(GramProgParser.ExprContext ctx) { }
+	@Override public void enterParentesis(GramProgParser.ParentesisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr(GramProgParser.ExprContext ctx) { }
+	@Override public void exitParentesis(GramProgParser.ParentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSuma(GramProgParser.SumaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSuma(GramProgParser.SumaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNeg(GramProgParser.NegContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNeg(GramProgParser.NegContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComp(GramProgParser.CompContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComp(GramProgParser.CompContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMul(GramProgParser.MulContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMul(GramProgParser.MulContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAnd(GramProgParser.AndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAnd(GramProgParser.AndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCadena(GramProgParser.CadenaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCadena(GramProgParser.CadenaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNum(GramProgParser.NumContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNum(GramProgParser.NumContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterLlamafuncion(GramProgParser.LlamafuncionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitLlamafuncion(GramProgParser.LlamafuncionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterId(GramProgParser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitId(GramProgParser.IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterInc(GramProgParser.IncContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInc(GramProgParser.IncContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
