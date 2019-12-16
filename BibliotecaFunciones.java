@@ -44,13 +44,13 @@ public class BibliotecaFunciones{
         tri[1] = Integer.toString(pila.size()-1);
         tri[2] = "1";
         tripleta.add(tri);
-        String[] tri2 = {"",""};
+        /*String[] tri2 = {"",""};
         tri2[0] = "40";
         tri2[1] = "1";
-        tripleta.add(tri2);
+        tripleta.add(tri2);*/
         return tripleta;
     }
-    public ArrayList<String[]> fwrite(){
+    /*public ArrayList<String[]> fwrite(){
         
     }
     public ArrayList<String[]> fclose(){
@@ -79,5 +79,5 @@ public class BibliotecaFunciones{
     }
     public ArrayList<String[]> cadenaLongitud(){
 
-    }
+    }*/
 }

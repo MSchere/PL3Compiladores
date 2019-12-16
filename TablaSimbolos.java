@@ -38,7 +38,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 		}
 	}
 	
-	public int getPos(String nombreVariable){
+	/*public int getPos(String nombreVariable){
 		
-	}
+	}*/
 }

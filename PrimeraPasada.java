@@ -1,12 +1,9 @@
 
 public class PrimeraPasada extends GramProgBaseVisitor<String> {
-    private Meter array = new Meter();
     private String lul = "";
 
     public String visitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
 
-        array.putString("ProgPrinc");
-        array.Imprimir();
         String nani = visitChildren(ctx);
         return null;
     }

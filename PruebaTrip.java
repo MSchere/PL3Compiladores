@@ -7,47 +7,51 @@ import java.io.InputStream;
 import java.util.*;
 
 public class PruebaTrip {
-    public void main(String ruta){
+    public void main(){
+        String ruta = "./tripletas.txt";
+        try {
+            InputStream is = System.in;
+            is=new FileInputStream(ruta);
 
-        InputStream is = System.in;
-        is=new FileInputStream(ruta);
+            CharStream input = CharStreams.fromStream(is);
+            GramJInsLexer lexer = new GramJInsLexer(input);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            GramJInsParser parser = new GramJInsParser(tokens);
+            parser.setBuildParseTree(true);
+            ParseTree tree=parser.prog();
 
-        CharStream input = CharStreams.fromStream(is);
-        GramJInsLexer lexer = new GramJInsLexer(input);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        GramJInsParser parser = new GramJInsParser(tokens);
-        parser.setBuildParseTree(true);
-        ParseTree tree=parser.prog();
+            //Enseñamos el árbol.
+            //System.out.println(tree.toStringTree(parser));
 
-        //Enseñamos el árbol.
-        //System.out.println(tree.toStringTree(parser));
+            ListenerTripletas nv = new ListenerTripletas();
+            ParseTreeWalker walker = new ParseTreeWalker();
+            walker.walk(nv,tree);
 
-        ListenerTripletas nv = new ListenerTripletas();
-        ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(nv,tree);
+            //System.out.println(nv.getArray());
 
-        //System.out.println(nv.getArray());
+            ArrayList<ArrayList<String>> triStrng = new ArrayList<ArrayList<String>>(nv.getArray());
+            ArrayList<Tripletas> tripletas = new ArrayList<Tripletas>();
+            for(int i=0; i< triStrng.size() ; i++){
 
-        ArrayList<ArrayList<String>> triStrng = new ArrayList<ArrayList<String>>(nv.getArray());
-        ArrayList<Tripletas> tripletas = new ArrayList<Tripletas>();
-        for(int i=0; i< triStrng.size() ; i++){
+                Tripletas tri = new Tripletas();
+                tripletas.add(tri.crearTripleta(triStrng.get(i)));
 
-            Tripletas tri = new Tripletas();
-            tripletas.add(tri.crearTripleta(triStrng.get(i)));
+            }
 
+            for(int i=0; i< triStrng.size() ; i++){
+
+                System.out.println("Tripleta :"+i);
+                System.out.println("Pos 1: " + tripletas.get(i).getPrimeraPosicion());
+                System.out.println("Pos 2: " + tripletas.get(i).getSegundaPosicion());
+                System.out.println("Pos 3int: " + tripletas.get(i).getTerceraPosicion());
+                System.out.println("Pos 3str: " + tripletas.get(i).getTerceraPosicion2());
+            }
+
+
+            Mv maquina = new Mv(tripletas);
+            maquina.ejecutar();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        for(int i=0; i< triStrng.size() ; i++){
-
-            System.out.println("Tripleta :"+i);
-            System.out.println("Pos 1: " + tripletas.get(i).getPrimeraPosicion());
-            System.out.println("Pos 2: " + tripletas.get(i).getSegundaPosicion());
-            System.out.println("Pos 3int: " + tripletas.get(i).getTerceraPosicion());
-            System.out.println("Pos 3str: " + tripletas.get(i).getTerceraPosicion2());
-        }
-
-
-        Mv maquina = new Mv(nv.getArray());
-        maquina.ejecutar();
     }
 }
