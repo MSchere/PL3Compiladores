@@ -16,27 +16,27 @@ public class GramJInsParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		CI=1, CD=2, COM=3, WS=4, COMENTARIO_BLOQUE=5, INT=6, NEWLINE=7, COMA=8, 
-		CADENA=9;
+		CI=1, CD=2, COM=3, LVI=4, LVD=5, COMA=6, PUNTO=7, WS=8, COMENTARIO_BLOQUE=9, 
+		INT=10, NEWLINE=11, CADENA=12, ARRAY=13;
 	public static final int
-		RULE_prog = 0, RULE_linea = 1, RULE_tripleta = 2;
+		RULE_prog = 0, RULE_tripleta = 1;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"prog", "linea", "tripleta"
+			"prog", "tripleta"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'['", "']'", "'\"'", null, null, null, null, "','"
+			null, "'['", "']'", "'\"'", "'{'", "'}'", "','", "'.'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "CI", "CD", "COM", "WS", "COMENTARIO_BLOQUE", "INT", "NEWLINE", 
-			"COMA", "CADENA"
+			null, "CI", "CD", "COM", "LVI", "LVD", "COMA", "PUNTO", "WS", "COMENTARIO_BLOQUE", 
+			"INT", "NEWLINE", "CADENA", "ARRAY"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -91,11 +91,11 @@ public class GramJInsParser extends Parser {
 	}
 
 	public static class ProgContext extends ParserRuleContext {
-		public List<LineaContext> linea() {
-			return getRuleContexts(LineaContext.class);
+		public List<TripletaContext> tripleta() {
+			return getRuleContexts(TripletaContext.class);
 		}
-		public LineaContext linea(int i) {
-			return getRuleContext(LineaContext.class,i);
+		public TripletaContext tripleta(int i) {
+			return getRuleContext(TripletaContext.class,i);
 		}
 		public List<TerminalNode> NEWLINE() { return getTokens(GramJInsParser.NEWLINE); }
 		public TerminalNode NEWLINE(int i) {
@@ -122,69 +122,22 @@ public class GramJInsParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(11);
+			setState(9);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==COM) {
+			while (_la==CI) {
 				{
 				{
-				setState(6);
-				linea();
-				setState(7);
+				setState(4);
+				tripleta();
+				setState(5);
 				match(NEWLINE);
 				}
 				}
-				setState(13);
+				setState(11);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class LineaContext extends ParserRuleContext {
-		public List<TerminalNode> COM() { return getTokens(GramJInsParser.COM); }
-		public TerminalNode COM(int i) {
-			return getToken(GramJInsParser.COM, i);
-		}
-		public TripletaContext tripleta() {
-			return getRuleContext(TripletaContext.class,0);
-		}
-		public LineaContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_linea; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramJInsListener ) ((GramJInsListener)listener).enterLinea(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramJInsListener ) ((GramJInsListener)listener).exitLinea(this);
-		}
-	}
-
-	public final LineaContext linea() throws RecognitionException {
-		LineaContext _localctx = new LineaContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_linea);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(14);
-			match(COM);
-			setState(15);
-			tripleta();
-			setState(16);
-			match(COM);
 			}
 		}
 		catch (RecognitionException re) {
@@ -210,6 +163,7 @@ public class GramJInsParser extends Parser {
 			return getToken(GramJInsParser.COMA, i);
 		}
 		public TerminalNode CADENA() { return getToken(GramJInsParser.CADENA, 0); }
+		public TerminalNode ARRAY() { return getToken(GramJInsParser.ARRAY, 0); }
 		public TripletaContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -226,37 +180,37 @@ public class GramJInsParser extends Parser {
 
 	public final TripletaContext tripleta() throws RecognitionException {
 		TripletaContext _localctx = new TripletaContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_tripleta);
+		enterRule(_localctx, 2, RULE_tripleta);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(18);
+			setState(12);
 			match(CI);
-			setState(19);
+			setState(13);
 			match(INT);
-			setState(22);
+			setState(16);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				{
-				setState(20);
+				setState(14);
 				match(COMA);
-				setState(21);
+				setState(15);
 				match(INT);
 				}
 				break;
 			}
-			setState(26);
+			setState(20);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==COMA) {
 				{
-				setState(24);
+				setState(18);
 				match(COMA);
-				setState(25);
+				setState(19);
 				_la = _input.LA(1);
-				if ( !(_la==INT || _la==CADENA) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << CADENA) | (1L << ARRAY))) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -267,7 +221,7 @@ public class GramJInsParser extends Parser {
 				}
 			}
 
-			setState(28);
+			setState(22);
 			match(CD);
 			}
 		}
@@ -283,16 +237,14 @@ public class GramJInsParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13!\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\3\2\3\2\3\2\7\2\f\n\2\f\2\16\2\17\13\2\3\3\3\3\3\3\3\3\3\4"+
-		"\3\4\3\4\3\4\5\4\31\n\4\3\4\3\4\5\4\35\n\4\3\4\3\4\3\4\2\2\5\2\4\6\2\3"+
-		"\4\2\b\b\13\13\2 \2\r\3\2\2\2\4\20\3\2\2\2\6\24\3\2\2\2\b\t\5\4\3\2\t"+
-		"\n\7\t\2\2\n\f\3\2\2\2\13\b\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2\2\r\16\3\2"+
-		"\2\2\16\3\3\2\2\2\17\r\3\2\2\2\20\21\7\5\2\2\21\22\5\6\4\2\22\23\7\5\2"+
-		"\2\23\5\3\2\2\2\24\25\7\3\2\2\25\30\7\b\2\2\26\27\7\n\2\2\27\31\7\b\2"+
-		"\2\30\26\3\2\2\2\30\31\3\2\2\2\31\34\3\2\2\2\32\33\7\n\2\2\33\35\t\2\2"+
-		"\2\34\32\3\2\2\2\34\35\3\2\2\2\35\36\3\2\2\2\36\37\7\4\2\2\37\7\3\2\2"+
-		"\2\5\r\30\34";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17\33\4\2\t\2\4\3"+
+		"\t\3\3\2\3\2\3\2\7\2\n\n\2\f\2\16\2\r\13\2\3\3\3\3\3\3\3\3\5\3\23\n\3"+
+		"\3\3\3\3\5\3\27\n\3\3\3\3\3\3\3\2\2\4\2\4\2\3\4\2\f\f\16\17\2\33\2\13"+
+		"\3\2\2\2\4\16\3\2\2\2\6\7\5\4\3\2\7\b\7\r\2\2\b\n\3\2\2\2\t\6\3\2\2\2"+
+		"\n\r\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\13\3\2\2\2\16\17"+
+		"\7\3\2\2\17\22\7\f\2\2\20\21\7\b\2\2\21\23\7\f\2\2\22\20\3\2\2\2\22\23"+
+		"\3\2\2\2\23\26\3\2\2\2\24\25\7\b\2\2\25\27\t\2\2\2\26\24\3\2\2\2\26\27"+
+		"\3\2\2\2\27\30\3\2\2\2\30\31\7\4\2\2\31\5\3\2\2\2\5\13\22\26";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
