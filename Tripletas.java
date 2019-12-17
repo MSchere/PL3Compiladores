@@ -34,7 +34,6 @@ public class Tripletas {
                 if(Integer.parseInt(tri.get(0)) == 1 && tri.get(2).charAt(0) == '{'){ // 00 enteros 11 float 22 string 33 bool
                     String cad =tri.get(2).substring(1,tri.get(2).length()-1);
                     terceraPosicionArray = cad.split(",");
-                    }
 
                 } else {
                     this.setTerceraPosicion(tri.get(2));

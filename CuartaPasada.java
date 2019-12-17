@@ -41,13 +41,14 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                     System.out.print(PrintPOS[i] + ",");
                 }
                 bw.write("[");
-                for (int i = 0; i < PrintPOS.length; i++) {
-                    if (i != PrintPOS.length - 1) {
-
-                        bw.write(PrintPOS[i] + ",");
-                    } else {
-                        bw.write(PrintPOS[i]);
-                    }
+                bw.write(PrintPOS[0]);
+                if(PrintPOS.length > 1){
+                    bw.write(",");
+                    bw.write(PrintPOS[1]);
+                }
+                if(PrintPOS.length > 2){
+                    bw.write(",");
+                    bw.write(PrintPOS[2]);
                 }
                 bw.write("]");
                 bw.write("\n");
@@ -92,6 +93,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         }
 
         tripletas.add(PrintPOS);
+        cpila[0] = cpila[0] + 1;
         tamParInit = 0;
 
         return null;
@@ -210,6 +212,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         tripletas.add(trip.get(0));
         tripletas.add(trip.get(1));
         String[] t = {"2"};
+        cpila[0] = cpila[0]-1;
         tripletas.add(t);
 
         //}
@@ -289,12 +292,12 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         if(tipo != tipo1) tipo = 1;
         String[] trip0 = {"","",""};
         trip0[0] = "5";
-        trip0[1] = Integer.toString(cpila[0]-1);
+        trip0[1] = Integer.toString(cpila[0]-2);
         trip0[2] = "1";
         tripletas.add(trip0);
         String[] trip1 = {"","",""};
         trip1[0] = "5";
-        trip1[1] = Integer.toString(cpila[0]);
+        trip1[1] = Integer.toString(cpila[0]-1);
         trip1[2] = "2";
         tripletas.add(trip1);
         String[] trip2 = {"","",""};
@@ -308,16 +311,15 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         tripletas.add(trip3);
         cpila[0] = cpila[0] - 1;
         cpila[0] = cpila[0] - 1;
-        String[] trip4 = {"","",""};
+        String[] trip4 = {"",""};
         trip4[0] = "1";
         trip4[1] = Integer.toString(tipo);
-        trip4[2] = "";
         cpila[0] = cpila[0] + 1;
         tripletas.add(trip4);
         String[] trip5 = {"","",""};
         trip5[0] = "4";
         trip5[1] = "0";
-        trip5[2] = Integer.toString(cpila[0]);
+        trip5[2] = Integer.toString(cpila[0]-1);
         tripletas.add(trip5);
         System.out.println("sumafin");
         return Integer.toString(tipo);
