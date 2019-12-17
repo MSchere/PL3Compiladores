@@ -17,16 +17,6 @@ public interface GramJInsListener extends ParseTreeListener {
 	 */
 	void exitProg(GramJInsParser.ProgContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link GramJInsParser#linea}.
-	 * @param ctx the parse tree
-	 */
-	void enterLinea(GramJInsParser.LineaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link GramJInsParser#linea}.
-	 * @param ctx the parse tree
-	 */
-	void exitLinea(GramJInsParser.LineaContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link GramJInsParser#tripleta}.
 	 * @param ctx the parse tree
 	 */

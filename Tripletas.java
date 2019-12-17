@@ -4,9 +4,8 @@ public class Tripletas {
 
     public int primeraPosicion;
     public int segundaPosicion;
-    public int terceraPosicion;
-    public String terceraPosicion2;
-    public Object[] terceraPosicion3;
+    public Object terceraPosicion;
+    public Object[] terceraPosicionArray;
     public boolean hayTercero = false;
 
     public Tripletas() {
@@ -28,32 +27,17 @@ public class Tripletas {
                 this.setPrimeraPosicion(Integer.parseInt(tri.get(0)));
                 this.setSegundaPosicion(Integer.parseInt(tri.get(1)));
                 break; 
-            case 3:
+            case 3:  
             this.hayTercero = true;
                 this.setPrimeraPosicion(Integer.parseInt(tri.get(0)));
                 this.setSegundaPosicion(Integer.parseInt(tri.get(1)));
-                if (tri.get(2).charAt(0) == '"') {
-                    this.setTerceraPosicion2(tri.get(2));
-
-                } else if(tri.get(2).charAt(0) == '{'){ // 00 enteros 11 float 22 string 33 bool
+                if(Integer.parseInt(tri.get(0)) == 1 && tri.get(2).charAt(0) == '{'){ // 00 enteros 11 float 22 string 33 bool
                     String cad =tri.get(2).substring(1,tri.get(2).length()-1);
-                    switch(Integer.parseInt(tri.get(1)){
-                        case 00:
-                        
-                        break;
-                        case 11:
-
-                        break;
-                        case 22:
-
-                        break;
-                        case 33:
-
-                        break;
+                    terceraPosicionArray = cad.split(",");
                     }
 
                 } else {
-                    this.setTerceraPosicion(Integer.parseInt(tri.get(2)));
+                    this.setTerceraPosicion(tri.get(2));
                 }
                 break;
 

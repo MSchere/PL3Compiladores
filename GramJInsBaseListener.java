@@ -27,18 +27,6 @@ public class GramJInsBaseListener implements GramJInsListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLinea(GramJInsParser.LineaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLinea(GramJInsParser.LineaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterTripleta(GramJInsParser.TripletaContext ctx) { }
 	/**
 	 * {@inheritDoc}
