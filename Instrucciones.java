@@ -48,24 +48,23 @@ public class Instrucciones{
         }
         maquina.setCpila(maquina.getCpila()+1);
     }
-    public void push(int tipo, String valor){
+    public void push(int tipo, Object valor){
         switch(tipo){
             case 0:
-            pila.add(new Int(Integer.parseInt(valor)));
+            pila.add(new Int((Integer)valor));
                 break;
             case 1:
-            pila.add(new TipoFloat(new Float(valor)));
+            pila.add(new TipoFloat((Float)valor));
                 break;
             case 2:
-            pila.add(new Cadena(valor));
+            pila.add(new Cadena((String)valor));
                 break;
             case 3:
-            if(valor.equals("true")) pila.add(new Bool(true));
-                else pila.add(new Bool(false));
+            pila.add(new Bool(boolean)valor));
         }
         maquina.setCpila(maquina.getCpila()+1);
     }
-    public void put(int tipo, String valor){ //Almacena el valor en el registro 1
+    /*public void put(int tipo, String valor){ //Almacena el valor en el registro 1
         switch(tipo){
             case 0:
                 registros[1] = new Int(Integer.parseInt(valor));
@@ -80,7 +79,7 @@ public class Instrucciones{
                 if(valor.equals("true")) registros[1] = new Bool(true);
                 else registros[1] = new Bool(false);
         }
-    }
+    }*/
     public void pop(){
         pila.remove(pila.size()-1);
         maquina.setCpila(maquina.getCpila()-1);

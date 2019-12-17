@@ -4,7 +4,6 @@ public class BibliotecaFunciones{
 
     private ArrayList<String[]> tripleta = new ArrayList<String[]>();
     private ArrayList<String> funciones = new ArrayList<String>();;
-    private int cpila;
     
     public BibliotecaFunciones(){
         funciones.add("imprimir");
@@ -36,11 +35,11 @@ public class BibliotecaFunciones{
         tripleta.add(tri2);
         return tripleta;
     }
-    public ArrayList<String[]> fopen(){
+    public ArrayList<String[]> fopen(int[] cpila){
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(cpila-1);
+        tri[1] = Integer.toString(cpila[0]-1);
         tri[2] = "1";
         tripleta.add(tri);
         /*String[] tri2 = {"",""};

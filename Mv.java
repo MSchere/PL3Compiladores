@@ -41,8 +41,12 @@ public class Mv {
     }
 
     private void TraducirYEjecutar(Tripletas triple) {
-        int First = triple.primeraPosicion;
-        switch (First) {
+        int primera = triple.primeraPosicion;
+        int segunda = triple.segundaPosicion;
+        if(triple.hayTercero && primera == 1){
+            
+        }
+        switch (primera) {
         case 0:
             System.out.println("Init con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.init(triple.segundaPosicion, triple.terceraPosicion);

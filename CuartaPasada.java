@@ -41,13 +41,14 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                     System.out.print(PrintPOS[i] + ",");
                 }
                 bw.write("[");
-                for (int i = 0; i < PrintPOS.length; i++) {
-                    if (i != PrintPOS.length - 1) {
-
-                        bw.write(PrintPOS[i] + ",");
-                    } else {
-                        bw.write(PrintPOS[i]);
-                    }
+                bw.write(PrintPOS[0]);
+                if(PrintPOS.length > 1){
+                    bw.write(",");
+                    bw.write(PrintPOS[1]);
+                }
+                if(PrintPOS.length > 2){
+                    bw.write(",");
+                    bw.write(PrintPOS[2]);
                 }
                 bw.write("]");
                 bw.write("\n");
@@ -211,6 +212,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         tripletas.add(trip.get(0));
         tripletas.add(trip.get(1));
         String[] t = {"2"};
+        cpila[0] = cpila[0]-1;
         tripletas.add(t);
 
         //}
@@ -309,10 +311,9 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         tripletas.add(trip3);
         cpila[0] = cpila[0] - 1;
         cpila[0] = cpila[0] - 1;
-        String[] trip4 = {"","",""};
+        String[] trip4 = {"",""};
         trip4[0] = "1";
         trip4[1] = Integer.toString(tipo);
-        trip4[2] = "";
         cpila[0] = cpila[0] + 1;
         tripletas.add(trip4);
         String[] trip5 = {"","",""};

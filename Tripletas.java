@@ -37,7 +37,7 @@ public class Tripletas {
 
                 } else if(tri.get(2).charAt(0) == '{'){ // 00 enteros 11 float 22 string 33 bool
                     String cad =tri.get(2).substring(1,tri.get(2).length()-1);
-                    switch(Integer.parseInt(tri.get(1)){
+                    switch(Integer.parseInt(tri.get(1))){
                         case 00:
                         
                         break;
