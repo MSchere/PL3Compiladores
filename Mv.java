@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class Mv {
     private Entrada[] registros = { null, null, null, null, null };
-    private int cpila = -1;
+    private int cpila = 0;
     private int cprog = 0;
     private ArrayList<Entrada> pila = new ArrayList<Entrada>();
     private ArrayList<Tripletas> memoria;
@@ -213,14 +213,9 @@ public class Mv {
             inst.cerrarFichero(triple.segundaPosicion);
             break;
         case 41:
-            System.out.println("Almacenar");
-            inst.store(triple.segundaPosicion, triple.terceraPosicion);
-            break;
-
-        case 42:
             inst.imprimir(triple.segundaPosicion);
             break;
-        case 43: // Debug
+        case 42: // Debug
             System.out.println(pila);
             break;
         }

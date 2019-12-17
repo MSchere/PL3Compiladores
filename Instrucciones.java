@@ -21,16 +21,16 @@ public class Instrucciones{
     public void init(int nParams, int nSalidas){
         Control ini = new Control(nParams,nSalidas,maquina.getCprog(),pila.size());
         pila.add(ini);
-        maquina.setCpila(pila.size()-1);
+        maquina.setCpila(maquina.getCpila()+1);
     }
     public void movRR(int pos1, int pos2){ //mov origen destino
         registros[pos2] = registros[pos1];
-        }
+    }
     public void movRM(int pos1, int pos2){ //mov origen destino
-        pila.set(maquina.getCpila()+pos2, registros[pos1]);
+        pila.set(pos2, registros[pos1]);
     }
     public void movMR(int pos1, int pos2){ //mov origen destino
-        registros[pos2] = pila.get(maquina.getCpila()+pos1);
+        registros[pos2] = pila.get(pos1);
     }
     public void push(int tipo){
         switch(tipo){
@@ -46,6 +46,7 @@ public class Instrucciones{
             case 3:
             pila.add(new Bool());
         }
+        maquina.setCpila(maquina.getCpila()+1);
     }
     public void push(int tipo, String valor){
         switch(tipo){
@@ -62,6 +63,7 @@ public class Instrucciones{
             if(valor.equals("true")) pila.add(new Bool(true));
                 else pila.add(new Bool(false));
         }
+        maquina.setCpila(maquina.getCpila()+1);
     }
     public void put(int tipo, String valor){ //Almacena el valor en el registro 1
         switch(tipo){
@@ -79,11 +81,9 @@ public class Instrucciones{
                 else registros[1] = new Bool(false);
         }
     }
-    public void store(int r, int desp){
-        pila.set(desp,registros[r]);
-    }
     public void pop(){
         pila.remove(pila.size()-1);
+        maquina.setCpila(maquina.getCpila()-1);
     }
     public void cmp(int r1, int r2){
         int a = (int)((TipoFloat) registros[r1]).getValor();
@@ -109,8 +109,6 @@ public class Instrucciones{
             pop();
         }
         int nParams = ((Control)pila.get(maquina.getCpila())).getNParams();
-        maquina.setCpila(((Control)pila.get(maquina.getCpila())).getCpila());
-        maquina.setCprog(((Control)pila.get(maquina.getCpila())).getCprog());
         pop();
         for(int i=0;i<nParams;i++){
             pop();

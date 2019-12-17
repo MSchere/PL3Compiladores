@@ -27,11 +27,11 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(cpila[0]);
+        tri[1] = Integer.toString(cpila[0]-1);
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri2 = {"",""};
-        tri2[0] = "42";
+        tri2[0] = "41";
         tri2[1] = "1";
         tripleta.add(tri2);
         return tripleta;
