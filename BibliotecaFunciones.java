@@ -48,34 +48,126 @@ public class BibliotecaFunciones{
         tripleta.add(tri2);*/
         return tripleta;
     }
-    /*public ArrayList<String[]> fwrite(){
-        
+   /*   public ArrayList<String[]> fwrite(,String enter){
+        tripleta.clear();
+        String[] tri = {"","",""};
+
+        return tripleta;
     }
+  
     public ArrayList<String[]> fclose(){
         
     }
     public ArrayList<String[]> freadAll(){
         
     }
-    public ArrayList<String[]> cadenaDonde(){
-        
+   */ public ArrayList<String[]> cadenaDonde(int[] cpila){
+    tripleta.clear();
+    String[] tri = {"","",""};
+    tri[0] = "5";
+    tri[1] = Integer.toString(cpila[0]-1);
+    tri[2] = "1";
+    tripleta.add(tri);
+    String[] tri2 = {"","",""};
+    tri2[0] = "5";
+    tri2[1] = Integer.toString(cpila[0]-2);
+    tri2[2] = "2";
+    tripleta.add(tri2);
+    String[] tri3 = {"","",""};
+    tri3[0] = "32";
+    tri3[1] = "1";
+    tri3[2] = "2";
+    tripleta.add(tri3);
+    return tripleta;
     }
-    public ArrayList<String[]> cadenaSinEspacios(){
-        
+    public ArrayList<String[]> cadenaSinEspacios(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri3 = {"",""};
+        tri3[0] = "30";
+        tri3[1] = "1";
+        tripleta.add(tri3);
+        return tripleta;
     }
-    public ArrayList<String[]> cadenaSustituida(){
-        
+   
+    public ArrayList<String[]> cadenaSustituida(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri2 = {"","",""};
+        tri2[0] = "5";
+        tri2[1] = Integer.toString(cpila[0]-2);
+        tri2[2] = "2";
+        tripleta.add(tri2);
+        String[] tri4 = {"","",""};
+        tri4[0] = "5";
+        tri4[1] = Integer.toString(cpila[0]-3);
+        tri4[2] = "3";
+        tripleta.add(tri4);
+        String[] tri3 = {"","",""};
+        tri3[0] = "33";
+        tri3[1] = "2";
+        tri3[2] = "3";
+        tripleta.add(tri3);
+        return tripleta;
+    } 
+    public ArrayList<String[]> cadenaIzquierda(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri3 = {"","",""};
+        tri3[0] = "34";
+        tri3[1] = "1";
+        tri3[2] = Integer.toString(cpila[0]-2);
+        tripleta.add(tri3);
+        return tripleta;
     }
-    public ArrayList<String[]> cadenaIzquierda(){
-        
-    }
-    public ArrayList<String[]> cadenaDerecha(){
-        
-    }
-    public ArrayList<String[]>cadenaDentro(){
 
+    public ArrayList<String[]> cadenaDerecha(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri3 = {"","",""};
+        tri3[0] = "35";
+        tri3[1] = "1";
+        tri3[2] = Integer.toString(cpila[0]-2);
+        tripleta.add(tri3);
+        return tripleta;
     }
-    public ArrayList<String[]> cadenaLongitud(){
-
-    }*/
+    
+    public ArrayList<String[]>cadenaDentro(int[] cpila){
+        tripleta.clear();
+        String[] tri3 = {"","",""};
+        tri3[0] = "36";
+        tri3[1] = Integer.toString(cpila[0]-1);
+        tri3[2] = Integer.toString(cpila[0]-2);
+        tripleta.add(tri3);
+        return tripleta;
+    }
+    public ArrayList<String[]> cadenaLongitud(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri2 = {"",""};
+        tri2[0] = "31";
+        tri2[1] = "1";
+        tripleta.add(tri2);
+        return tripleta;
+    }
 }
