@@ -9,7 +9,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 		//Creamos un objeto que tiene el contenido de funci�n y sus caracter�sticas
 		ContenidoFuncion cnt = new ContenidoFuncion();
 		
-		//Introduce el n�mero de argumentos
+		//Introduce el numero de argumentos
 		cnt.numArgumentos = numArgumentos;
 		
 		//Introduce el tipo de dato de salida
@@ -32,13 +32,34 @@ public class TablaSimbolos extends ContenidoFuncion{
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato);
 			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
 		}
-		//Si no es un argumentos va a la pila de variables de la funci�n
+		//Si no es un argumentos va a la pila de variables de la funcion
 		else {
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato);
 		}
 	}
 	
-	/*public int getPos(String nombreVariable){
-		
-	}*/
+	public String[] extraeContenidoFuncion(String nombreFunc) {
+		String[] contenidoFunc;
+		contenidoFunc[0] = nombreFunc;
+		contenidoFunc[1] = String.valueOf(funcion.get(nombreFunc).numArgumentos);
+		if (funcion.get(nombreFunc).tipoRetorno == 1) {
+			contenidoFunc[2] = "numero";
+		}
+		if (funcion.get(nombreFunc).tipoRetorno == 2) {
+			contenidoFunc[2] = "string";
+		}
+		if (funcion.get(nombreFunc).tipoRetorno == 3) {
+			contenidoFunc[2] = "bool";
+		}
+		return contenidoFunc;
+	}
+	
+	public String[] extraeTiposArgumentos(String nombreFunc) {
+		String[] tiposArgumentos;
+		for (int i = 0; i < (funcion.get(nombreFunc).pilaVarArgs).size(); i++) {
+			tiposArgumentos[i] = funcion.get(nombreFunc).pilaVarArgs.get(i)[2];
+		}
+		return tiposArgumentos;
+	}
+	
 }
