@@ -44,46 +44,46 @@ public class Mv {
         int primera = triple.primeraPosicion;
         int segunda = triple.segundaPosicion;
         if(triple.hayTercero && primera == 1){
-            
+
         }
         switch (primera) {
         case 0:
-            System.out.println("Init con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
+            //if(debug)System.out.println("Init con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.init(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 1:
-            System.out.println("Push con parametro 1 " + triple.segundaPosicion + "Push con parametro 1 " + triple.terceraPosicion);
+            //System.out.println("Push con parametro 1 " + triple.segundaPosicion + "Push con parametro 1 " + triple.terceraPosicion);
             if(!triple.hayTercero) inst.push(triple.segundaPosicion);
             else inst.push(triple.segundaPosicion, Integer.toString(triple.terceraPosicion));
             break;
         case 2:
-            System.out.println("Pop");
+            //System.out.println("Pop");
             inst.pop();
             break;
         case 3:
-            System.out.println("MovRR con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
+            //System.out.println("MovRR con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.movRR(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 4:
-            System.out.println("MovRM con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
+            //System.out.println("MovRM con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.movRM(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 5:
-            System.out.println("MovMR con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
+            //System.out.println("MovMR con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.movMR(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 6:
-            System.out.println("END");
+            //System.out.println("END");
             inst.end();
             if (cpila == 0)
                 cprog = memoria.size();
             break;
         case 7:
-            System.out.println("Add con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
+            //System.out.println("Add con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.add(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 8:
-            System.out.println("SUB con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
+            //System.out.println("SUB con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
             inst.sub(triple.segundaPosicion, triple.terceraPosicion);
             break;
         case 9:
