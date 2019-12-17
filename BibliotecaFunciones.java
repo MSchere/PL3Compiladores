@@ -42,26 +42,59 @@ public class BibliotecaFunciones{
         tri[1] = Integer.toString(cpila[0]-1);
         tri[2] = "1";
         tripleta.add(tri);
-        /*String[] tri2 = {"",""};
-        tri2[0] = "40";
+        String[] tri2 = {"",""};
+        tri2[0] = "37";
         tri2[1] = "1";
-        tripleta.add(tri2);*/
+        tripleta.add(tri2);
         return tripleta;
     }
-   /*   public ArrayList<String[]> fwrite(,String enter){
+     public ArrayList<String[]> fwrite(int[] cpila){
         tripleta.clear();
         String[] tri = {"","",""};
-
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri2 = {"","",""};
+        tri2[0] = "5";
+        tri2[1] = Integer.toString(cpila[0]-2);
+        tri2[2] = "2";
+        tripleta.add(tri2);
+        String[] tri3 = {"",""};
+        tri3[0] = "38";
+        tri3[1] = "1";
+        tri3[2] = "2";
+        tripleta.add(tri3);
         return tripleta;
     }
   
-    public ArrayList<String[]> fclose(){
-        
+    public ArrayList<String[]> fclose(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri2 = {"",""};
+        tri2[0] = "40";
+        tri2[1] = "1";
+        tripleta.add(tri2);
+        return tripleta;
+    } 
+    public ArrayList<String[]> freadAll(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri2 = {"",""};
+        tri2[0] = "39";
+        tri2[1] = "1";
+        tripleta.add(tri2);
+        return tripleta;
     }
-    public ArrayList<String[]> freadAll(){
-        
-    }
-   */ public ArrayList<String[]> cadenaDonde(int[] cpila){
+    public ArrayList<String[]> cadenaDonde(int[] cpila){
     tripleta.clear();
     String[] tri = {"","",""};
     tri[0] = "5";
