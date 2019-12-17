@@ -23,8 +23,8 @@ public static void main(String[] args)throws Exception{
     ParseTree tree=parser.prog();
     //System.out.println(tree.toStringTree(parser)+"no se que imprimo");
     CuartaPasada nv=new CuartaPasada();
-     nv.visit(tree);
-     nv.ImprimirTriple();
-
+    nv.visit(tree);
+    nv.ImprimirTriple();
+    PruebaTrip prtrip = new PruebaTrip().main();
 }
 };

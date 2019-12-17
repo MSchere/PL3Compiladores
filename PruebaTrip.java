@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.*;
 
 public class PruebaTrip {
-    public static void main(String[] args){
+    public void main(){
         String ruta = "./Tripletas.txt";
         try {
             InputStream is = System.in;
@@ -37,17 +37,6 @@ public class PruebaTrip {
                 tripletas.add(tri.crearTripleta(triStrng.get(i)));
 
             }
-
-            for(int i=0; i< triStrng.size() ; i++){
-
-                System.out.println("Tripleta :"+i);
-                System.out.println("Pos 1: " + tripletas.get(i).getPrimeraPosicion());
-                System.out.println("Pos 2: " + tripletas.get(i).getSegundaPosicion());
-                System.out.println("Pos 3int: " + tripletas.get(i).getTerceraPosicion());
-                System.out.println("Pos 3str: " + tripletas.get(i).getTerceraPosicion2());
-            }
-
-
             Mv maquina = new Mv(tripletas);
             maquina.ejecutar();
         } catch (Exception e) {
