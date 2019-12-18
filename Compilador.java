@@ -32,6 +32,7 @@ public class Executable {
             
             //Creamos pasadas y las recorremos
             PrimeraPasada p1 = new PrimeraPasada(ts);
+            TerceraPasada p3 = new TerceraPasada(ts);
             p1.visit(tree);
 
     }

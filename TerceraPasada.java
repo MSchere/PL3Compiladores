@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 public class TerceraPasada extends GramProgBaseListener {
 
+	TablaSimbolos ts;
+
+	public TerceraPasada(TablaSimbolos tabla){
+		this.ts = tabla;
+	}
     // CONTENEDORES
 
 	public ArrayList<String> filas = new ArrayList<String>();
@@ -83,10 +88,11 @@ public class TerceraPasada extends GramProgBaseListener {
 		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
 	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
 		aux.remove(3);
-		//rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
-		System.out.println(aux.get(0) + aux.get(1)+ aux.get(2));
+		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
+		ts.
+		//System.out.println(aux.get(0) + aux.get(1)+ aux.get(2));
 		almacen.add(aux);
-		System.out.println(aux);
+		//System.out.println(aux);
 		variable.remove(3);
 		variable.remove(2);
 		variable.remove(1);
@@ -108,9 +114,9 @@ public class TerceraPasada extends GramProgBaseListener {
 
 		ArrayList<String> aux = new ArrayList<String>(variable);
 		aux.remove(3);
-		//rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
+		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
 		almacen.add(aux);
-		System.out.println(aux);
+		//System.out.println(aux);
 		variable.remove(3);
 		variable.remove(2);
 		variable.remove(1);
