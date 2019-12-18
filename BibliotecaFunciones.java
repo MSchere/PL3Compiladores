@@ -52,12 +52,12 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(cpila[0]-1);
+        tri[1] = Integer.toString(cpila[0]-2);
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri2 = {"","",""};
         tri2[0] = "5";
-        tri2[1] = Integer.toString(cpila[0]-2);
+        tri2[1] = Integer.toString(cpila[0]-1);
         tri2[2] = "2";
         tripleta.add(tri2);
         String[] tri3 = {"",""};
@@ -98,12 +98,12 @@ public class BibliotecaFunciones{
     tripleta.clear();
     String[] tri = {"","",""};
     tri[0] = "5";
-    tri[1] = Integer.toString(cpila[0]-1);
+    tri[1] = Integer.toString(cpila[0]-2;
     tri[2] = "1";
     tripleta.add(tri);
     String[] tri2 = {"","",""};
     tri2[0] = "5";
-    tri2[1] = Integer.toString(cpila[0]-2);
+    tri2[1] = Integer.toString(cpila[0]-1);
     tri2[2] = "2";
     tripleta.add(tri2);
     String[] tri3 = {"","",""};
@@ -131,7 +131,7 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(cpila[0]-1);
+        tri[1] = Integer.toString(cpila[0]-3);
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri2 = {"","",""};
@@ -141,7 +141,7 @@ public class BibliotecaFunciones{
         tripleta.add(tri2);
         String[] tri4 = {"","",""};
         tri4[0] = "5";
-        tri4[1] = Integer.toString(cpila[0]-3);
+        tri4[1] = Integer.toString(cpila[0]-1);
         tri4[2] = "3";
         tripleta.add(tri4);
         String[] tri3 = {"","",""};
@@ -155,13 +155,13 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(cpila[0]-1);
+        tri[1] = Integer.toString(cpila[0]-2);
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri3 = {"","",""};
         tri3[0] = "34";
         tri3[1] = "1";
-        tri3[2] = Integer.toString(cpila[0]-2);
+        tri3[2] = Integer.toString(cpila[0]-1);
         tripleta.add(tri3);
         return tripleta;
     }
@@ -170,13 +170,13 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri = {"","",""};
         tri[0] = "5";
-        tri[1] = Integer.toString(cpila[0]-1);
+        tri[1] = Integer.toString(cpila[0]-2);
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri3 = {"","",""};
         tri3[0] = "35";
         tri3[1] = "1";
-        tri3[2] = Integer.toString(cpila[0]-2);
+        tri3[2] = Integer.toString(cpila[0]-1);
         tripleta.add(tri3);
         return tripleta;
     }
@@ -185,8 +185,8 @@ public class BibliotecaFunciones{
         tripleta.clear();
         String[] tri3 = {"","",""};
         tri3[0] = "36";
-        tri3[1] = Integer.toString(cpila[0]-1);
-        tri3[2] = Integer.toString(cpila[0]-2);
+        tri3[1] = Integer.toString(cpila[0]-2);
+        tri3[2] = Integer.toString(cpila[0]-1);
         tripleta.add(tri3);
         return tripleta;
     }
