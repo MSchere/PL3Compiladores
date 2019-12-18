@@ -60,6 +60,12 @@ public class TerceraPasada extends GramProgBaseListener {
 		}else{
 			variable.add(ctx.expr().getText());
 		}
+		if(ctx.CONST() != null){
+			variable.add("TRUE");
+		}
+		else{
+			variable.add("FALSE");
+		}
 
 	}
 
@@ -88,11 +94,9 @@ public class TerceraPasada extends GramProgBaseListener {
 		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
 	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
 		aux.remove(3);
-		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
-		ts.
-		//System.out.println(aux.get(0) + aux.get(1)+ aux.get(2));
+		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2),aux.get(3));
 		almacen.add(aux);
-		//System.out.println(aux);
+		variable.remove(4);
 		variable.remove(3);
 		variable.remove(2);
 		variable.remove(1);
@@ -108,6 +112,13 @@ public class TerceraPasada extends GramProgBaseListener {
 
 		variable.add("null");
 
+		if(ctx.CONST() != null){
+			variable.add("TRUE");
+		}
+		else{
+			variable.add("FALSE");
+		}
+
     }
     @Override
     public void exitDeclarar(GramProgParser.DeclararContext ctx) { 
@@ -117,6 +128,7 @@ public class TerceraPasada extends GramProgBaseListener {
 		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
 		almacen.add(aux);
 		//System.out.println(aux);
+		variable.remove(4);
 		variable.remove(3);
 		variable.remove(2);
 		variable.remove(1);

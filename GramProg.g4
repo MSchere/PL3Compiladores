@@ -44,10 +44,10 @@ sentencia:  (declararYasignar FIN)
             |FIN;
 
 
-declararYasignar: tipo ID ASIG expr #declararYasign;
+declararYasignar: CONST? tipo ID ASIG expr #declararYasign;
 
 
-declaracion: tipo ID #declarar;
+declaracion: CONST? tipo ID #declarar;
 
 
 asignacion: ID ASIG expr #asignar;
@@ -85,6 +85,7 @@ COMENTARIO  :   ('//' .*? '\n'
             ;
             
 //Keywords
+CONST: 'const';
 INCLUDE: 'include';
 FUNCION: 'function';
 BEGIN: 'begin';
