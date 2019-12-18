@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class TablaSimbolos extends ContenidoFuncion{
 	
@@ -19,8 +20,11 @@ public class TablaSimbolos extends ContenidoFuncion{
 		if (tipoRetorno.equals("cadena")) {
 			cnt.tipoRetorno = 2;
 		}
-		if (tipoRetorno.equals("bool")) {
+		if (tipoRetorno.equals("booleano")) {
 			cnt.tipoRetorno = 3;
+		}
+		if (tipoRetorno.equals("void")) {
+			cnt.tipoRetorno = 4;
 		}
 		funcion.put(nombreFunc, cnt);
 	}
@@ -39,23 +43,27 @@ public class TablaSimbolos extends ContenidoFuncion{
 	}
 	
 	public String extraeTipoVarianble(String nombreFunc, String nombreVar) {
+		String tipoVar = "null";
 		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
 			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
-				return funcion.get(nombreFunc).pilaVar.get(i)[1];
+				tipoVar = funcion.get(nombreFunc).pilaVar.get(i)[1];
 			}
 		}
+		return tipoVar;
 	}
 	
-	public String extraeDesplazamientoVarianble(String nombreFunc, String nombreVar) {
+	public int extraeDesplazamientoVariable(String nombreFunc, String nombreVar) {
+		int desplazamiento = 0;
 		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
 			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
-				return funcion.get(nombreFunc).pilaVar.get(i)[2];
+				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]);
 			}
 		}
+		return desplazamiento;
 	}
 	
 	public String[] extraeContenidoFuncion(String nombreFunc) {
-		String[] contenidoFunc;
+		String[] contenidoFunc = new String[3];
 		contenidoFunc[0] = nombreFunc;
 		contenidoFunc[1] = String.valueOf(funcion.get(nombreFunc).numArgumentos);
 		if (funcion.get(nombreFunc).tipoRetorno == 1) {
@@ -65,17 +73,23 @@ public class TablaSimbolos extends ContenidoFuncion{
 			contenidoFunc[2] = "string";
 		}
 		if (funcion.get(nombreFunc).tipoRetorno == 3) {
-			contenidoFunc[2] = "bool";
+			contenidoFunc[2] = "booleano";
+		}
+		if (funcion.get(nombreFunc).tipoRetorno == 4) {
+			contenidoFunc[2] = "void";
 		}
 		return contenidoFunc;
 	}
 	
-	public String[] extraeTiposArgumentos(String nombreFunc) {
-		String[] tiposArgumentos;
+	public ArrayList<String> extraeTiposArgumentos(String nombreFunc) {
+		ArrayList<String> tiposArgumentos = new ArrayList<String>();
 		for (int i = 0; i < (funcion.get(nombreFunc).pilaVarArgs).size(); i++) {
-			tiposArgumentos[i] = funcion.get(nombreFunc).pilaVarArgs.get(i)[2];
+			tiposArgumentos.add(funcion.get(nombreFunc).pilaVarArgs.get(i)[2]);
 		}
 		return tiposArgumentos;
 	}
 	
+	public void SetPunteroPila(String nombreFunc, int punteroPila){
+		funcion.get(nombreFunc).punteroPila = punteroPila;
+	}
 }

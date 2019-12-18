@@ -6,6 +6,7 @@ public class ContenidoFuncion {
 	int tipoRetorno = 0;
 	int numArgumentos = 0;
 	int desplazamiento = 0;
+	int punteroPila = 0;
 	
 	public void rellenaPilaArgs(Stack<String[]> pilaVar){
 			pilaVarArgs.add(pilaVar.elementAt(0));

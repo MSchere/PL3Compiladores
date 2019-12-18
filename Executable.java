@@ -16,7 +16,7 @@ public class Executable {
         if (inputFile != null) {
             is = new FileInputStream(inputFile);
         }
-        try {
+
             CharStream input = CharStreams.fromStream(is);
             GramProgLexer lexer = new GramProgLexer(input);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -25,19 +25,14 @@ public class Executable {
             ParseTree tree = parser.prog();
 
             // Configuramos el listener
-            GramProgMiListener tb = new GramProgMiListener();
             ParseTreeWalker walker = new ParseTreeWalker();
 
             // Abrimos la tabla de símbolos
             TablaSimbolos ts = new TablaSimbolos();
+            
+            //Creamos pasadas y las recorremos
+            PrimeraPasada p1 = new PrimeraPasada(ts);
+            p1.visit(tree);
 
-            // Recorremos el arbol
-            walker.walk(tb, tree);
-
-            ArrayList<String> variables = new ArrayList<>();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
