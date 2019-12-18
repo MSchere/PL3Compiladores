@@ -5,10 +5,9 @@ import org.antlr.v4.runtime.tree.*;
 import java.util.*;
 import java.io.*;
 
-public class Executable {
+public class compilador {
     public static void main(String[] args) throws Exception {
         // Fuerzo la carga del fichero
-        String inputFile = "EjemploCodigo2.prog";
         if (args.length > 0) {
             inputFile = args[0];
         }
