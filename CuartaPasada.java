@@ -74,8 +74,15 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         visitChildren(ctx);
         if (ctx.parametros() != null) {
             System.out.println("Tiene parametros");
-
-            TripletaInit[1] = String.valueOf(tamParInit);
+            String param=ctx.parametros().getText();
+            int count = 0;
+            int idx = 0;
+            while ((idx = param.indexOf("numero", idx)) != -1) {
+                count++;
+                idx += "numero".length();
+            }
+            
+            TripletaInit[1] = String.valueOf(count);
 
         } else {
             TripletaInit[1] = "0";
@@ -217,15 +224,38 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     @Override
     public String visitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx) {
         System.out.println("llamafun");
-        //String nombre = ctx.ID();
+        String nombre = ctx.ID().getText();
         visitChildren(ctx);
-        //if(biblio.existe(nombre)){
-        ArrayList<String[]> trip = biblio.imprimir(cpila);
-        tripletas.add(trip.get(0));
-        tripletas.add(trip.get(1));
-        String[] t = {"2"};
-        cpila[0] = cpila[0]-1;
-        tripletas.add(t);
+        if(biblio.existe(nombre)){
+            System.out.println(nombre);
+            switch(nombre){
+                case("imprimir"):
+                ArrayList<String[]> trip = biblio.imprimir(cpila);
+                tripletas.add(trip.get(0));
+                tripletas.add(trip.get(1));
+                String[] t = {"2"};
+                cpila[0] = cpila[0]-1;
+                tripletas.add(t);
+                break;
+                case("sqrt"):
+                System.out.println("He entrado en sqrt");
+                ArrayList<String[]> trip1 = biblio.sqrt(cpila);
+                tripletas.add(trip1.get(0));
+                tripletas.add(trip1.get(1));
+                tripletas.add(trip1.get(2));
+                tripletas.add(trip1.get(3));
+                tripletas.add(trip1.get(4));
+                break;
+                case("cadenaDonde"):
+                ArrayList<String[]> trip2 = biblio.cadenaDonde(cpila);
+                tripletas.add(trip2.get(0));
+                tripletas.add(trip2.get(1));
+                tripletas.add(trip2.get(2));
+                tripletas.add(trip2.get(3));
+                tripletas.add(trip2.get(4));
+                break;
+            }
+        }
 
         //}
         
