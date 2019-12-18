@@ -10,7 +10,14 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     private int tamParInit = 0;
     private String tipoFunc = " ";
     private int[] cpila = {0};
+    private String funcActual=" ";
     private BibliotecaFunciones biblio = new BibliotecaFunciones();
+    private TablaSimbolos tb;
+
+    public CuartaPasada(TablaSimbolos tb){
+        this.tb = tb;
+    }
+
     @Override
     public String visitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
 
@@ -60,7 +67,8 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     }
     @Override
     public String visitDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
-
+        FuncActual=ctx.ID().getText();
+        System.out.println("Funcion actual "+FuncActual);
         System.out.println("Tripleta func " + ctx.ID());
         TripletaInit[0] = "0";
         visitChildren(ctx);
@@ -165,33 +173,45 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     }
     @Override
     public String visitDeclarar(GramProgParser.DeclararContext ctx) {
-        String[] PrintPOS = { " ", " ", " " };
+        String[] PrintPOS = { " ", " "};
         PrintPOS[0] = "1";
         switch (ctx.tipo().getText()) {
-        case ("numero"):
-            PrintPOS[1] = "1";
-
-            break;
-        case ("cadena"):
-            PrintPOS[1] = "2";
-            break;
-        case ("boolean"):
-            PrintPOS[1] = "3";
-            break;
+            case ("numero"):
+                if(ctx.getText().contains(".")){
+                trip[1] = "1";
+                }
+                else trip[1]= "0";
+                break;
+            case ("cadena"):
+                PrintPOS[1] = "2";
+                break;
+            case ("boolean"):
+                PrintPOS[1] = "3";
+                break;
         }
-        PrintPOS[2] = "";
-        tamParInit++;
+        cpila[0] = cpila[0] + 1;
         tripletas.add(PrintPOS);
 
         return visitChildren(ctx);
     }
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
-        // ctx.ID().getText(); me pillo el nombre, se busca en la tabla de simbolos y se
-        // pilla el desplazamiento
-        // hay que ir a la posicion de la pila y cambiar el valor de la variable
-        System.out.println("Estoy en asignacion " + ctx.ID());
-        return visitChildren(ctx);
+        ctx.expr();
+        int desp = tb.getDespFuncion(funcActual) + tb.getDespVar(funcActual,ctx.ID().getText());
+        String[] trip0 = {"","",""};
+        trip0[0] = "5";
+        trip0[1] = Integer.toString(cpila[0]-1);
+        trip0[2] = "1";
+        tripletas.add(trip0);
+        String[] trip1 = {"","",""};
+        trip0[0] = "4";
+        trip0[1] = "1";
+        trip0[2] = Integer.toString(desp);
+        tripletas.add(trip1);
+        String[] trip3 = {""};
+        trip3[0] = "2";
+        tripletas.add(trip3);
+        return "";
     }
     @Override
     public String visitDevolv(GramProgParser.DevolvContext ctx) {
@@ -253,35 +273,13 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return visitChildren(ctx);
     }
 
-    /*public String visitExpr(GramProgParser.ExprContext ctx) {
-
-  
-        // tripleta temporal
-        /*if (ctx.SUM() != null) {
-            System.out.println(ctx.expr(0));*/
-        /*    
-        String[] PrintPOS = { " ", " ", " " };
-        PrintPOS[0] = "1";
-        PrintPOS[1] = "0";
-        PrintPOS[2] = " ";
-        Tripleeeee.add(PrintPOS);
-        String[] PrintPOS1 = { " ", " ", " " };
-        PrintPOS1[0] = "1";
-        PrintPOS1[1] = "0";
-        PrintPOS1[2] = ctx.expr(0).getText();
-        Tripleeeee.add(PrintPOS1);
-        String[] PrintPOS2 = { " ", " ", " " };
-        PrintPOS2[0] = "5";
-        PrintPOS2[1] = "0";
-        PrintPOS2[2] =(ctx.expr(1).getText());
-        Tripleeeee.add(PrintPOS1);
-        
-        //}
+    public String visitExpr(GramProgParser.ExprContext ctx) {
         return visitChildren(ctx);
-    }*/
+    }
     @Override
+    public String visitParentesis(GramProgParser.ParentesisContext ctx) {
+        return visit(ctx.expr()); }
     public String visitMul(GramProgParser.MulContext ctx) { 
-        System.out.println("mult/div");
         int tipo = Integer.parseInt(visit(ctx.expr(0)));
         int tipo1 = Integer.parseInt(visit(ctx.expr(1)));
         if(tipo != tipo1) tipo = 1;
@@ -320,11 +318,9 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         trip5[1] = "0";
         trip5[2] = Integer.toString(cpila[0]-1);
         tripletas.add(trip5);
-        System.out.println("mult/div fin");
         return Integer.toString(tipo);
      }
     public String visitSuma(GramProgParser.SumaContext ctx) {
-        System.out.println("suma/resta");
         int tipo = Integer.parseInt(visit(ctx.expr(0)));
         int tipo1 = Integer.parseInt(visit(ctx.expr(1)));
         if(tipo != tipo1) tipo = 1;
@@ -343,7 +339,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         trip2[0] = "7";        
     }
         else{
-            System.out.println("he entrado");
             trip2[0] = "8";
         }
         trip2[1] = "1";
@@ -365,12 +360,10 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         trip5[1] = "0";
         trip5[2] = Integer.toString(cpila[0]-1);
         tripletas.add(trip5);
-        System.out.println("suma/resta fin");
         return Integer.toString(tipo);
     }
     @Override
     public String visitNumero(GramProgParser.NumeroContext ctx) {
-        System.out.println("numero");
         String[] trip = {"","",""};
         trip[0] = "1";
         if(ctx.getText().contains(".")){

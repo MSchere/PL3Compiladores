@@ -240,17 +240,13 @@ public class Mv {
             break;
         case 41:
             if(debug)System.out.println("Jump si es mayor");
-            inst.jmpgt(segunda);
+            inst.jmpt(segunda, tercera);
             break;
         case 42:
             if(debug)System.out.println("Jump si es menor");
-            inst.jmplt(segunda);
+            inst.jmpf(segunda, tercera);
             break;
         case 43:
-            if(debug)System.out.println("Jump si es igual");
-            inst.jmpeq(segunda);
-            break;
-        case 44:
             if(debug)System.out.println("Imprime por pantalla");
             inst.imprimir(segunda);
             break;
