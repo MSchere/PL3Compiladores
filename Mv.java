@@ -239,10 +239,22 @@ public class Mv {
             inst.cerrarFichero(segunda);
             break;
         case 41:
+            if(debug)System.out.println("Jump si es mayor");
+            inst.jmpgt(segunda);
+            break;
+        case 42:
+            if(debug)System.out.println("Jump si es menor");
+            inst.jmplt(segunda);
+            break;
+        case 43:
+            if(debug)System.out.println("Jump si es igual");
+            inst.jmpeq(segunda);
+            break;
+        case 44:
             if(debug)System.out.println("Imprime por pantalla");
             inst.imprimir(segunda);
             break;
-        case 42: // Debug
+        case 45: // Debug
             System.out.println(pila);
             break;
         }
