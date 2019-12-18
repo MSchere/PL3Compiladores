@@ -148,28 +148,25 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     }
     @Override
     public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
-        String[] PrintPOS = { " ", " ", " " };
-        PrintPOS[0] = "1";
-        PrintPOS[1] = ctx.tipo().getText();
-        switch (ctx.tipo().getText()) {
-        case ("numero"):
-            if (ctx.expr().getText().contains(".")) {
-                PrintPOS[1] = "1";
-            } else {
-                PrintPOS[1] = "0";
-                ;
-            }
-            break;
-        case ("cadena"):
-            PrintPOS[1] = "2";
-            break;
-        case ("boolean"):
-            PrintPOS[1] = "3";
-            break;
-        }
-        PrintPOS[2] = (ctx.expr().getText());
-        tripletas.add(PrintPOS);
-        return visitChildren(ctx);
+        ctx.expr();
+        String[] trip0 = {"","",""};
+        trip0[0] = "5";
+        trip0[1] = Integer.toString(cpila[0]-1);
+        trip0[2] = "1";
+        tripletas.add(trip0);
+        String[] trip1 = {""};
+        trip1[0] = "2";
+        tripletas.add(trip1);
+        int desp = tb.getDespFuncion(funcActual) + tb.getDespVar(funcActual,ctx.ID().getText());
+        String[] trip2 = {"","",""};
+        trip2[0] = "4";
+        trip2[1] = "1";
+        trip2[2] = Integer.toString(desp);
+        tripletas.add(trip2);
+        String[] trip3 = {""};
+        trip3[0] = "2";
+        tripletas.add(trip3);
+        return "";
     }
     @Override
     public String visitDeclarar(GramProgParser.DeclararContext ctx) {
@@ -192,7 +189,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         cpila[0] = cpila[0] + 1;
         tripletas.add(PrintPOS);
 
-        return visitChildren(ctx);
+        return "";
     }
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
@@ -204,13 +201,13 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         trip0[2] = "1";
         tripletas.add(trip0);
         String[] trip1 = {"","",""};
-        trip0[0] = "4";
-        trip0[1] = "1";
-        trip0[2] = Integer.toString(desp);
+        trip1[0] = "4";
+        trip1[1] = "1";
+        trip1[2] = Integer.toString(desp);
         tripletas.add(trip1);
-        String[] trip3 = {""};
-        trip3[0] = "2";
-        tripletas.add(trip3);
+        String[] trip2 = {""};
+        trip2[0] = "2";
+        tripletas.add(trip2);
         return "";
     }
     @Override
