@@ -30,7 +30,7 @@ public class BibliotecaFunciones{
         tri[2] = "1";
         tripleta.add(tri);
         String[] tri2 = {"",""};
-        tri2[0] = "44";
+        tri2[0] = "43";
         tri2[1] = "1";
         tripleta.add(tri2);
         return tripleta;

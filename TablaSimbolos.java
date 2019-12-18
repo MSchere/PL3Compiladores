@@ -1,11 +1,10 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 
 public class TablaSimbolos extends ContenidoFuncion{
 	
 	HashMap<String, ContenidoFuncion> funcion = new HashMap<String, ContenidoFuncion>();
 	
-	//M�todo al que hay que llamar cuando se detecta una funci�n
+	//Metodo al que hay que llamar cuando se detecta una funci�n
 	public void rellenaFuncion(String nombreFunc, int numArgumentos, String tipoRetorno) {
 		//Creamos un objeto que tiene el contenido de funci�n y sus caracter�sticas
 		ContenidoFuncion cnt = new ContenidoFuncion();
@@ -26,7 +25,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 		funcion.put(nombreFunc, cnt);
 	}
 	
-	//M�todo al que hay que llamar cuando se detecta una variable
+	//Metodo al que hay que llamar cuando se detecta una variable
 	public void rellenaFilaPilaVar(String nombreFunc, String nombreVar, String tipoDato){
 		//Se comrpueba si es un argumento de la funci�n y se mete en su pila de argumentos y en la de variables
 		if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
@@ -39,8 +38,24 @@ public class TablaSimbolos extends ContenidoFuncion{
 		}
 	}
 	
+	public String extraeTipoVarianble(String nombreFunc, String nombreVar) {
+		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
+			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
+				return funcion.get(nombreFunc).pilaVar.get(i)[1];
+			}
+		}
+	}
+	
+	public String extraeDesplazamientoVarianble(String nombreFunc, String nombreVar) {
+		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
+			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
+				return funcion.get(nombreFunc).pilaVar.get(i)[2];
+			}
+		}
+	}
+	
 	public String[] extraeContenidoFuncion(String nombreFunc) {
-		String[] contenidoFunc = new String[3];
+		String[] contenidoFunc;
 		contenidoFunc[0] = nombreFunc;
 		contenidoFunc[1] = String.valueOf(funcion.get(nombreFunc).numArgumentos);
 		if (funcion.get(nombreFunc).tipoRetorno == 1) {
@@ -55,10 +70,10 @@ public class TablaSimbolos extends ContenidoFuncion{
 		return contenidoFunc;
 	}
 	
-	public ArrayList<String> extraeTiposArgumentos(String nombreFunc) {
-		ArrayList<String> tiposArgumentos = new ArrayList<String>();
+	public String[] extraeTiposArgumentos(String nombreFunc) {
+		String[] tiposArgumentos;
 		for (int i = 0; i < (funcion.get(nombreFunc).pilaVarArgs).size(); i++) {
-			tiposArgumentos.add(funcion.get(nombreFunc).pilaVarArgs.get(i)[2]);
+			tiposArgumentos[i] = funcion.get(nombreFunc).pilaVarArgs.get(i)[2];
 		}
 		return tiposArgumentos;
 	}

@@ -6,7 +6,6 @@ public class Instrucciones{
     private Entrada[] registros;
     private ArrayList<Entrada> pila;
     private Mv maquina;
-    private int rcmp;
 
     private HashMap<Integer,ManejoArchivos> archivos = new HashMap<Integer,ManejoArchivos>();
 
@@ -64,44 +63,18 @@ public class Instrucciones{
         }
         maquina.setCpila(maquina.getCpila()+1);
     }
-    /*public void put(int tipo, String valor){ //Almacena el valor en el registro 1
-        switch(tipo){
-            case 0:
-                registros[1] = new Int(Integer.parseInt(valor));
-                break;
-            case 1:
-                registros[1] = new TipoFloat(new Float(valor));
-                break;
-            case 2:
-                registros[1] = new Cadena(valor);
-                break;
-            case 3:
-                if(valor.equals("true")) registros[1] = new Bool(true);
-                else registros[1] = new Bool(false);
-        }
-    }*/
     public void pop(){
         pila.remove(pila.size()-1);
         maquina.setCpila(maquina.getCpila()-1);
     }
-    public void cmp(int r1, int r2){
-        int a = (int)((TipoFloat) registros[r1]).getValor();
-        int b = (int)((TipoFloat) registros[r2]).getValor();
-        if(a>b){ rcmp = 1;}
-        else if(a<b){ rcmp = -1;}
-        else{ rcmp = 0;}
-    }
     public void jump(int desp){
         maquina.setCprog(desp);
     }
-    public void jmpgt(int desp){
-        if(rcmp == 1) maquina.setCprog(desp);
+    public void jmpt(int r, int desp){
+        if(((Bool) registros[r]).getValor()) maquina.setCprog(desp);
     }
-    public void jmplt(int desp){
-        if(rcmp == -1) maquina.setCprog(desp);
-    }
-    public void jmpeq(int desp){
-        if(rcmp == 0) maquina.setCprog(desp);
+    public void jmpf(int r, int desp){
+        if(!((Bool) registros[r]).getValor()) maquina.setCprog(desp);
     }
     public void end(){
         while(!pila.get(pila.size()-1).esControl()){
@@ -171,8 +144,6 @@ public class Instrucciones{
             int f1=((Int)registros[r1]).getValor();
             int f2=((Int)registros[r2]).getValor();
             float res=(float)f1/f2;
-          
-
             registros[0] = new TipoFloat(res);
         }
         else if((tipo1 == 0) && (tipo2 == 1)){

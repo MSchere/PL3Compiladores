@@ -13,9 +13,9 @@ public class ContenidoFuncion {
 
 	public void rellenaPilaVar(String nombreVar, String tipoDato){
 		String[] entradaFilaPila = new String[3];
-		entradaFilaPila[1] = nombreVar;
-		entradaFilaPila[2] = tipoDato;
-		entradaFilaPila[3] = Integer.toString(desplazamiento++);
+		entradaFilaPila[0] = nombreVar;
+		entradaFilaPila[1] = tipoDato;
+		entradaFilaPila[2] = Integer.toString(desplazamiento++);
 		pilaVar.add(entradaFilaPila);
 	}
 	
