@@ -67,6 +67,7 @@ expr:	llamadaFuncion #llamafuncion
     |	NEG expr #neg
     |	expr (AND|OR) expr #and
     |	PI expr PD #parentesis
+    |   BOOL #bool
     |   CADENA #cadena
     |   numero #num
     |	ID #id
@@ -100,6 +101,7 @@ ENDIF:'endif';
 ELSE: 'else';
 FOR: 'for';
 //Numeros y palabras
+BOOL: 'true'|'false';
 FLOAT: [0-9]+'.'[0-9]+;
 INT: [0-9]+;
 ID: [a-zA-Z][a-zA-Z_0-9]*;
