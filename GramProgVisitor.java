@@ -177,6 +177,13 @@ public interface GramProgVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitComp(GramProgParser.CompContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code bool}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool(GramProgParser.BoolContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code mul}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
