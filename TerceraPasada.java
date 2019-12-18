@@ -22,6 +22,8 @@ public class TerceraPasada extends GramProgBaseListener {
 
 	boolean esNull = false;
 
+	//public TerceraPasada()
+
 	// FUNCIONES DE APOYO
 
 	@Override
@@ -62,6 +64,12 @@ public class TerceraPasada extends GramProgBaseListener {
 		  esNull=true;
 
 	 }
+	
+	@Override
+	public void enterId(GramProgParser.IdContext ctx) {
+
+		  esNull=true;
+	 }
 
     @Override
     public void exitDeclararYasign(GramProgParser.DeclararYasignContext ctx) { 
@@ -72,11 +80,13 @@ public class TerceraPasada extends GramProgBaseListener {
 			aux.set(3,"null");
 		}
 
-		if(aux.get(2).equals("numero") && aux.get(4).contains(".")) aux.set(2,"float");
-	    if(aux.get(2).equals("numero") && !aux.get(4).contains(".") && !aux.get(4).equals("null")) aux.set(2,"int");
+		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
+	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
 		aux.remove(3);
+		//rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
+		System.out.println(aux.get(0) + aux.get(1)+ aux.get(2));
 		almacen.add(aux);
-		//System.out.println(aux);
+		System.out.println(aux);
 		variable.remove(3);
 		variable.remove(2);
 		variable.remove(1);
@@ -98,35 +108,13 @@ public class TerceraPasada extends GramProgBaseListener {
 
 		ArrayList<String> aux = new ArrayList<String>(variable);
 		aux.remove(3);
+		//rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
 		almacen.add(aux);
-		//System.out.println(aux);
+		System.out.println(aux);
 		variable.remove(3);
 		variable.remove(2);
 		variable.remove(1);
 
 	}
-
-	/*
-	@Override 
-	public void enterExpr(GramProgParser.ExprContext ctx) {
-		if (ctx.CADENA() != null) {
-			pasarArrayatxt2("/Contenido - cadena:" + ctx.CADENA().getText());
-	
-		}
-		if (ctx.llamadafuncionexred() != null) {
-			pasarArrayatxt2("/Contenido - llamada a función:" + ctx.llamadafuncionexred().getText());
-	
-		}
-		if (ctx.ID() != null) {
-			pasarArrayatxt2("/Contenido - variable:" + ctx.ID().getText());
-	
-		}
-		if (ctx.INT() != null) {
-			pasarArrayatxt2("/Contenido - contenido numérico:" + ctx.INT().getText());
-	
-		}
-	 }
-	 */
-
 
 }
