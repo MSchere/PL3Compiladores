@@ -1,4 +1,4 @@
-// Generated from .\GramProg.g4 by ANTLR 4.7.2
+// Generated from GramProg.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -298,6 +298,18 @@ public class GramProgBaseListener implements GramProgListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitComp(GramProgParser.CompContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(GramProgParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(GramProgParser.BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
