@@ -107,7 +107,7 @@ public class Instrucciones{
         while(!pila.get(pila.size()-1).esControl()){
             pop();
         }
-        int nParams = ((Control)pila.get(maquina.getCpila())).getNParams();
+        int nParams = ((Control)pila.get(maquina.getCpila()-1)).getNParams();
         pop();
         for(int i=0;i<nParams;i++){
             pop();
