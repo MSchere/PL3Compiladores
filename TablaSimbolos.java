@@ -30,15 +30,15 @@ public class TablaSimbolos extends ContenidoFuncion{
 	}
 	
 	//Metodo al que hay que llamar cuando se detecta una variable
-	public void rellenaFilaPilaVar(String nombreFunc, String nombreVar, String tipoDato){
+	public void rellenaFilaPilaVar(String nombreFunc, String nombreVar, String tipoDato, String esConstante){
 		//Se comrpueba si es un argumento de la funci�n y se mete en su pila de argumentos y en la de variables
 		if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
-			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato);
+			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato, esConstante);
 			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
 		}
 		//Si no es un argumentos va a la pila de variables de la funcion
 		else {
-			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato);
+			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato, esConstante);
 		}
 	}
 	
@@ -60,6 +60,19 @@ public class TablaSimbolos extends ContenidoFuncion{
 			}
 		}
 		return desplazamiento;
+	}
+	
+	public String[] extraeFilaPilaVariable(String nombreFunc, String nombreVar) {
+		String[] filaPilaVar = new String[4];
+		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
+			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
+				filaPilaVar[0] = funcion.get(nombreFunc).pilaVar.get(i)[0];
+				filaPilaVar[1] = funcion.get(nombreFunc).pilaVar.get(i)[1];
+				filaPilaVar[2] = funcion.get(nombreFunc).pilaVar.get(i)[2];
+				filaPilaVar[3] = funcion.get(nombreFunc).pilaVar.get(i)[3];
+			}
+		}
+		return filaPilaVar;
 	}
 	
 	public String[] extraeContenidoFuncion(String nombreFunc) {

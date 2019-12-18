@@ -12,11 +12,12 @@ public class ContenidoFuncion {
 			pilaVarArgs.add(pilaVar.elementAt(0));
 	}
 
-	public void rellenaPilaVar(String nombreVar, String tipoDato){
-		String[] entradaFilaPila = new String[3];
+	public void rellenaPilaVar(String nombreVar, String tipoDato, String esConstante){
+		String[] entradaFilaPila = new String[4];
 		entradaFilaPila[0] = nombreVar;
 		entradaFilaPila[1] = tipoDato;
 		entradaFilaPila[2] = Integer.toString(desplazamiento++);
+		entradaFilaPila[3] = esConstante;
 		pilaVar.add(entradaFilaPila);
 	}
 	
