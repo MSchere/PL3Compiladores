@@ -18,22 +18,22 @@ public class TerceraPasada extends GramProgBaseListener {
 
 	public ArrayList<String> variable = new ArrayList<String>();
 
+	String tipoaux;
+
+	boolean esNull = false;
+
 	// FUNCIONES DE APOYO
 
 	@Override
     public void enterDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
 
-		 //System.out.println("Nombre_funcion:"+ ctx.ID().getText());
-
 		 variable.add(ctx.ID().getText());
-		 System.out.println(variable.toString());
 
 	}
 
 	@Override
     public void exitBloqueFunc(GramProgParser.BloqueFuncContext ctx) {
 
-        //System.out.println("hola");
 		variable.remove(0);
 
 	}
@@ -41,54 +41,52 @@ public class TerceraPasada extends GramProgBaseListener {
     @Override
     public void enterDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
 
-		variable.add(ctx.tipo().getText());
-		//System.out.println(variable.toString());
+		esNull = false;
 
-		//System.out.println("/Tipo:"+ ctx.tipo().getText());
+		variable.add(ctx.tipo().getText());
 
 		variable.add(ctx.ID().getText());
-		//System.out.println(variable.toString());
 
-		//System.out.println("/Identificador:" + ctx.ID().getText());
-
-		if(ctx.expr().getText()==null){
-			//System.out.println("/Valor: null");
+		if(ctx.expr().getText() == null){
 			variable.add("null");
 
 		}else{
-			//System.out.println("/Valor: "+ ctx.expr().getText());
 			variable.add(ctx.expr().getText());
 		}
 
-    }
+	}
+
+	@Override
+	public void enterLlamafuncion(GramProgParser.LlamafuncionContext ctx) {
+		   
+		  esNull=true;
+
+	 }
 
     @Override
     public void exitDeclararYasign(GramProgParser.DeclararYasignContext ctx) { 
 
 		ArrayList<String> aux = new ArrayList<String>(variable);
-		//System.out.println(variable.toString());
+		if(esNull == true){
+			esNull = false;
+			aux.set(3,"null");
+		}
+
+		if(aux.get(2).equals("numero") && aux.get(4).contains(".")) aux.set(2,"float");
+	    if(aux.get(2).equals("numero") && !aux.get(4).contains(".") && !aux.get(4).equals("null")) aux.set(2,"int");
+		aux.remove(3);
 		almacen.add(aux);
-		System.out.println(aux);
+		//System.out.println(aux);
 		variable.remove(3);
 		variable.remove(2);
-		//System.out.println(variable.toString());
 		variable.remove(1);
-		//System.out.println(variable.toString());
 
 	}
 
     @Override
     public void enterDeclarar(GramProgParser.DeclararContext ctx) { 
 
-        //System.out.println("/define_declarar");
-
-		//System.out.println("/BEGIN");
-
-		//System.out.println("/Tipo:"+ ctx.tipo().getText());
-
 		variable.add(ctx.tipo().getText());
-
-		//System.out.println("/Identificador:" + ctx.ID().getText());
 
 		variable.add(ctx.ID().getText());
 
@@ -99,15 +97,12 @@ public class TerceraPasada extends GramProgBaseListener {
     public void exitDeclarar(GramProgParser.DeclararContext ctx) { 
 
 		ArrayList<String> aux = new ArrayList<String>(variable);
-
-		//System.out.println("/END");
+		aux.remove(3);
 		almacen.add(aux);
-		System.out.println(aux);
+		//System.out.println(aux);
 		variable.remove(3);
 		variable.remove(2);
-		//System.out.println(variable.toString());
 		variable.remove(1);
-		//System.out.println(variable.toString());
 
 	}
 
