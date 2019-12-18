@@ -7,9 +7,9 @@ include: INCLUDE ID FIN #incluir;
 
 funcion: defineFuncion bloqueFuncion #func;
 
-defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo #definirFunc;
+defineFuncion: FUNCION ID PI parametros PD DPUNTO tipo #definirFunc;
 
-parametros: declaracion (COMA declaracion)* #param;
+parametros: (declaracion (COMA declaracion)*)? #param;
 
 bloqueFuncion: BEGIN bloqueCodigo END #bloqueFunc;
 
@@ -44,10 +44,10 @@ sentencia:  (declararYasignar FIN)
             |FIN;
 
 
-declararYasignar: CONST? tipo ID ASIG expr #declararYasign;
+declararYasignar: tipo ID ASIG expr #declararYasign;
 
 
-declaracion: CONST? tipo ID #declarar;
+declaracion: tipo ID #declarar;
 
 
 asignacion: ID ASIG expr #asignar;
@@ -85,7 +85,6 @@ COMENTARIO  :   ('//' .*? '\n'
             ;
             
 //Keywords
-CONST: 'const';
 INCLUDE: 'include';
 FUNCION: 'function';
 BEGIN: 'begin';
