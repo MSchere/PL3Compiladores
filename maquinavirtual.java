@@ -6,9 +6,13 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.*;
 
-public class PruebaTrip {
-    public void main(boolean debug){
-        String ruta = "./Tripletas.txt";
+public class maquinavirtual {
+    public static void main(String[] args){
+        String ruta;
+        if (args.length > 0) {
+            ruta = args[0];
+        }
+        boolean debug = false;
         try {
             InputStream is = System.in;
             is=new FileInputStream(ruta);
@@ -37,6 +41,7 @@ public class PruebaTrip {
                 tripletas.add(tri.crearTripleta(triStrng.get(i)));
 
             }
+            if(args.length>1 && args[1].equals("-debug")) debug = true;
             Mv maquina = new Mv(tripletas,debug);
             maquina.ejecutar();
         } catch (Exception e) {
