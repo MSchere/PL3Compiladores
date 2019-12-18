@@ -253,6 +253,30 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip2.get(2));
                 tripletas.add(trip2.get(3));
                 tripletas.add(trip2.get(4));
+                tripletas.add(trip2.get(5));
+                tripletas.add(trip2.get(6));
+                break;
+                case("cadenaSinEspacios"):
+                ArrayList<String[]> trip3 = biblio.cadenaSinEspacios(cpila);
+                tripletas.add(trip3.get(0));
+                tripletas.add(trip3.get(1));
+                tripletas.add(trip3.get(2));
+                tripletas.add(trip3.get(3));
+                tripletas.add(trip3.get(4));
+
+                break;
+                case("cadenaSustituida"):
+                ArrayList<String[]> trip4 = biblio.cadenaSustituida(cpila);
+                tripletas.add(trip4.get(0));
+                tripletas.add(trip4.get(1));
+                tripletas.add(trip4.get(2));
+                tripletas.add(trip4.get(3));
+                tripletas.add(trip4.get(4));
+                tripletas.add(trip4.get(5));
+                tripletas.add(trip4.get(6));
+                tripletas.add(trip4.get(7));
+                tripletas.add(trip4.get(8));
+
                 break;
             }
         }
@@ -397,6 +421,15 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             trip[1] = "1";
         }
         else trip[1]= "0";
+        trip[2] = ctx.getText();
+        tripletas.add(trip);
+        cpila[0] = cpila[0]+1;
+        return trip[1];
+    }
+    public String visitCadena(GramProgParser.NumeroContext ctx) {
+        String[] trip = {"","",""};
+        trip[0] = "1";
+        trip[1] = "2";
         trip[2] = ctx.getText();
         tripletas.add(trip);
         cpila[0] = cpila[0]+1;
