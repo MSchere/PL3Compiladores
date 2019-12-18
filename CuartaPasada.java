@@ -280,7 +280,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return visitChildren(ctx);
     }*/
     @Override
-    public T visitMul(GramProgParser.MulContext ctx) { 
+    public String visitMul(GramProgParser.MulContext ctx) { 
         System.out.println("mult/div");
         int tipo = Integer.parseInt(visit(ctx.expr(0)));
         int tipo1 = Integer.parseInt(visit(ctx.expr(1)));
@@ -296,7 +296,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         trip1[2] = "2";
         tripletas.add(trip1);
         String[] trip2 = {"","",""};
-        if(ctx.MUL().getText()!=null){
+        if(ctx.MUL()!=null){
             trip2[0] = "9";
         }else{
             trip2[0] = "10";
@@ -339,9 +339,11 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         trip1[2] = "2";
         tripletas.add(trip1);
         String[] trip2 = {"","",""};
-        if(ctx.SUM().getText()!=null){
-            trip2[0] = "7";
-        }else{
+        if(ctx.SUM()!=null){
+        trip2[0] = "7";        
+    }
+        else{
+            System.out.println("he entrado");
             trip2[0] = "8";
         }
         trip2[1] = "1";

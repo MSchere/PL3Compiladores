@@ -168,7 +168,12 @@ public class Instrucciones{
         int tipo1 = ((Dato)registros[r1]).getTipo();
         int tipo2 = ((Dato)registros[r2]).getTipo();
         if((tipo1 == 0) && (tipo2 == 0)){
-            registros[0] = new Int(((Int)registros[r1]).getValor()/((Int)registros[r2]).getValor());
+            int f1=((Int)registros[r1]).getValor();
+            int f2=((Int)registros[r2]).getValor();
+            float res=(float)f1/f2;
+          
+
+            registros[0] = new TipoFloat(res);
         }
         else if((tipo1 == 0) && (tipo2 == 1)){
             registros[0] = new TipoFloat(((Int)registros[r1]).getValor()/((TipoFloat)registros[r2]).getValor());
