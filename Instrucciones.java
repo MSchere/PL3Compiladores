@@ -60,7 +60,7 @@ public class Instrucciones{
             pila.add(new Cadena((String)valor));
                 break;
             case 3:
-            pila.add(new Bool(boolean)valor));
+            pila.add(new Bool((boolean)valor));
         }
         maquina.setCpila(maquina.getCpila()+1);
     }

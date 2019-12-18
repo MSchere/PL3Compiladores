@@ -15,6 +15,12 @@ public static void main(String[] args)throws Exception{
     is=new FileInputStream(inputFile);
     }
 
+    boolean debug = false;
+    if(args.length>1){
+        String sdebug = args[1];
+        if(sdebug.equals("-debug")) debug = true;
+    }
+
     ANTLRInputStream input = new ANTLRInputStream(is);
     GramProgLexer lexer=new GramProgLexer(input);
     CommonTokenStream tokens= new CommonTokenStream(lexer);
@@ -25,6 +31,7 @@ public static void main(String[] args)throws Exception{
     CuartaPasada nv=new CuartaPasada();
     nv.visit(tree);
     nv.ImprimirTriple();
-    PruebaTrip prtrip = new PruebaTrip().main();
+    PruebaTrip prtrip = new PruebaTrip();
+    prtrip.main(debug);
 }
 };

@@ -34,12 +34,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             for (int j = 0; j < tripletas.size(); j++) {
                 String[] PrintPOS;
                 PrintPOS = tripletas.get(j);
-                System.out.println(" ");
-
-                for (int i = 0; i < PrintPOS.length; i++) {
-
-                    System.out.print(PrintPOS[i] + ",");
-                }
+                
                 bw.write("[");
                 bw.write(PrintPOS[0]);
                 if(PrintPOS.length > 1){

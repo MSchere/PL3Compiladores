@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.*;
 
 public class PruebaTrip {
-    public void main(){
+    public void main(boolean debug){
         String ruta = "./Tripletas.txt";
         try {
             InputStream is = System.in;
@@ -37,7 +37,7 @@ public class PruebaTrip {
                 tripletas.add(tri.crearTripleta(triStrng.get(i)));
 
             }
-            Mv maquina = new Mv(tripletas);
+            Mv maquina = new Mv(tripletas,debug);
             maquina.ejecutar();
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,12 +8,14 @@ public class Mv {
     private Entrada[] registros = { null, null, null, null, null };
     private int cpila = 0;
     private int cprog = 0;
+    private boolean debug;
     private ArrayList<Entrada> pila = new ArrayList<Entrada>();
     private ArrayList<Tripletas> memoria;
     private Instrucciones inst = new Instrucciones(this, registros, pila);
 
-    public Mv(ArrayList<Tripletas> memoria) {
+    public Mv(ArrayList<Tripletas> memoria, boolean debug) {
         this.memoria = memoria;
+        this.debug = debug;
     }
 
     public void ejecutar() {
@@ -43,181 +45,201 @@ public class Mv {
     private void TraducirYEjecutar(Tripletas triple) {
         int primera = triple.primeraPosicion;
         int segunda = triple.segundaPosicion;
-        if(triple.hayTercero && primera == 1){
-
+        int tercera = 0;
+        if(triple.hayTercero && primera != 1){
+            tercera = (int)triple.terceraPosicion;
         }
         switch (primera) {
         case 0:
-            //if(debug)System.out.println("Init con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.init(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Init con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.init(segunda, tercera);
             break;
         case 1:
-            //System.out.println("Push con parametro 1 " + triple.segundaPosicion + "Push con parametro 1 " + triple.terceraPosicion);
-            if(!triple.hayTercero) inst.push(triple.segundaPosicion);
-            else inst.push(triple.segundaPosicion, Integer.toString(triple.terceraPosicion));
+            if(!triple.hayTercero){
+                if(debug)System.out.println("Push con parametro 1 " + segunda);
+                inst.push(segunda);
+            }
+            else{
+                if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + tercera);
+                switch(segunda){
+                    case 0:
+                        inst.push(segunda, (int)triple.terceraPosicion);
+                        break;
+                    case 1:
+                        inst.push(segunda, (float)triple.terceraPosicion);
+                        break;
+                    case 2:
+                        inst.push(segunda, (String)triple.terceraPosicion);
+                        break;
+                    case 3:
+                        inst.push(segunda, (boolean)triple.terceraPosicion);
+                        break;
+                }
+            }
             break;
         case 2:
-            //System.out.println("Pop");
+        if(debug)System.out.println("Pop");
             inst.pop();
             break;
         case 3:
-            //System.out.println("MovRR con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.movRR(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("MovRR con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.movRR(segunda, tercera);
             break;
         case 4:
-            //System.out.println("MovRM con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.movRM(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("MovRM con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.movRM(segunda, tercera);
             break;
         case 5:
-            //System.out.println("MovMR con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.movMR(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("MovMR con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.movMR(segunda, tercera);
             break;
         case 6:
-            //System.out.println("END");
+            if(debug)System.out.println("END");
             inst.end();
             if (cpila == 0)
                 cprog = memoria.size();
             break;
         case 7:
-            //System.out.println("Add con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.add(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Add con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.add(segunda, tercera);
             break;
         case 8:
-            //System.out.println("SUB con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.sub(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("SUB con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.sub(segunda, tercera);
             break;
         case 9:
-            System.out.println("MUL con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.mul(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("MUL con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.mul(segunda, tercera);
             break;
         case 10:
-            System.out.println("DIV con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.div(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("DIV con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.div(segunda, tercera);
             break;
         case 11:
-            System.out.println("EXP con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.exp(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("EXP con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.exp(segunda, tercera);
             break;
         case 12:
-            System.out.println("SQRT con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.sqrt(triple.segundaPosicion);
+            if(debug)System.out.println("SQRT con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.sqrt(segunda);
             break;
         case 13:
-            System.out.println("Menor que con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.menq(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Menor que con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.menq(segunda, tercera);
             break;
         case 14:
-            System.out.println("Mayor que con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.mayq(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Mayor que con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.mayq(segunda, tercera);
             break;
         case 15:
-            System.out.println("Igual que con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.igual(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Igual que con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.igual(segunda, tercera);
             break;
         case 16:
-            System.out.println("No Igual que con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.noIgual(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("No Igual que con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.noIgual(segunda, tercera);
             break;
         case 17:
-            System.out.println("Dif Bit con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.difBit(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Dif Bit con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.difBit(segunda, tercera);
             break;
         case 18:
-            System.out.println("And Bit con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.andBit(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("And Bit con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.andBit(segunda, tercera);
             break;
         case 19:
-            System.out.println("Or Bit con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.orBit(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Or Bit con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.orBit(segunda, tercera);
             break;
         case 20:
-            System.out.println("lShift con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.lShift(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("lShift con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.lShift(segunda, tercera);
             break;
         case 21:
-            System.out.println("rShift con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.rShift(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("rShift con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.rShift(segunda, tercera);
             break;
         case 22:
-            System.out.println("And con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.and(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("And con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.and(segunda, tercera);
             break;
         case 23:
-            System.out.println("Or con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.or(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Or con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.or(segunda, tercera);
             break;
         case 24:
-            System.out.println("Jump con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.jump(triple.segundaPosicion);
+            if(debug)System.out.println("Jump con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.jump(segunda);
             break;
         //case 25:
-        //    System.out.println("Copiar cadena con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-        //    inst.copiaCadena(triple.segundaPosicion, triple.terceraPosicion);
+        //    System.out.println("Copiar cadena con parametro 1 " + segunda + " parametro 2 " + tercera);
+        //    inst.copiaCadena(segunda, tercera);
         //    break;
         case 26:
-            System.out.println("Concatenar con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.concat(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Concatenar con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.concat(segunda, tercera);
             break;
         case 27:
-            System.out.println("Extraer cadena con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-            inst.extraerCad(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Extraer cadena con parametro 1 " + segunda + " parametro 2 " + tercera);
+            inst.extraerCad(segunda, tercera);
             break;
         //case 28:
-        //    System.out.println("Obtener el carácter en una posición con parametro 1 " + triple.segundaPosicion + " parametro 2 "
-        //            + triple.terceraPosicion);
-        //    inst.getCharAtPos(triple.segundaPosicion, triple.terceraPosicion);
+        //    System.out.println("Obtener el carácter en una posición con parametro 1 " + segunda + " parametro 2 "
+        //            + tercera);
+        //    inst.getCharAtPos(segunda, tercera);
         //    break;
         //case 29:
         //    System.out.println(
-        //            "Cambia caracter en una posición con parametro 1 " + triple.segundaPosicion + " parametro 2 " + triple.terceraPosicion);
-        //    inst.cambiaChar(triple.segundaPosicion, triple.terceraPosicion);
+        //            "Cambia caracter en una posición con parametro 1 " + segunda + " parametro 2 " + tercera);
+        //    inst.cambiaChar(segunda, tercera);
         //    break;
         case 30:
-            System.out.println("Quita los espacios en blanco");
-            inst.sinEspacios(triple.segundaPosicion);
+            if(debug)System.out.println("Quita los espacios en blanco");
+            inst.sinEspacios(segunda);
             break;
         case 31:
-            System.out.println("Longitud de la cadena");
-            inst.cadenaLongitud(triple.segundaPosicion);
+            if(debug)System.out.println("Longitud de la cadena");
+            inst.cadenaLongitud(segunda);
             break;
         case 32:
-            System.out.println("Busca una cadena");
-            inst.cadenaDonde(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Busca una cadena");
+            inst.cadenaDonde(segunda, tercera);
             break;
         case 33:
-            System.out.println("Sustituye una cadena por otra");
-            inst.sustituir(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Sustituye una cadena por otra");
+            inst.sustituir(segunda, tercera);
             break;
         case 34:
-            System.out.println("Cortar cadena desde la izquierda");
-            inst.cadenaI(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Cortar cadena desde la izquierda");
+            inst.cadenaI(segunda, tercera);
             break;
         case 35:
-            System.out.println("Cortar cadena desde la derecha");
-            inst.cadenaD(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Cortar cadena desde la derecha");
+            inst.cadenaD(segunda, tercera);
             break;
         case 36:
-            System.out.println("Cortar cadena desde una posición intermedia");
-            inst.cadenaDentro(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Cortar cadena desde una posición intermedia");
+            inst.cadenaDentro(segunda, tercera);
             break;
         case 37:
-            System.out.println("Abrir fichero");
-            inst.abrirFichero(triple.segundaPosicion);
+            if(debug)System.out.println("Abrir fichero");
+            inst.abrirFichero(segunda);
             break;
         case 38:
-            System.out.println("Escribir en fichero");
-            inst.escribirFichero(triple.segundaPosicion, triple.terceraPosicion);
+            if(debug)System.out.println("Escribir en fichero");
+            inst.escribirFichero(segunda, tercera);
             break;
         case 39:
-            System.out.println("Leer fichero");
-            inst.leerFichero(triple.segundaPosicion);
+            if(debug)System.out.println("Leer fichero");
+            inst.leerFichero(segunda);
             break;
         case 40:
-            System.out.println("Cerrar fichero");
-            inst.cerrarFichero(triple.segundaPosicion);
+            if(debug)System.out.println("Cerrar fichero");
+            inst.cerrarFichero(segunda);
             break;
         case 41:
-            inst.imprimir(triple.segundaPosicion);
+            if(debug)System.out.println("Imprime por pantalla");
+            inst.imprimir(segunda);
             break;
         case 42: // Debug
             System.out.println(pila);
