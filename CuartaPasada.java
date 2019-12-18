@@ -10,8 +10,14 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     private int tamParInit = 0;
     private String tipoFunc = " ";
     private int[] cpila = {0};
-    private String FuncActual=" ";
+    private String funcActual=" ";
     private BibliotecaFunciones biblio = new BibliotecaFunciones();
+    private TablaSimbolos tb;
+
+    public CuartaPasada(TablaSimbolos tb){
+        this.tb = tb;
+    }
+
     @Override
     public String visitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
 
@@ -167,33 +173,45 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     }
     @Override
     public String visitDeclarar(GramProgParser.DeclararContext ctx) {
-        String[] PrintPOS = { " ", " ", " " };
+        String[] PrintPOS = { " ", " "};
         PrintPOS[0] = "1";
         switch (ctx.tipo().getText()) {
-        case ("numero"):
-            PrintPOS[1] = "1";
-
-            break;
-        case ("cadena"):
-            PrintPOS[1] = "2";
-            break;
-        case ("boolean"):
-            PrintPOS[1] = "3";
-            break;
+            case ("numero"):
+                if(ctx.getText().contains(".")){
+                trip[1] = "1";
+                }
+                else trip[1]= "0";
+                break;
+            case ("cadena"):
+                PrintPOS[1] = "2";
+                break;
+            case ("boolean"):
+                PrintPOS[1] = "3";
+                break;
         }
-        PrintPOS[2] = "";
-        tamParInit++;
+        cpila[0] = cpila[0] + 1;
         tripletas.add(PrintPOS);
 
         return visitChildren(ctx);
     }
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
-        // ctx.ID().getText(); me pillo el nombre, se busca en la tabla de simbolos y se
-        // pilla el desplazamiento
-        // hay que ir a la posicion de la pila y cambiar el valor de la variable
-        System.out.println("Estoy en asignacion " + ctx.ID());
-        return visitChildren(ctx);
+        ctx.expr();
+        int desp = tb.getDespFuncion(funcActual) + tb.getDespVar(funcActual,ctx.ID().getText());
+        String[] trip0 = {"","",""};
+        trip0[0] = "5";
+        trip0[1] = Integer.toString(cpila[0]-1);
+        trip0[2] = "1";
+        tripletas.add(trip0);
+        String[] trip1 = {"","",""};
+        trip0[0] = "4";
+        trip0[1] = "1";
+        trip0[2] = Integer.toString(desp);
+        tripletas.add(trip1);
+        String[] trip3 = {""};
+        trip3[0] = "2";
+        tripletas.add(trip3);
+        return "";
     }
     @Override
     public String visitDevolv(GramProgParser.DevolvContext ctx) {
