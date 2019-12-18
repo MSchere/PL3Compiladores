@@ -4,7 +4,7 @@ public class Tripletas {
 
     public int primeraPosicion;
     public int segundaPosicion;
-    public Object terceraPosicion;
+    public String terceraPosicion;
     public Object[] terceraPosicionArray;
     public boolean hayTercero = false;
 

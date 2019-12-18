@@ -47,7 +47,7 @@ public class Mv {
         int segunda = triple.segundaPosicion;
         int tercera = 0;
         if(triple.hayTercero && primera != 1){
-            tercera = (int)triple.terceraPosicion;
+            tercera = Integer.parseInt(triple.terceraPosicion);
         }
         switch (primera) {
         case 0:
@@ -63,16 +63,17 @@ public class Mv {
                 if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + tercera);
                 switch(segunda){
                     case 0:
-                        inst.push(segunda, (int)triple.terceraPosicion);
+                        inst.push(segunda, Integer.parseInt(triple.terceraPosicion));
                         break;
                     case 1:
-                        inst.push(segunda, (float)triple.terceraPosicion);
+                        inst.push(segunda, new Float(triple.terceraPosicion));
                         break;
                     case 2:
-                        inst.push(segunda, (String)triple.terceraPosicion);
+                        inst.push(segunda, triple.terceraPosicion);
                         break;
                     case 3:
-                        inst.push(segunda, (boolean)triple.terceraPosicion);
+                        if(triple.terceraPosicion.equals("true")) inst.push(segunda, true);
+                        else inst.push(segunda, false);
                         break;
                 }
             }
