@@ -1,7 +1,8 @@
 
 public class PrimeraPasada extends GramProgBaseVisitor<String> {
+    
     private String lul = "";
-
+    private int tamParInit = 0;
     public String visitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
 
         String nani = visitChildren(ctx);
@@ -20,12 +21,23 @@ public class PrimeraPasada extends GramProgBaseVisitor<String> {
         System.out.println("Defino func " + ctx.ID());
         if (ctx.parametros() != null) {
             System.out.println(" tiene parametros");
-            ctx.parametros();
+            String param=ctx.parametros().getText();
+            int count = 0;
+            int idx = 0;
+            while ((idx = param.indexOf("numero", idx)) != -1) {
+                count++;
+                idx += "numero".length();
+            }
+            
+            System.out.println(count);
+            
+           
         } else {
             System.out.println("No tiene parametros");
         }
         System.out.println("Tipo");
         
+        tamParInit = 0;
         return visitChildren(ctx);
     }
 
@@ -71,11 +83,12 @@ public class PrimeraPasada extends GramProgBaseVisitor<String> {
     }
 
     public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
-        return null;
+        tamParInit++;
+        return visitChildren(ctx);
     }
 
     public String visitDeclarar(GramProgParser.DeclararContext ctx) {
-        return null;
+        return visitChildren(ctx);
     }
 
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
