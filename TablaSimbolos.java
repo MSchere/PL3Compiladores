@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class TablaSimbolos extends ContenidoFuncion{
 	
@@ -39,7 +40,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 	}
 	
 	public String[] extraeContenidoFuncion(String nombreFunc) {
-		String[] contenidoFunc;
+		String[] contenidoFunc = new String[3];
 		contenidoFunc[0] = nombreFunc;
 		contenidoFunc[1] = String.valueOf(funcion.get(nombreFunc).numArgumentos);
 		if (funcion.get(nombreFunc).tipoRetorno == 1) {
@@ -54,10 +55,10 @@ public class TablaSimbolos extends ContenidoFuncion{
 		return contenidoFunc;
 	}
 	
-	public String[] extraeTiposArgumentos(String nombreFunc) {
-		String[] tiposArgumentos;
+	public ArrayList<String> extraeTiposArgumentos(String nombreFunc) {
+		ArrayList<String> tiposArgumentos = new ArrayList<String>();
 		for (int i = 0; i < (funcion.get(nombreFunc).pilaVarArgs).size(); i++) {
-			tiposArgumentos[i] = funcion.get(nombreFunc).pilaVarArgs.get(i)[2];
+			tiposArgumentos.add(funcion.get(nombreFunc).pilaVarArgs.get(i)[2]);
 		}
 		return tiposArgumentos;
 	}
