@@ -98,7 +98,7 @@ public class BibliotecaFunciones{
     tripleta.clear();
     String[] tri = {"","",""};
     tri[0] = "5";
-    tri[1] = Integer.toString(cpila[0]-2;
+    tri[1] = Integer.toString(cpila[0]-2);
     tri[2] = "1";
     tripleta.add(tri);
     String[] tri2 = {"","",""};
