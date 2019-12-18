@@ -35,6 +35,19 @@ public class BibliotecaFunciones{
         tripleta.add(tri2);
         return tripleta;
     }
+    public ArrayList<String[]> sqrt(int[] cpila){
+        tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-1);
+        tri[2] = "1";
+        tripleta.add(tri);
+        String[] tri2 = {"",""};
+        tri2[0] = "12";
+        tri2[1] = "1";
+        tripleta.add(tri2);
+        return tripleta;
+    }
     public ArrayList<String[]> fopen(int[] cpila){
         tripleta.clear();
         String[] tri = {"","",""};
