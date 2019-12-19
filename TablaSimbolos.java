@@ -60,7 +60,6 @@ public class TablaSimbolos extends ContenidoFuncion{
 			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
 				System.out.println("El nombre de la var es "+ nombreVar);
 				tipoVar = funcion.get(nombreFunc).pilaVar.get(i)[1];
-				System.out.println("Estoy recibiendo "+tipoVar);
 				switch(tipoVar){
 					case("int"):
 					tipoVar="0";
@@ -83,6 +82,8 @@ public class TablaSimbolos extends ContenidoFuncion{
 	
 	public int extraeDesplazamientoVariable(String nombreFunc, String nombreVar) {
 		int desplazamiento = 0;
+
+
 
 		int fin = (funcion.get(nombreFunc).pilaVar).size();
 	

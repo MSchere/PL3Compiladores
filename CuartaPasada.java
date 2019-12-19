@@ -170,7 +170,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
         String[] trip101 = { "1",""};
         trip101[1]=tb.extraeTipoVariable(funcActual,ctx.ID().getText());
-        
+    
         tripletas.add(trip101);
         cpila[0]=cpila[0]+1;
         visitChildren(ctx);
@@ -187,7 +187,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         String[] trip22={"2"};
         tripletas.add(trip22);
         cpila[0]=cpila[0]-1;
-
         return "";
     }
 
@@ -195,7 +194,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     public String visitDeclarar(GramProgParser.DeclararContext ctx) {
         String[] trip101 = { "1",""};
         trip101[1]=tb.extraeTipoVariable(funcActual,ctx.ID().getText());
-        System.out.println("Estoy pillando como tipo de var en declarar "+trip101[1]);
         tripletas.add(trip101);
         cpila[0]=cpila[0]+1;
     
@@ -218,7 +216,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         String[] trip22={"2"};
         tripletas.add(trip22);
         cpila[0]=cpila[0]-1;
-        
         return "";
     }
 
@@ -534,6 +531,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return trip[1];
     }
     public String visitId(GramProgParser.IdContext ctx){
+
             String[] trip0 = { "", "", "" };
             trip0[0] = "5";
             trip0[1] = String.valueOf(tb.extraeDesplazamientoVariable(funcActual,ctx.getText()));
