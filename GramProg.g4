@@ -7,9 +7,9 @@ include: INCLUDE ID FIN #incluir;
 
 funcion: defineFuncion bloqueFuncion #func;
 
-defineFuncion: FUNCION ID PI parametros? PD DPUNTO tipo #definirFunc;
+defineFuncion: FUNCION ID PI parametros PD DPUNTO tipo #definirFunc;
 
-parametros: declaracion (COMA declaracion)* #param;
+parametros: (declaracion (COMA declaracion)*)? #param;
 
 bloqueFuncion: BEGIN bloqueCodigo END #bloqueFunc;
 
