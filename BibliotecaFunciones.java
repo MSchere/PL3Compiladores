@@ -7,7 +7,6 @@ public class BibliotecaFunciones{
     
     public BibliotecaFunciones(){
         funciones.add("imprimir");
-        funciones.add("print");
         funciones.add("fopen");
         funciones.add("fwrite");
         funciones.add("sqrt");
@@ -101,7 +100,7 @@ public class BibliotecaFunciones{
         tri2[1] = Integer.toString(cpila[0]-1);
         tri2[2] = "2";
         tripleta.add(tri2);
-        String[] tri3 = {"","",""};
+        String[] tri3 = {"",""};
         tri3[0] = "38";
         tri3[1] = "1";
         tri3[2] = "2";
@@ -243,12 +242,6 @@ public class BibliotecaFunciones{
         tri4[0] = "5";
         tri4[1] = Integer.toString(cpila[0]-1);
         tri4[2] = "3";
-        tripleta.add(tri4);
-      /*  */
-        String[] tri3 = {"","",""};
-        tri3[0] = "33";
-        tri3[1] = "2";
-        tri3[2] = "3";
         String[] tri13={"2"};
         tripleta.add(tri13);
         cpila[0] = cpila[0] - 1;
@@ -258,6 +251,11 @@ public class BibliotecaFunciones{
         String[] tri11={"2"};
         tripleta.add(tri11);
         cpila[0] = cpila[0] - 1;
+        tripleta.add(tri4);
+        String[] tri3 = {"","",""};
+        tri3[0] = "33";
+        tri3[1] = "2";
+        tri3[2] = "3";
         tripleta.add(tri3);
         String[] tri7 = {"",""};
         tri7[0] = "1";

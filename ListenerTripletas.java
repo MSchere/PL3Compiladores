@@ -30,6 +30,7 @@ public class ListenerTripletas extends GramJInsBaseListener {
         case 12:
             String cadena = node.getText();
             cadena = cadena.substring(1, cadena.length()-1);
+            System.out.println(cadena);
             meteValor(cadena);
             break;
 

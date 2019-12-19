@@ -58,7 +58,6 @@ public class TablaSimbolos extends ContenidoFuncion{
 		String tipoVar = "null";
 		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
 			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
-				System.out.println("El nombre de la var es "+ nombreVar);
 				tipoVar = funcion.get(nombreFunc).pilaVar.get(i)[1];
 				switch(tipoVar){
 					case("int"):
@@ -67,7 +66,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 					case("float"):
 					tipoVar="1";
 					break;
-					case("cadena"):
+					case("String"):
 					tipoVar="2";
 					break;
 					case("bool"):
@@ -84,13 +83,13 @@ public class TablaSimbolos extends ContenidoFuncion{
 		int desplazamiento = 0;
 
 
-
 		int fin = (funcion.get(nombreFunc).pilaVar).size();
 	
 		for(int i = 0; i < fin ; i++) {
 			String nombre = funcion.get(nombreFunc).pilaVar.get(i)[0];
 
 			if(nombre.equals(nombreVar)) {
+
 				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]) + funcion.get(nombreFunc).punteroPila;
 			}
 		}
