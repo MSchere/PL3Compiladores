@@ -74,7 +74,7 @@ public class Instrucciones{
     public void jmpt(int r, int desp){
         if(((Bool) registros[r]).getValor()) maquina.setCprog(desp);
     }
-    public void jmpf(int desp){
+    public void jmpf(int r, int desp){
         if(!((Bool) registros[r]).getValor()) maquina.setCprog(desp);
     }
     public void end(){

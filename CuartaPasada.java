@@ -7,7 +7,6 @@ import java.io.FileWriter;
 public class CuartaPasada extends GramProgBaseVisitor<String> {
     private String[] TripletaInit = { " ", " ", " " };
     ArrayList<String[]> tripletas = new ArrayList<String[]>(); // Create an ArrayList object
-    private int tamParInit = 0;
     private String tipoFunc = " ";
     private int[] cpila = { 0 };
     private String funcActual = " ";
@@ -104,11 +103,9 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             PrintPOS[i] = TripletaInit[i];
 
         }
-
-        tripletas.add(PrintPOS);
         cpila[0] = cpila[0] + 1;
-        tamParInit = 0;
-
+        tb.setPunteroPila(funcActual,cpila[0]);
+        tripletas.add(PrintPOS);
         return null;
     }
 
@@ -178,7 +175,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         String[] trip1 = { "" };
         trip1[0] = "2";
         tripletas.add(trip1);
-        int desp = tb.getDespFuncion(funcActual) + tb.getDespVar(funcActual, ctx.ID().getText());
+        int desp = tb.extraeDesplazamientoVariable(funcActual,ctx.ID().getText());
         String[] trip2 = { "", "", "" };
         trip2[0] = "4";
         trip2[1] = "1";
@@ -197,9 +194,9 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         switch (ctx.tipo().getText()) {
         case ("numero"):
             if (ctx.getText().contains(".")) {
-                trip[1] = "1";
+                PrintPOS[1] = "1";
             } else
-                trip[1] = "0";
+            PrintPOS[1] = "0";
             break;
         case ("cadena"):
             PrintPOS[1] = "2";
@@ -217,7 +214,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
         ctx.expr();
-        int desp = tb.getDespFuncion(funcActual) + tb.getDespVar(funcActual, ctx.ID().getText());
+        int desp = tb.extraeDesplazamientoVariable(funcActual,ctx.ID().getText());
         String[] trip0 = { "", "", "" };
         trip0[0] = "5";
         trip0[1] = Integer.toString(cpila[0] - 1);

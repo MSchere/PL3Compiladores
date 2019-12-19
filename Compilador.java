@@ -33,7 +33,11 @@ public class Compilador {
             //Creamos pasadas y las recorremos
             PrimeraPasada p1 = new PrimeraPasada(ts);
             TerceraPasada p3 = new TerceraPasada(ts);
+            SegundaPasada p2=new SegundaPasada();
+            CuartaPasada p4= new CuartaPasada(ts);
             p1.visit(tree);
+            p2.visit(tree);
+            p4.visit(tree);
 
     }
 }
