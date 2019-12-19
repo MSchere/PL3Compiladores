@@ -27,6 +27,6 @@ COMENTARIO_BLOQUE: '/*' .*? '*/' -> skip;
 
 INT: [0-9]+;
 NEWLINE: [\r\n]+;
-CADENA: (ESC|[a-zA-Z0-9'á_;:. ])+;
+CADENA:  (ESC|[a-zA-Z0-9'á_;:. ])+ ;
 fragment ESC:'\\'[btnr"\\] ;//[a-zA-Z0-9_ ]+;
 ARRAY: LVI (INT(PUNTO INT)?|CADENA)?  (COMA|INT(PUNTO INT)?|CADENA)* LVD;

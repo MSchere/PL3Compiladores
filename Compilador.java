@@ -9,8 +9,12 @@ public class Compilador {
     public static void main(String[] args) throws Exception {
         // Fuerzo la carga del fichero
         String inputFile="";
+        String salida = "";
         if (args.length > 0) {
             inputFile = args[0];
+        }
+        if (args.length > 1) {
+            salida = args[1];
         }
         InputStream is = System.in;
         if (!inputFile.equals("")) {
@@ -32,12 +36,14 @@ public class Compilador {
             
             //Creamos pasadas y las recorremos
             PrimeraPasada p1 = new PrimeraPasada(ts);
-            TerceraPasada p3 = new TerceraPasada(ts);
             SegundaPasada p2=new SegundaPasada();
-            CuartaPasada p4= new CuartaPasada(ts);
+            TerceraPasada p3 = new TerceraPasada(ts);
+            CuartaPasada p4= new CuartaPasada(ts,salida);
             p1.visit(tree);
             p2.visit(tree);
+            walker.walk(p3,tree);
             p4.visit(tree);
+            p4.ImprimirTriple();
 
     }
 }

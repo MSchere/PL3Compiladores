@@ -12,8 +12,10 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     private String funcActual = " ";
     private BibliotecaFunciones biblio = new BibliotecaFunciones();
     private TablaSimbolos tb;
+    private String nombreruta;
 
-    public CuartaPasada(TablaSimbolos tb) {
+    public CuartaPasada(TablaSimbolos tb, String nombreruta) {
+        this.nombreruta=nombreruta;
         this.tb = tb;
     }
 
@@ -30,10 +32,11 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     public void ImprimirTriple() {
         try {
-            File file = new File("Tripletas.txt");
+            File file = new File(nombreruta);
             if (file.exists()) {
                 file.delete();
             }
+            System.out.println("he creado "+nombreruta);
             file.createNewFile();
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -253,7 +256,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(t);
                 break;
             case ("sqrt"):
-                System.out.println("He entrado en sqrt");
                 ArrayList<String[]> trip1 = biblio.sqrt(cpila);
                 tripletas.add(trip1.get(0));
                 tripletas.add(trip1.get(1));
@@ -322,12 +324,14 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip7.get(6));
                 break;
             case ("cadenaLongitud"):
+            
                 ArrayList<String[]> trip8 = biblio.cadenaLongitud(cpila);
                 tripletas.add(trip8.get(0));
                 tripletas.add(trip8.get(1));
                 tripletas.add(trip8.get(2));
                 tripletas.add(trip8.get(3));
                 tripletas.add(trip8.get(4));
+ 
                 break;
             case ("fopen"):
                 ArrayList<String[]> trip9 = biblio.fopen(cpila);
@@ -516,7 +520,8 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return trip[1];
     }
 
-    public String visitCadena(GramProgParser.NumeroContext ctx) {
+    public String visitCadena(GramProgParser.CadenaContext ctx) {
+        System.out.println("cadena");
         String[] trip = { "", "", "" };
         trip[0] = "1";
         trip[1] = "2";
