@@ -1,17 +1,17 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 
 public class TablaSimbolos extends ContenidoFuncion{
 	
 	HashMap<String, ContenidoFuncion> funcion = new HashMap<String, ContenidoFuncion>();
 	
 	//Metodo al que hay que llamar cuando se detecta una funci�n
-	public void rellenaFuncion(String nombreFunc, int numArgumentos, String tipoRetorno) {
+	public void rellenaFuncion(String nombreFunc, int numArgumentos, String tipoRetorno, int cpila) {
 		//Creamos un objeto que tiene el contenido de funci�n y sus caracter�sticas
 		ContenidoFuncion cnt = new ContenidoFuncion();
 		
 		//Introduce el numero de argumentos
 		cnt.setNumArgumentos(numArgumentos);
+		cnt.punteroPila = cpila;
 		
 		//Introduce el tipo de dato de salida
 		if (tipoRetorno.equals("numero")) {
@@ -66,9 +66,15 @@ public class TablaSimbolos extends ContenidoFuncion{
 	
 	public int extraeDesplazamientoVariable(String nombreFunc, String nombreVar) {
 		int desplazamiento = 0;
-		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
-			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
-				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]);
+		System.out.println("pruebaaaa");
+		int fin = (funcion.get(nombreFunc).pilaVar).size();
+		System.out.println(funcion.get(nombreFunc).pilaVar.toString());
+		System.out.println("fin es "+fin);
+		for(int i = 0; i < fin ; i++) {
+			String nombre = funcion.get(nombreFunc).pilaVar.get(i)[0];
+			System.out.println("----"+nombre);
+			if(nombre.equals(nombreVar)) {
+				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]) + funcion.get(nombreFunc).punteroPila;
 			}
 		}
 		return desplazamiento;

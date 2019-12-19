@@ -48,7 +48,7 @@ public class PrimeraPasada extends GramProgBaseVisitor<String> {
         tamParInit = 0;
         visitChildren(ctx);
         //Aqui acaba la funcion
-        ts.rellenaFuncion(defFunc[0], Integer.parseInt(defFunc[1]), defFunc[2]);
+        ts.rellenaFuncion(defFunc[0], Integer.parseInt(defFunc[1]), defFunc[2],0);
         System.out.println("---FUNCION---");
         System.out.println(ts.extraeContenidoFuncion(defFunc[0])[0]);
         System.out.println(ts.extraeContenidoFuncion(defFunc[0])[1]);

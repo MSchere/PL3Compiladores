@@ -94,7 +94,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
         }
 
-        if (tipoFunc.equals("Void")) {
+        if (tipoFunc.equals("void")) {
             TripletaInit[2] = "0";
         } else {
             TripletaInit[2] = "1";
@@ -169,7 +169,9 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
-        ctx.expr();
+        visitChildren(ctx);
+        String[] trip10 = { "45"};
+        tripletas.add(trip10);
         String[] trip0 = { "", "", "" };
         trip0[0] = "5";
         trip0[1] = Integer.toString(cpila[0] - 1);
@@ -216,7 +218,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
-        ctx.expr();
+        visitChildren(ctx);
         int desp = tb.extraeDesplazamientoVariable(funcActual,ctx.ID().getText());
         String[] trip0 = { "", "", "" };
         trip0[0] = "5";
@@ -522,6 +524,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     public String visitCadena(GramProgParser.CadenaContext ctx) {
         System.out.println("cadena");
+        String texto=ctx.getText();
         String[] trip = { "", "", "" };
         trip[0] = "1";
         trip[1] = "2";
@@ -530,4 +533,15 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         cpila[0] = cpila[0] + 1;
         return trip[1];
     }
+    public String visitId(GramProgParser.IdContext ctx){
+        System.out.println("id");
+        String[] trip = { "", "", "" };
+        trip[0] = "1";
+        trip[1] = "0";
+        trip[2] =  String.valueOf(tb.extraeDesplazamientoVariable(funcActual,ctx.getText()));
+        tripletas.add(trip);
+        cpila[0] = cpila[0] + 1; 
+        return trip[1];
+    }
+    
 }
