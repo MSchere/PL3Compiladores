@@ -180,9 +180,9 @@ public class TerceraPasada extends GramProgBaseListener {
 	 public void exitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
 			for(int i=0; i<almacen.size(); i++){
 				ArrayList<String> aux = almacen.get(i);
-				if(aux.get(5).equals("noesParam")) rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(4));
+				if(aux.get(5).equals("noesParam")) ts.rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(4));
 				
-				else rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
+				else ts.rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
 			}
 
 	  }
