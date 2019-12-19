@@ -70,8 +70,8 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
-        FuncActual = ctx.ID().getText();
-        System.out.println("Funcion actual " + FuncActual);
+        funcActual = ctx.ID().getText();
+        System.out.println("Funcion actual " + funcActual);
         System.out.println("Tripleta func " + ctx.ID());
         TripletaInit[0] = "0";
         visitChildren(ctx);
@@ -294,7 +294,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip4.get(6));
                 tripletas.add(trip4.get(7));
                 tripletas.add(trip4.get(8));
-
                 break;
 
             case ("cadenaIzquierda"):
@@ -305,7 +304,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip5.get(3));
                 tripletas.add(trip5.get(4));
                 tripletas.add(trip5.get(5));
-
                 break;
             case ("cadenaDerecha"):
                 ArrayList<String[]> trip6 = biblio.cadenaDerecha(cpila);
@@ -315,7 +313,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip6.get(3));
                 tripletas.add(trip6.get(4));
                 tripletas.add(trip6.get(5));
-
                 break;
             case ("cadenaDentro"):
                 ArrayList<String[]> trip7 = biblio.cadenaDentro(cpila);
@@ -326,7 +323,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip7.get(4));
                 tripletas.add(trip7.get(5));
                 tripletas.add(trip7.get(6));
-
                 break;
             case ("cadenaLongitud"):
                 ArrayList<String[]> trip8 = biblio.cadenaLongitud(cpila);
@@ -335,7 +331,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip8.get(2));
                 tripletas.add(trip8.get(3));
                 tripletas.add(trip8.get(4));
-
                 break;
             case ("fopen"):
                 ArrayList<String[]> trip9 = biblio.fopen(cpila);
@@ -353,7 +348,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip10.get(3));
                 tripletas.add(trip10.get(4));
                 tripletas.add(trip10.get(5));
-
                 break;
             case ("freadAll"):
                 ArrayList<String[]> trip11 = biblio.freadAll(cpila);
@@ -362,16 +356,13 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip11.get(2));
                 tripletas.add(trip11.get(3));
                 tripletas.add(trip11.get(4));
-
                 break;
             case ("fclose"):
                 ArrayList<String[]> trip12 = biblio.fclose(cpila);
                 tripletas.add(trip12.get(0));
                 tripletas.add(trip12.get(1));
                 tripletas.add(trip12.get(2));
-
                 break;
-
             }
         }
 

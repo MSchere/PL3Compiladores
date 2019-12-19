@@ -5,16 +5,17 @@ import org.antlr.v4.runtime.tree.*;
 import java.util.*;
 import java.io.*;
 
-public class compilador {
+public class Compilador {
     public static void main(String[] args) throws Exception {
         // Fuerzo la carga del fichero
+        String inputFile="";
         if (args.length > 0) {
             inputFile = args[0];
         }
         InputStream is = System.in;
-        if (inputFile != null) {
+        if (!inputFile.equals("")) {
             is = new FileInputStream(inputFile);
-        }
+        }   
 
             CharStream input = CharStreams.fromStream(is);
             GramProgLexer lexer = new GramProgLexer(input);
