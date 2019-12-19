@@ -1,17 +1,17 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 
 public class TablaSimbolos extends ContenidoFuncion{
 	
 	HashMap<String, ContenidoFuncion> funcion = new HashMap<String, ContenidoFuncion>();
 	
-	//Metodo al que hay que llamar cuando se detecta una funcion
-	public void rellenaFuncion(String nombreFunc, int numArgumentos, String tipoRetorno) {
-		//Creamos un objeto que tiene el contenido de funcion y sus caracter�sticas
+	//Metodo al que hay que llamar cuando se detecta una funci�n
+	public void rellenaFuncion(String nombreFunc, int numArgumentos, String tipoRetorno, int cpila) {
+		//Creamos un objeto que tiene el contenido de funci�n y sus caracter�sticas
 		ContenidoFuncion cnt = new ContenidoFuncion();
 		
 		//Introduce el numero de argumentos
 		cnt.setNumArgumentos(numArgumentos);
+		cnt.punteroPila = cpila;
 		
 		//Introduce el tipo de dato de salida
 		if (tipoRetorno.equals("numero")) {
@@ -31,11 +31,27 @@ public class TablaSimbolos extends ContenidoFuncion{
 	
 	//Metodo al que hay que llamar cuando se detecta una variable
 	public void rellenaFilaPilaVar(String nombreFunc, String nombreVar, String tipoDato, String esConstante){
+		//Se comrpueba si es un argumento de la funci�n y se mete en su pila de argumentos y en la de variables
+		/*if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato, esConstante);
+			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
+		}
+		//Si no es un argumentos va a la pila de variables de la funcion
+		else {*/
+			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato, esConstante);
+		//}
 	}
 
 	public void rellenaFilaPilaArg(String nombreFunc, String nombreVar, String tipoDato){
+		//Se comrpueba si es un argumento de la funci�n y se mete en su pila de argumentos y en la de variables
+		/*if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
 			funcion.get(nombreFunc).rellenaPilaArg(nombreVar, tipoDato);
+			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
+		}
+		//Si no es un argumentos va a la pila de variables de la funcion
+		else {*/
+			funcion.get(nombreFunc).rellenaPilaArg(nombreVar, tipoDato);
+		//}
 	}
 	
 	public String extraeTipoVarianble(String nombreFunc, String nombreVar) {
@@ -52,7 +68,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 		int desplazamiento = 0;
 		for(int i = 0; i < (funcion.get(nombreFunc).pilaVar).size(); i++) {
 			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
-				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]);
+				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]) + funcion.get(nombreFunc).punteroPila;
 			}
 		}
 		return desplazamiento;
