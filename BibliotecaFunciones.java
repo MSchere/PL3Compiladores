@@ -371,6 +371,7 @@ public class BibliotecaFunciones{
         tri[1] = Integer.toString(cpila[0]-1);
         tri[2] = "1";
         tripleta.add(tri);
+
         String[] tri2 = {"",""};
         tri2[0] = "31";
         tri2[1] = "1";
@@ -378,16 +379,19 @@ public class BibliotecaFunciones{
         String[] tri14={"2"};
         tripleta.add(tri14);
         cpila[0] = cpila[0] - 1;
+
         String[] tri7 = {"",""};
         tri7[0] = "1";
         tri7[1] = "0";
         tripleta.add(tri7);
         cpila[0]=cpila[0]+1;
+
         String[] tri6 = {"","",""};
         tri6[0] = "4";
         tri6[1] = "0";
         tri6[2] =Integer.toString(cpila[0]-1);
         tripleta.add(tri6);
+
         return tripleta;
     }
 }

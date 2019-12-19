@@ -2,10 +2,10 @@ public class Cadena extends Dato{
     
     private String valor;
     public Cadena(){
-        super(0);
+        super(2);
     }
     public Cadena(String valor){
-        super(3);
+        super(2);
         this.valor = valor;
     }
 

@@ -2,7 +2,7 @@ public class TipoFloat extends Dato{
     
     private float valor;
     public TipoFloat(){
-        super(0);
+        super(1);
     }
     public TipoFloat(double valor){
         super(1);

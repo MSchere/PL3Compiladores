@@ -2,7 +2,7 @@ public class Bool extends Dato{
     
     private boolean valor;
     public Bool(){
-        super(0);
+        super(3);
     } 
     public Bool(boolean valor){
         super(3);
