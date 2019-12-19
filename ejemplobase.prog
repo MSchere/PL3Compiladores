@@ -1,6 +1,7 @@
 function main():void
 begin
-        imprimir("holi");
-       imprimir(cadenaLongitud("holi"));
-       imprimir(cadenaDonde("holi","oo"));
+       numero x:=2;
+       numero y:=x+3;
+       y=y+3;
+       imprimir(y+1);
 end

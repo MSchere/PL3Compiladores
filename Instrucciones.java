@@ -64,6 +64,9 @@ public class Instrucciones{
         }
         maquina.setCpila(maquina.getCpila()+1);
     }
+    public void store(int r, int pos){ //Almacena el valor en el registro 1
+        pila.set(pos, registros[r]);
+    }
     public void pop(){
         pila.remove(pila.size()-1);
         maquina.setCpila(maquina.getCpila()-1);

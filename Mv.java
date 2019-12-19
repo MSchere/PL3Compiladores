@@ -60,18 +60,21 @@ public class Mv {
                 inst.push(segunda);
             }
             else{
-                if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + tercera);
                 switch(segunda){
                     case 0:
+                        if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + Integer.parseInt(triple.terceraPosicion));
                         inst.push(segunda, Integer.parseInt(triple.terceraPosicion));
                         break;
                     case 1:
+                        if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + new Float(triple.terceraPosicion));
                         inst.push(segunda, new Float(triple.terceraPosicion));
                         break;
                     case 2:
+                        if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + triple.terceraPosicion);
                         inst.push(segunda, triple.terceraPosicion);
                         break;
                     case 3:
+                        if(debug)System.out.println("Push con parametro 1 " + segunda + " parametro 2 " + tercera);
                         if(triple.terceraPosicion.equals("true")) inst.push(segunda, true);
                         else inst.push(segunda, false);
                         break;
@@ -249,6 +252,10 @@ public class Mv {
         case 43:
             if(debug)System.out.println("Imprime por pantalla");
             inst.imprimir(segunda);
+            break;
+        case 44:
+            if(debug)System.out.println("Store con parámetro 1 "+segunda+" parametro 2 "+tercera);
+            inst.store(segunda,tercera);
             break;
         case 45: // Debug
             System.out.println(pila);
