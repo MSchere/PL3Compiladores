@@ -1,4 +1,4 @@
-// Generated from .\GramProg.g4 by ANTLR 4.7.2
+// Generated from GramProg.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -149,12 +149,12 @@ public interface GramProgVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTip(GramProgParser.TipContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code parentesis}
+	 * Visit a parse tree produced by the {@code lista}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParentesis(GramProgParser.ParentesisContext ctx);
+	T visitLista(GramProgParser.ListaContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code suma}
 	 * labeled alternative in {@link GramProgParser#expr}.
@@ -162,13 +162,6 @@ public interface GramProgVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitSuma(GramProgParser.SumaContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code neg}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNeg(GramProgParser.NegContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code comp}
 	 * labeled alternative in {@link GramProgParser#expr}.
@@ -191,13 +184,6 @@ public interface GramProgVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMul(GramProgParser.MulContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code and}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAnd(GramProgParser.AndContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code cadena}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
@@ -211,6 +197,34 @@ public interface GramProgVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitNum(GramProgParser.NumContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code parentesis}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParentesis(GramProgParser.ParentesisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code neg}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNeg(GramProgParser.NegContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code array}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArray(GramProgParser.ArrayContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code and}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAnd(GramProgParser.AndContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code llamafuncion}
 	 * labeled alternative in {@link GramProgParser#expr}.

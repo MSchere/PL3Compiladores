@@ -1,4 +1,4 @@
-// Generated from .\GramProg.g4 by ANTLR 4.7.2
+// Generated from GramProg.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -245,17 +245,17 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitTip(GramProgParser.TipContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code parentesis}
+	 * Enter a parse tree produced by the {@code lista}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterParentesis(GramProgParser.ParentesisContext ctx);
+	void enterLista(GramProgParser.ListaContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code parentesis}
+	 * Exit a parse tree produced by the {@code lista}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitParentesis(GramProgParser.ParentesisContext ctx);
+	void exitLista(GramProgParser.ListaContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code suma}
 	 * labeled alternative in {@link GramProgParser#expr}.
@@ -268,18 +268,6 @@ public interface GramProgListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSuma(GramProgParser.SumaContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code neg}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterNeg(GramProgParser.NegContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code neg}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitNeg(GramProgParser.NegContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code comp}
 	 * labeled alternative in {@link GramProgParser#expr}.
@@ -317,18 +305,6 @@ public interface GramProgListener extends ParseTreeListener {
 	 */
 	void exitMul(GramProgParser.MulContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code and}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterAnd(GramProgParser.AndContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code and}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitAnd(GramProgParser.AndContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code cadena}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree
@@ -352,6 +328,54 @@ public interface GramProgListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNum(GramProgParser.NumContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code parentesis}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterParentesis(GramProgParser.ParentesisContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code parentesis}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitParentesis(GramProgParser.ParentesisContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code neg}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterNeg(GramProgParser.NegContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code neg}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitNeg(GramProgParser.NegContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code array}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray(GramProgParser.ArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code array}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray(GramProgParser.ArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code and}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterAnd(GramProgParser.AndContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code and}
+	 * labeled alternative in {@link GramProgParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitAnd(GramProgParser.AndContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code llamafuncion}
 	 * labeled alternative in {@link GramProgParser#expr}.

@@ -71,6 +71,8 @@ expr:	llamadaFuncion #llamafuncion
     |   CADENA #cadena
     |   numero #num
     |	ID #id
+    |   ARRAY #array
+    |   PI (expr COMA?)+ PD #lista
     ;
 
 
@@ -107,6 +109,7 @@ FLOAT: [0-9]+'.'[0-9]+;
 INT: [0-9]+;
 ID: [a-zA-Z][a-zA-Z_0-9]*;
 CADENA: DCOMILLAS .*? DCOMILLAS;
+ARRAY: ID CORCHIZ INT CORCHD;
 
 //Caracteres
 ESC: '\\'[btnr"\\];

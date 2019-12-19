@@ -7,6 +7,11 @@ begin
     numero numero2 := 4;
     numero numero3 := 8;
 
+    numero arraydenumero[3]:=(5,6,7);  //Declaro un array de 3 elementos de números, y los inicializo.
+    numero x;
+    x := arraydenumero[2]; //devuelve 7 (base 0)
+    x:= length(arraydenumero); //Devuelve 3  Hay que programar la función length
+
     rdo := dospar(numero2,numero3);
 
     if (bifur(numero3)) then 

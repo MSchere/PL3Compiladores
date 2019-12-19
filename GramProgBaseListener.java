@@ -1,4 +1,4 @@
-// Generated from .\GramProg.g4 by ANTLR 4.7.2
+// Generated from GramProg.g4 by ANTLR 4.7.2
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -255,13 +255,13 @@ public class GramProgBaseListener implements GramProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParentesis(GramProgParser.ParentesisContext ctx) { }
+	@Override public void enterLista(GramProgParser.ListaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParentesis(GramProgParser.ParentesisContext ctx) { }
+	@Override public void exitLista(GramProgParser.ListaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -274,18 +274,6 @@ public class GramProgBaseListener implements GramProgListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSuma(GramProgParser.SumaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNeg(GramProgParser.NegContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNeg(GramProgParser.NegContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -327,18 +315,6 @@ public class GramProgBaseListener implements GramProgListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAnd(GramProgParser.AndContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAnd(GramProgParser.AndContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterCadena(GramProgParser.CadenaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -358,6 +334,54 @@ public class GramProgBaseListener implements GramProgListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitNum(GramProgParser.NumContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParentesis(GramProgParser.ParentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParentesis(GramProgParser.ParentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNeg(GramProgParser.NegContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNeg(GramProgParser.NegContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArray(GramProgParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArray(GramProgParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAnd(GramProgParser.AndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAnd(GramProgParser.AndContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
