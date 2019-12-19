@@ -330,16 +330,14 @@ public class Instrucciones{
     //En r se encuentra la cadena a la que hay que quitarle los espacios
     public void sinEspacios(int r){
         String cadena = ((Cadena)registros[r]).getValor();
-        cadena.trim();
-        registros[0] = new Cadena(cadena);
+        registros[0] = new Cadena(cadena.trim());
     }
     //La cadena afectada se encuentra en registros[1], la subcadena afectada en r1 y la subcadena nueva en r2
     public void sustituir(int r1, int r2){
         String cadena = ((Cadena)registros[1]).getValor();
         String vieja = ((Cadena)registros[r1]).getValor();
         String nueva = ((Cadena)registros[r2]).getValor();
-        cadena.replaceAll(vieja, nueva);
-        registros[0] = new Cadena(cadena);
+        registros[0] = new Cadena(cadena.replaceAll(vieja, nueva));
     }
     //La cadena a cortar se encuentra en el registro r
     public void cadenaI(int r1, int r2){
@@ -358,8 +356,8 @@ public class Instrucciones{
     //La cadena a cortar se encuentra en el registro 1
     public void cadenaDentro(int r1, int r2){
         String cadena = ((Cadena)registros[1]).getValor();
-        int pos = ((Int)registros[r1]).getValor() + 1;
-        int tam = ((Int)registros[r1]).getValor();
+        int pos = ((Int)registros[r1]).getValor() ;
+        int tam = ((Int)registros[r2]).getValor();
         cadena = cadena.substring(pos,cadena.length());
         cadena = cadena.substring(0, tam);
         registros[0] = new Cadena(cadena);
