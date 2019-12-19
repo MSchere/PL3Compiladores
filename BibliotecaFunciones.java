@@ -154,8 +154,8 @@ public class BibliotecaFunciones{
         tripleta.add(tri7);
         cpila[0] = cpila[0] - 1;
         String[] tri5 = {"",""};
-        tri3[0] = "1";
-        tri3[1] = "2";
+        tri5[0] = "1";
+        tri5[1] = "2";
         tripleta.add(tri5);
         cpila[0]=cpila[0]+1;
         String[] tri4 = {"","",""};
@@ -352,7 +352,7 @@ public class BibliotecaFunciones{
         String[] tri14={"2"};
         tripleta.add(tri14);
         cpila[0] = cpila[0] - 1;
-        tring[] tri7 = {"",""};
+        String[] tri7 = {"",""};
         tri7[0] = "1";
         tri7[1] = "2";
         tripleta.add(tri7);
@@ -378,7 +378,7 @@ public class BibliotecaFunciones{
         String[] tri14={"2"};
         tripleta.add(tri14);
         cpila[0] = cpila[0] - 1;
-        tring[] tri7 = {"",""};
+        String[] tri7 = {"",""};
         tri7[0] = "1";
         tri7[1] = "0";
         tripleta.add(tri7);
