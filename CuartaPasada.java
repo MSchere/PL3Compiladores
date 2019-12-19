@@ -168,6 +168,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
+
         String[] trip101 = { "1",""};
         trip101[1]=tb.extraeTipoVariable(funcActual,ctx.ID().getText());
         tripletas.add(trip101);
@@ -194,6 +195,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         
         String[] trip10 = { "45"};
         tripletas.add(trip10);
+
 
         return "";
     }
@@ -531,6 +533,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     }
 
     public String visitCadena(GramProgParser.CadenaContext ctx) {
+
         String texto=ctx.getText();
         String[] trip = { "", "", "" };
         trip[0] = "1";
@@ -541,6 +544,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return trip[1];
     }
     public String visitId(GramProgParser.IdContext ctx){
+
         System.out.println(ctx.getRuleIndex()+ " el de antes era el interesate");
        
             System.out.println("id con push");
@@ -561,4 +565,5 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             tripletas.add(trip011);
             return trip[1];
     }
+
 }

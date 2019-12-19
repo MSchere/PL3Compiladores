@@ -82,12 +82,14 @@ public class TablaSimbolos extends ContenidoFuncion{
 	public int extraeDesplazamientoVariable(String nombreFunc, String nombreVar) {
 		int desplazamiento = 0;
 
+
 		int fin = (funcion.get(nombreFunc).pilaVar).size();
 	
 		for(int i = 0; i < fin ; i++) {
 			String nombre = funcion.get(nombreFunc).pilaVar.get(i)[0];
 
 			if(nombre.equals(nombreVar)) {
+
 				desplazamiento = Integer.parseInt(funcion.get(nombreFunc).pilaVar.get(i)[2]) + funcion.get(nombreFunc).punteroPila;
 			}
 		}

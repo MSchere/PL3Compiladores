@@ -2,6 +2,6 @@ function main():void
 begin
        numero x:=2;
        numero y:=x+3;
-       y=y+3;
        imprimir(y+1);
+
 end
