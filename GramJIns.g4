@@ -9,7 +9,7 @@ prog: (tripleta NEWLINE)*;
     JUMP: 24, COPIACADENA: 25, CONCAT: 26, EXTRAERCAD: 27
     GETCHARATPOS: 28, CAMBIACHAR: 29 MREG: 69 *SOLO EJEMPLO* */
 
-tripleta: CI INT (COMA INT)? (COMA (INT|CADENA|ARRAY))? CD;
+tripleta: CI INT (COMA INT)? (COMA (INT|BOOL|CADENA|ARRAY))? CD;
 
 //Palabras reservadas .
 CI: '[';
@@ -28,5 +28,6 @@ COMENTARIO_BLOQUE: '/*' .*? '*/' -> skip;
 INT: [0-9]+;
 NEWLINE: [\r\n]+;
 CADENA: COM .*? COM ;
+BOOL: 'true'|'false';
 fragment ESC:'\\'[btnr"\\] ;//[a-zA-Z0-9_ ]+;
 ARRAY: LVI (INT(PUNTO INT)?|CADENA)?  (COMA|INT(PUNTO INT)?|CADENA)* LVD;
