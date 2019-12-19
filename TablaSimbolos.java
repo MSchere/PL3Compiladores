@@ -60,16 +60,16 @@ public class TablaSimbolos extends ContenidoFuncion{
 			if((funcion.get(nombreFunc).pilaVar.get(i)[0]).equals(nombreVar)) {
 				tipoVar = funcion.get(nombreFunc).pilaVar.get(i)[1];
 				switch(tipoVar){
-					case("int"):
+					case "int":
 					tipoVar="0";
 					break;
-					case("float"):
+					case "float":
 					tipoVar="1";
 					break;
-					case("String"):
+					case "cadena":
 					tipoVar="2";
 					break;
-					case("bool"):
+					case "booleano":
 					tipoVar="3";
 					break;
 
