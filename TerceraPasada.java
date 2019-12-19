@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.tree.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.*;
-import java.util.ArrayList;
 
 public class TerceraPasada extends GramProgBaseListener {
 
@@ -13,11 +12,8 @@ public class TerceraPasada extends GramProgBaseListener {
 	public TerceraPasada(TablaSimbolos tabla){
 		this.ts = tabla;
 	}
+	
     // CONTENEDORES
-
-	public ArrayList<String> filas = new ArrayList<String>();
-
-	ArrayList<String> trozosSentencia = new ArrayList<String>();
 
 	public static ArrayList<ArrayList<String>> almacen = new ArrayList<ArrayList<String>>();
 
@@ -27,7 +23,9 @@ public class TerceraPasada extends GramProgBaseListener {
 
 	boolean esNull = false;
 
-	//public TerceraPasada()
+	boolean esParam = false;
+
+	String contextoaux = "";
 
 	// FUNCIONES DE APOYO
 
@@ -35,6 +33,8 @@ public class TerceraPasada extends GramProgBaseListener {
     public void enterDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
 
 		 variable.add(ctx.ID().getText());
+
+		 contextoaux = ctx.ID().getText();
 
 	}
 
@@ -69,6 +69,17 @@ public class TerceraPasada extends GramProgBaseListener {
 
 	}
 
+	@Override 
+	public void enterParam(GramProgParser.ParamContext ctx) { 
+
+		esParam = true;
+	}
+	@Override 
+	public void exitParam(GramProgParser.ParamContext ctx){
+
+		esParam = false;
+	}
+
 	@Override
 	public void enterLlamafuncion(GramProgParser.LlamafuncionContext ctx) {
 		   
@@ -90,11 +101,11 @@ public class TerceraPasada extends GramProgBaseListener {
 			esNull = false;
 			aux.set(3,"null");
 		}
+		aux.add("noesParam");
 
 		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
 	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
 		aux.remove(3);
-		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2),aux.get(3));
 		almacen.add(aux);
 		variable.remove(4);
 		variable.remove(3);
@@ -124,10 +135,12 @@ public class TerceraPasada extends GramProgBaseListener {
     public void exitDeclarar(GramProgParser.DeclararContext ctx) { 
 
 		ArrayList<String> aux = new ArrayList<String>(variable);
+		if(esParam == true){
+			aux.add("esParam");
+		}
+		else aux.add("noesParam");
 		aux.remove(3);
-		ts.rellenaFilaPilaVar(aux.get(0), aux.get(1), aux.get(2));
 		almacen.add(aux);
-		//System.out.println(aux);
 		variable.remove(4);
 		variable.remove(3);
 		variable.remove(2);
@@ -135,4 +148,42 @@ public class TerceraPasada extends GramProgBaseListener {
 
 	}
 
+	@Override 
+	public void enterAsignar(GramProgParser.AsignarContext ctx) {
+
+		if(!ctx.expr().getText().equals("null"))  buscarCambioTipo(ctx.ID().getText(),ctx.expr().getText());
+	 }
+
+	 public void buscarCambioTipo(String nombre, String valor){
+
+		String contx = "";
+		String nombreaux = "";
+		String valoraux = "";
+		int loc = 0;
+		for(int i=0; i<almacen.size(); i++){
+
+			ArrayList<String> aux = almacen.get(i);
+			contx = aux.get(0);
+			nombreaux = aux.get(2);
+			valoraux = aux.get(3);
+			loc = i;
+			if(!contx.equals(contextoaux) && nombreaux.equals(nombre) && aux.get(1).equals("numero")) break;
+
+		}
+		if(!valoraux.equals("null")) almacen.get(loc).set(1,"int");
+		if(!valoraux.equals("null") && valor.contains(".")) almacen.get(loc).set(1,"float");
+		
+		
+	 }
+
+	 @Override
+	 public void exitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
+			for(int i=0; i<almacen.size(); i++){
+				ArrayList<String> aux = almacen.get(i);
+				if(aux.get(5).equals("noesParam")) rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(4));
+				
+				else rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
+			}
+
+	  }
 }
