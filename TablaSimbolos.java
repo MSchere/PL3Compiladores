@@ -11,7 +11,7 @@ public class TablaSimbolos extends ContenidoFuncion{
 		ContenidoFuncion cnt = new ContenidoFuncion();
 		
 		//Introduce el numero de argumentos
-		cnt.numArgumentos = numArgumentos;
+		cnt.setNumArgumentos(numArgumentos);
 		
 		//Introduce el tipo de dato de salida
 		if (tipoRetorno.equals("numero")) {
@@ -32,14 +32,26 @@ public class TablaSimbolos extends ContenidoFuncion{
 	//Metodo al que hay que llamar cuando se detecta una variable
 	public void rellenaFilaPilaVar(String nombreFunc, String nombreVar, String tipoDato, String esConstante){
 		//Se comrpueba si es un argumento de la funci�n y se mete en su pila de argumentos y en la de variables
-		if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
+		/*if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato, esConstante);
 			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
 		}
 		//Si no es un argumentos va a la pila de variables de la funcion
-		else {
+		else {*/
 			funcion.get(nombreFunc).rellenaPilaVar(nombreVar, tipoDato, esConstante);
+		//}
+	}
+
+	public void rellenaFilaPilaArg(String nombreFunc, String nombreVar, String tipoDato){
+		//Se comrpueba si es un argumento de la funci�n y se mete en su pila de argumentos y en la de variables
+		/*if (funcion.get(nombreFunc).pilaVar.size() < funcion.get(nombreFunc).numArgumentos) {
+			funcion.get(nombreFunc).rellenaPilaArg(nombreVar, tipoDato);
+			funcion.get(nombreFunc).rellenaPilaArgs(pilaVar);
 		}
+		//Si no es un argumentos va a la pila de variables de la funcion
+		else {*/
+			funcion.get(nombreFunc).rellenaPilaArg(nombreVar, tipoDato);
+		//}
 	}
 	
 	public String extraeTipoVarianble(String nombreFunc, String nombreVar) {
@@ -93,16 +105,16 @@ public class TablaSimbolos extends ContenidoFuncion{
 		}
 		return contenidoFunc;
 	}
-	
+	/*
 	public ArrayList<String> extraeTiposArgumentos(String nombreFunc) {
 		ArrayList<String> tiposArgumentos = new ArrayList<String>();
 		for (int i = 0; i < (funcion.get(nombreFunc).pilaVarArgs).size(); i++) {
 			tiposArgumentos.add(funcion.get(nombreFunc).pilaVarArgs.get(i)[2]);
 		}
 		return tiposArgumentos;
-	}
+	}*/
 	
-	public void SetPunteroPila(String nombreFunc, int punteroPila){
+	public void setPunteroPila(String nombreFunc, int punteroPila){
 		funcion.get(nombreFunc).punteroPila = punteroPila;
 	}
 }
