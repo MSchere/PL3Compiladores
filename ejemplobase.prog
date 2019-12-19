@@ -2,5 +2,5 @@ function main():void
 begin
         imprimir("holi");
        imprimir(cadenaLongitud("holi"));
-       imprimir(cadenaDonde("holi","o"));
+       imprimir(cadenaDonde("holi","oo"));
 end

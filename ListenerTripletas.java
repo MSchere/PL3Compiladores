@@ -28,7 +28,10 @@ public class ListenerTripletas extends GramJInsBaseListener {
             break;
         
         case 12:
-            meteValor('"'+node.getText()+'"');
+            String cadena = node.getText();
+            cadena = cadena.substring(1, cadena.length()-1);
+            System.out.println(cadena);
+            meteValor(cadena);
             break;
 
         case 13:
