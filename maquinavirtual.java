@@ -43,7 +43,6 @@ public class maquinavirtual {
             }
             if(args.length>1 && args[1].equals("-debug")) debug = true;
             Mv maquina = new Mv(tripletas,debug);
-            System.out.println("Voy a ejecutar");
             maquina.ejecutar();
         } catch (Exception e) {
             e.printStackTrace();

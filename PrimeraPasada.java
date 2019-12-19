@@ -48,17 +48,14 @@ public class PrimeraPasada extends GramProgBaseVisitor<String> {
         tamParInit = 0;
         visitChildren(ctx);
         //Aqui acaba la funcion
-        ts.rellenaFuncion(defFunc[0], Integer.parseInt(defFunc[1]), defFunc[2]);
-        System.out.println("---FUNCION---");
-        System.out.println(ts.extraeContenidoFuncion(defFunc[0])[0]);
-        System.out.println(ts.extraeContenidoFuncion(defFunc[0])[1]);
-        System.out.println(ts.extraeContenidoFuncion(defFunc[0])[2]);
+        ts.rellenaFuncion(defFunc[0], Integer.parseInt(defFunc[1]), defFunc[2],0);
+
         
         return null;
     }
 
     public String visitParam(GramProgParser.ParamContext ctx) {
-        //System.out.println("Param");
+
         return visitChildren(ctx);
     }
 
@@ -124,19 +121,19 @@ public class PrimeraPasada extends GramProgBaseVisitor<String> {
         String tipo;
         if (ctx.TIPO_BOOL() != null) {
             tipo = ctx.TIPO_BOOL().toString();
-            //System.out.println(ctx.TIPO_BOOL().toString());
+          
 
         } else if (ctx.TIPO_CADENA() != null) {
             tipo = ctx.TIPO_CADENA().toString();
-            //System.out.println(ctx.TIPO_CADENA().toString());
+           
 
         } else if (ctx.TIPO_NUMERO() != null) {
             tipo = ctx.TIPO_NUMERO().toString();
-            //System.out.println(ctx.TIPO_NUMERO().toString());
+            
 
         } else {
             tipo = ctx.TIPO_VOID().toString();
-            System.out.println(ctx.TIPO_VOID().toString());
+           
         }
         defFunc[2] = tipo;
 

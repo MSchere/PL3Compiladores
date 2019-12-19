@@ -6,7 +6,6 @@ public class Instrucciones{
     private Entrada[] registros;
     private ArrayList<Entrada> pila;
     private Mv maquina;
-    private int rcmp;
 
     private HashMap<Integer,ManejoArchivos> archivos = new HashMap<Integer,ManejoArchivos>();
 
@@ -63,6 +62,9 @@ public class Instrucciones{
             pila.add(new Bool((boolean)valor));
         }
         maquina.setCpila(maquina.getCpila()+1);
+    }
+    public void store(int r, int pos){ //Almacena el valor en el registro 1
+        pila.set(pos, registros[r]);
     }
     public void pop(){
         pila.remove(pila.size()-1);

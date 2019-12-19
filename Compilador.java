@@ -36,13 +36,13 @@ public class Compilador {
             
             //Creamos pasadas y las recorremos
             PrimeraPasada p1 = new PrimeraPasada(ts);
-            SegundaPasada p2=new SegundaPasada();
+            //SegundaPasada p2=new SegundaPasada();
             TerceraPasada p3 = new TerceraPasada(ts);
             CuartaPasada p4= new CuartaPasada(ts,salida);
             p1.visit(tree);
-            p2.visit(tree);
-            walker.walk(p3,tree);
-            p4.visit(tree);
+           //p2.visit(tree);
+            p3.visit(tree);
+           p4.visit(tree);
             p4.ImprimirTriple();
 
     }
