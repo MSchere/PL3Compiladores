@@ -1,14 +1,25 @@
 // fichero ejecutable.
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-
-import java.io.FileInputStream;
+import java.io.*;
 import java.io.InputStream;
 import java.util.*;
+import java.text.SimpleDateFormat;  
+
 
 public class maquinavirtual {
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         String ruta="";
+
+        SimpleDateFormat formatter = new SimpleDateFormat("(dd-MM-yyyy_HH-mm-ss)");  
+        Date date = new Date();  
+
+        String fileName = formatter.format(date) + ".log";
+        File file = new File("logs/"+fileName);
+
+        FileOutputStream f = new FileOutputStream(file);
+        System.setErr(new PrintStream(f));
+    
         if (args.length > 0) {
             ruta = args[0];
         }
