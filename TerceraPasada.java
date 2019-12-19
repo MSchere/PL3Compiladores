@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.*;
 
-public class TerceraPasada extends GramProgBaseListener {
+public class TerceraPasada extends GramProgBaseVisitor<String> {
 
 	TablaSimbolos ts;
 
@@ -29,132 +29,7 @@ public class TerceraPasada extends GramProgBaseListener {
 
 	// FUNCIONES DE APOYO
 
-	@Override
-    public void enterDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
-
-		 variable.add(ctx.ID().getText());
-
-		 contextoaux = ctx.ID().getText();
-
-	}
-
-	@Override
-    public void exitBloqueFunc(GramProgParser.BloqueFuncContext ctx) {
-
-		variable.remove(0);
-
-	}
-
-    @Override
-    public void enterDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
-
-		esNull = false;
-
-		variable.add(ctx.tipo().getText());
-
-		variable.add(ctx.ID().getText());
-
-		if(ctx.expr().getText() == null){
-			variable.add("null");
-
-		}else{
-			variable.add(ctx.expr().getText());
-		}
-		if(ctx.CONST() != null){
-			variable.add("TRUE");
-		}
-		else{
-			variable.add("FALSE");
-		}
-
-	}
-
-	@Override 
-	public void enterParam(GramProgParser.ParamContext ctx) { 
-
-		esParam = true;
-	}
-	@Override 
-	public void exitParam(GramProgParser.ParamContext ctx){
-
-		esParam = false;
-	}
-
-	@Override
-	public void enterLlamafuncion(GramProgParser.LlamafuncionContext ctx) {
-		   
-		  esNull=true;
-
-	 }
-	
-	@Override
-	public void enterId(GramProgParser.IdContext ctx) {
-
-		  esNull=true;
-	 }
-
-    @Override
-    public void exitDeclararYasign(GramProgParser.DeclararYasignContext ctx) { 
-
-		ArrayList<String> aux = new ArrayList<String>(variable);
-		if(esNull == true){
-			esNull = false;
-			aux.set(3,"null");
-		}
-		aux.add("noesParam");
-
-		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
-	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
-		aux.remove(3);
-		almacen.add(aux);
-		variable.remove(4);
-		variable.remove(3);
-		variable.remove(2);
-		variable.remove(1);
-
-	}
-
-    @Override
-    public void enterDeclarar(GramProgParser.DeclararContext ctx) { 
-
-		variable.add(ctx.tipo().getText());
-
-		variable.add(ctx.ID().getText());
-
-		variable.add("null");
-
-		if(ctx.CONST() != null){
-			variable.add("TRUE");
-		}
-		else{
-			variable.add("FALSE");
-		}
-
-    }
-    @Override
-    public void exitDeclarar(GramProgParser.DeclararContext ctx) { 
-
-		ArrayList<String> aux = new ArrayList<String>(variable);
-		if(esParam == true){
-			aux.add("esParam");
-		}
-		else aux.add("noesParam");
-		aux.remove(3);
-		almacen.add(aux);
-		variable.remove(4);
-		variable.remove(3);
-		variable.remove(2);
-		variable.remove(1);
-
-	}
-
-	@Override 
-	public void enterAsignar(GramProgParser.AsignarContext ctx) {
-
-		if(!ctx.expr().getText().equals("null"))  buscarCambioTipo(ctx.ID().getText(),ctx.expr().getText());
-	 }
-
-	 public void buscarCambioTipo(String nombre, String valor){
+	public void buscarCambioTipo(String nombre, String valor){
 
 		String contx = "";
 		String nombreaux = "";
@@ -176,14 +51,125 @@ public class TerceraPasada extends GramProgBaseListener {
 		
 	 }
 
-	 @Override
-	 public void exitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
-			for(int i=0; i<almacen.size(); i++){
-				ArrayList<String> aux = almacen.get(i);
-				if(aux.get(5).equals("noesParam")) ts.rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(4));
-				
-				else ts.rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
-			}
+    @Override
+    public String visitProgPrincipal(GramProgParser.ProgPrincipalContext ctx) {
 
-	  }
+		visitChildren(ctx);
+		for(int i=0; i<almacen.size(); i++){
+			ArrayList<String> aux = almacen.get(i);
+			if(aux.get(4).equals("noesParam")) System.out.println(aux.get(0)+ aux.get(2)+ aux.get(1)+ aux.get(3));//ts.rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(3));
+			
+			else System.out.println(aux.get(0)+ aux.get(2)+ aux.get(1));//ts.rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
+		}
+		return "";
+    }
+    @Override
+    public String visitDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
+        variable.add(ctx.ID().getText());
+
+		 contextoaux = ctx.ID().getText();
+		return visitChildren(ctx);
+    }
+
+    @Override
+    public String visitParam(GramProgParser.ParamContext ctx) {
+		esParam = true;
+		visitChildren(ctx);
+		esParam = false;
+		return "";
+    }
+
+    @Override
+    public String visitBloqueFunc(GramProgParser.BloqueFuncContext ctx) {
+		visitChildren(ctx);
+		variable.remove(0);
+		return "";
+    }
+
+    @Override
+    public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
+        esNull = false;
+
+		variable.add(ctx.tipo().getText());
+
+		variable.add(ctx.ID().getText());
+
+		if(ctx.expr().getText() == null){
+			variable.add("null");
+
+		}else{
+			variable.add(ctx.expr().getText());
+		}
+		if(ctx.CONST() != null){
+			variable.add("TRUE");
+		}
+		else{
+			variable.add("FALSE");
+		}
+		visitChildren(ctx);
+		ArrayList<String> aux = new ArrayList<String>(variable);
+		if(esNull == true){
+			esNull = false;
+			aux.set(3,"null");
+		}
+		aux.add("noesParam");
+
+		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
+	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
+		aux.remove(3);
+		almacen.add(aux);
+		variable.remove(4);
+		variable.remove(3);
+		variable.remove(2);
+		variable.remove(1);
+		return "";
+    }
+
+    @Override
+    public String visitDeclarar(GramProgParser.DeclararContext ctx) {
+        variable.add(ctx.tipo().getText());
+
+		variable.add(ctx.ID().getText());
+
+		variable.add("null");
+
+		if(ctx.CONST() != null){
+			variable.add("TRUE");
+		}
+		else{
+			variable.add("FALSE");
+		}
+
+		visitChildren(ctx);
+		ArrayList<String> aux = new ArrayList<String>(variable);
+		if(esParam == true){
+			aux.add("esParam");
+		}
+		else aux.add("noesParam");
+		aux.remove(3);
+		almacen.add(aux);
+		variable.remove(4);
+		variable.remove(3);
+		variable.remove(2);
+		variable.remove(1);
+		return "";
+    }
+
+    @Override
+    public String visitAsignar(GramProgParser.AsignarContext ctx) {
+        if(!ctx.expr().getText().equals("null"))  buscarCambioTipo(ctx.ID().getText(),ctx.expr().getText());
+		return visitChildren(ctx);
+    }
+
+    @Override
+    public String visitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx) {
+		esNull=true;
+		return visitChildren(ctx);
+    }
+	
+	public String enterId(GramProgParser.IdContext ctx) {
+
+		  esNull=true;
+		  return "";
+	}
 }
