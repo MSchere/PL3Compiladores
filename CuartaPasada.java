@@ -12,8 +12,10 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     private String funcActual = " ";
     private BibliotecaFunciones biblio = new BibliotecaFunciones();
     private TablaSimbolos tb;
+    private String nombreruta;
 
-    public CuartaPasada(TablaSimbolos tb) {
+    public CuartaPasada(TablaSimbolos tb, String nombreruta) {
+        this.nombreruta=nombreruta;
         this.tb = tb;
     }
 
@@ -30,10 +32,11 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     public void ImprimirTriple() {
         try {
-            File file = new File("Tripletas.txt");
+            File file = new File(nombreruta);
             if (file.exists()) {
                 file.delete();
             }
+            System.out.println("he creado "+nombreruta);
             file.createNewFile();
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
