@@ -14,43 +14,39 @@ public class maquinavirtual {
             ruta = args[0];
         }
         boolean debug = false;
-        InputStream is = System.in;
-        is = new FileInputStream(ruta);
+        try {
+            InputStream is = System.in;
+            is=new FileInputStream(ruta);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("(dd-MM-yyyy_HH-mm-ss)");
-        Date date = new Date();
+            CharStream input = CharStreams.fromStream(is);
+            GramJInsLexer lexer = new GramJInsLexer(input);
+            CommonTokenStream tokens = new CommonTokenStream(lexer);
+            GramJInsParser parser = new GramJInsParser(tokens);
+            parser.setBuildParseTree(true);
+            ParseTree tree=parser.prog();
 
-        String fileName = ruta + formatter.format(date) + ".log";
-        fileName = fileName.replace(".tri","");
-        File file = new File("logs/" + fileName);
+            //Enseñamos el árbol.
+            //System.out.println(tree.toStringTree(parser));
 
-        FileOutputStream f = new FileOutputStream(file);
-        System.setErr(new PrintStream(f));
+            ListenerTripletas nv = new ListenerTripletas();
+            ParseTreeWalker walker = new ParseTreeWalker();
+            walker.walk(nv,tree);
 
-        
+            //System.out.println(nv.getArray());
 
-        CharStream input = CharStreams.fromStream(is);
-        GramJInsLexer lexer = new GramJInsLexer(input);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        GramJInsParser parser = new GramJInsParser(tokens);
-        parser.setBuildParseTree(true);
-        ParseTree tree = parser.prog();
+            ArrayList<ArrayList<String>> triStrng = new ArrayList<ArrayList<String>>(nv.getArray());
+            ArrayList<Tripletas> tripletas = new ArrayList<Tripletas>();
+            for(int i=0; i< triStrng.size() ; i++){
 
-        // Enseñamos el árbol.
-        // System.out.println(tree.toStringTree(parser));
+                Tripletas tri = new Tripletas();
+                tripletas.add(tri.crearTripleta(triStrng.get(i)));
 
-        ListenerTripletas nv = new ListenerTripletas();
-        ParseTreeWalker walker = new ParseTreeWalker();
-        walker.walk(nv, tree);
-
-        // System.out.println(nv.getArray());
-
-        ArrayList<ArrayList<String>> triStrng = new ArrayList<ArrayList<String>>(nv.getArray());
-        ArrayList<Tripletas> tripletas = new ArrayList<Tripletas>();
-        for (int i = 0; i < triStrng.size(); i++) {
-
-            Tripletas tri = new Tripletas();
-            tripletas.add(tri.crearTripleta(triStrng.get(i)));
+            }
+            if(args.length>1 && args[1].equals("-debug")) debug = true;
+            Mv maquina = new Mv(tripletas,debug);
+            maquina.ejecutar();
+        } catch (Exception e) {
+            e.printStackTrace();
 
         }
         if (args.length > 1 && args[1].equals("-debug"))

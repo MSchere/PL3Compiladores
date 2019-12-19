@@ -1,7 +1,9 @@
 function main():void
 begin
-       numero x:=2;
-       numero y:=x+3;
-       imprimir(y+1);
-
+       cadena cadenaASustituir:="Voy a cambiar esta cadena";
+           cadena cadenaCambiada:=cadenaSustituida(cadenaASustituir,"cambiar","mantener");
+           print(cadenaCambiada);
+      // print("holi"+" "+"QUE PASA");
+      // numero xx:=1.5;
+      // print(xx);
 end
