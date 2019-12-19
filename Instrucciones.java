@@ -321,7 +321,9 @@ public class Instrucciones{
         registros[0] = new Cadena(((Cadena)registros[r1]).getValor()+((Cadena)registros[r2]).getValor());
     }
     //La cadena afectada se debe encontrar en el registro 1
-    public void extraerCad(int posIni,int posFin){
+    public void extraerCad(int r1,int r2){
+        int posIni = ((Int)registros[r1]).getValor();
+        int posFin = ((Int)registros[r2]).getValor();
         String cadena = ((Cadena)registros[1]).getValor();
         registros[0] = new Cadena(cadena.substring(posIni, posFin));
     }
@@ -340,21 +342,25 @@ public class Instrucciones{
         registros[0] = new Cadena(cadena);
     }
     //La cadena a cortar se encuentra en el registro r
-    public void cadenaI(int r, int pos){
-        String cadena = ((Cadena)registros[r]).getValor();
+    public void cadenaI(int r1, int r2){
+        String cadena = ((Cadena)registros[r1]).getValor();
+        int pos = ((Int)registros[r2]).getValor();
         cadena = cadena.substring(0,pos);
         registros[0] = new Cadena(cadena);
     }
     //La cadena a cortar se encuentra en el registro r
-    public void cadenaD(int r, int pos){
-        String cadena = ((Cadena)registros[r]).getValor();
+    public void cadenaD(int r1, int r2){
+        String cadena = ((Cadena)registros[r1]).getValor();
+        int pos = ((Int)registros[r2]).getValor();
         cadena = cadena.substring(pos,cadena.length());
         registros[0] = new Cadena(cadena);
     }
     //La cadena a cortar se encuentra en el registro 1
-    public void cadenaDentro(int pos, int tam){
+    public void cadenaDentro(int r1, int r2){
         String cadena = ((Cadena)registros[1]).getValor();
-        cadena = cadena.substring(pos+1,cadena.length());
+        int pos = ((Int)registros[r1]).getValor() + 1;
+        int tam = ((Int)registros[r1]).getValor();
+        cadena = cadena.substring(pos,cadena.length());
         cadena = cadena.substring(0, tam);
         registros[0] = new Cadena(cadena);
     }
