@@ -57,12 +57,15 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 		visitChildren(ctx);
 		for(int i=0; i<almacen.size(); i++){
 			ArrayList<String> aux = almacen.get(i);
+
 			if(aux.get(4).equals("noesParam")) {System.out.println(aux.get(0)+ aux.get(2)+ aux.get(1)+ aux.get(3));
 			ts.rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(3));
 		}
 			else {System.out.println(aux.get(0)+ aux.get(2)+ aux.get(1));
 			ts.rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
 		}}
+
+			
 		return "";
     }
     @Override
