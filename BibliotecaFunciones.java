@@ -74,6 +74,18 @@ public class BibliotecaFunciones{
         tri2[0] = "37";
         tri2[1] = "1";
         tripleta.add(tri2);
+        String[] tri6 = {"2"};
+        tripleta.add(tri6);
+        cpila[0] = cpila[0] - 1;
+        String[] tri3 = {"",""};
+        tri3[0] = "1";
+        tri3[1] = "0";
+        tripleta.add(tri3);
+        cpila[0]=cpila[0]+1;
+        String[] tri4 = {"","",""};
+        tri4[0] = "4";
+        tri4[1] = "0";
+        tri4[2] =Integer.toString(cpila[0]-1);
         return tripleta;
     }
      public ArrayList<String[]> fwrite(int[] cpila){
@@ -93,6 +105,21 @@ public class BibliotecaFunciones{
         tri3[1] = "1";
         tri3[2] = "2";
         tripleta.add(tri3);
+        String[] tri6 = {"2"};
+        tripleta.add(tri6);
+        cpila[0] = cpila[0] - 1;
+        String[] tri7 = {"2"};
+        tripleta.add(tri7);
+        cpila[0] = cpila[0] - 1;
+        String[] tri5 = {"",""};
+        tri3[0] = "1";
+        tri3[1] = "2";
+        tripleta.add(tri5);
+        cpila[0]=cpila[0]+1;
+        String[] tri4 = {"","",""};
+        tri4[0] = "4";
+        tri4[1] = "0";
+        tri4[2] =Integer.toString(cpila[0]-1);
         return tripleta;
     }
   
@@ -107,6 +134,9 @@ public class BibliotecaFunciones{
         tri2[0] = "40";
         tri2[1] = "1";
         tripleta.add(tri2);
+        String[] tri7 = {"2"};
+        tripleta.add(tri7);
+        cpila[0] = cpila[0] - 1;
         return tripleta;
     } 
     public ArrayList<String[]> freadAll(int[] cpila){
@@ -120,6 +150,18 @@ public class BibliotecaFunciones{
         tri2[0] = "39";
         tri2[1] = "1";
         tripleta.add(tri2);
+        String[] tri7 = {"2"};
+        tripleta.add(tri7);
+        cpila[0] = cpila[0] - 1;
+        String[] tri5 = {"",""};
+        tri3[0] = "1";
+        tri3[1] = "2";
+        tripleta.add(tri5);
+        cpila[0]=cpila[0]+1;
+        String[] tri4 = {"","",""};
+        tri4[0] = "4";
+        tri4[1] = "0";
+        tri4[2] =Integer.toString(cpila[0]-1);
         return tripleta;
     }
     public ArrayList<String[]> cadenaDonde(int[] cpila){
@@ -147,7 +189,7 @@ public class BibliotecaFunciones{
     tripleta.add(tri3);
     String[] tri7 = {"",""};
     tri7[0] = "1";
-    tri7[1] = "2";
+    tri7[1] = "0";
     tripleta.add(tri7);
     cpila[0]=cpila[0]+1;
     String[] tri6 = {"","",""};
@@ -239,6 +281,22 @@ public class BibliotecaFunciones{
         tri3[1] = "1";
         tri3[2] = Integer.toString(cpila[0]-1);
         tripleta.add(tri3);
+        String[] tri11={"2"};
+        tripleta.add(tri11);
+        cpila[0] = cpila[0] - 1;
+        String[] tri13={"2"};
+        tripleta.add(tri13);
+        cpila[0] = cpila[0] - 1;
+        String[] tri7 = {"",""};
+        tri7[0] = "1";
+        tri7[1] = "2";
+        tripleta.add(tri7);
+        cpila[0]=cpila[0]+1;
+        String[] tri6 = {"","",""};
+        tri6[0] = "4";
+        tri6[1] = "0";
+        tri6[2] =Integer.toString(cpila[0]-1);
+        tripleta.add(tri6);
         return tripleta;
     }
 
@@ -254,16 +312,56 @@ public class BibliotecaFunciones{
         tri3[1] = "1";
         tri3[2] = Integer.toString(cpila[0]-1);
         tripleta.add(tri3);
+        String[] tri11={"2"};
+        tripleta.add(tri11);
+        cpila[0] = cpila[0] - 1;
+        String[] tri13={"2"};
+        tripleta.add(tri13);
+        cpila[0] = cpila[0] - 1;
+        String[] tri7 = {"",""};
+        tri7[0] = "1";
+        tri7[1] = "2";
+        tripleta.add(tri7);
+        cpila[0]=cpila[0]+1;
+        String[] tri6 = {"","",""};
+        tri6[0] = "4";
+        tri6[1] = "0";
+        tri6[2] =Integer.toString(cpila[0]-1);
+        tripleta.add(tri6);
         return tripleta;
     }
     
     public ArrayList<String[]>cadenaDentro(int[] cpila){
         tripleta.clear();
+        String[] tri = {"","",""};
+        tri[0] = "5";
+        tri[1] = Integer.toString(cpila[0]-3);
+        tri[2] = "1";
+        tripleta.add(tri);
         String[] tri3 = {"","",""};
         tri3[0] = "36";
         tri3[1] = Integer.toString(cpila[0]-2);
         tri3[2] = Integer.toString(cpila[0]-1);
         tripleta.add(tri3);
+        String[] tri13={"2"};
+        tripleta.add(tri13);
+        cpila[0] = cpila[0] - 1;
+        String[] tri15={"2"};
+        tripleta.add(tri15);
+        cpila[0] = cpila[0] - 1;
+        String[] tri14={"2"};
+        tripleta.add(tri14);
+        cpila[0] = cpila[0] - 1;
+        tring[] tri7 = {"",""};
+        tri7[0] = "1";
+        tri7[1] = "2";
+        tripleta.add(tri7);
+        cpila[0]=cpila[0]+1;
+        String[] tri6 = {"","",""};
+        tri6[0] = "4";
+        tri6[1] = "0";
+        tri6[2] =Integer.toString(cpila[0]-1);
+        tripleta.add(tri6);
         return tripleta;
     }
     public ArrayList<String[]> cadenaLongitud(int[] cpila){
@@ -277,6 +375,19 @@ public class BibliotecaFunciones{
         tri2[0] = "31";
         tri2[1] = "1";
         tripleta.add(tri2);
+        String[] tri14={"2"};
+        tripleta.add(tri14);
+        cpila[0] = cpila[0] - 1;
+        tring[] tri7 = {"",""};
+        tri7[0] = "1";
+        tri7[1] = "0";
+        tripleta.add(tri7);
+        cpila[0]=cpila[0]+1;
+        String[] tri6 = {"","",""};
+        tri6[0] = "4";
+        tri6[1] = "0";
+        tri6[2] =Integer.toString(cpila[0]-1);
+        tripleta.add(tri6);
         return tripleta;
     }
 }
