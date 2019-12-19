@@ -6,7 +6,6 @@ public class Instrucciones{
     private Entrada[] registros;
     private ArrayList<Entrada> pila;
     private Mv maquina;
-    private int rcmp;
 
     private HashMap<Integer,ManejoArchivos> archivos = new HashMap<Integer,ManejoArchivos>();
 
