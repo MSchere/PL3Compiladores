@@ -374,6 +374,7 @@ public class Instrucciones{
     }
     //En el registro r1 estará el descriptorFichero y en r2 estará lo que se quiera escribir
     public void escribirFichero(int r1, int r2){
+        
         archivos.get(((Int)registros[r1]).getValor()).escribir(((Cadena)registros[r2]).getValor());
     }
     //En el registro r estará el descriptorFichero

@@ -12,8 +12,8 @@ public class ManejoArchivos{
         int fd = 0;
         try{
         fichero = new File(ruta);
-        if (!fichero.exists()) fichero.createNewFile();
-        salida = new FileOutputStream(fichero);
+        if (!fichero.exists())fichero.createNewFile();
+        salida = new FileOutputStream(fichero,true);
         entrada = new FileInputStream(fichero);
         fd = fichero.hashCode();
         }
@@ -23,6 +23,7 @@ public class ManejoArchivos{
 
     public void escribir(String cadena){
         try{
+            cadena=cadena+"\n";
             byte[] texto = cadena.getBytes();
 		    salida.write(texto);
             salida.flush();
@@ -33,11 +34,12 @@ public class ManejoArchivos{
     public String leer(){
         String cadena = "";
         try{
-            int ch = entrada.read();
-            while(ch != -1) {
-                cadena = cadena + (char)ch;
-                ch = entrada.read();
-            }
+            
+            int i=0;    
+            while((i=entrada.read())!=-1)
+            
+                cadena = cadena + (char)i;
+                
         }catch(Exception e){}
         return cadena;
     }

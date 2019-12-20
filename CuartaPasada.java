@@ -318,6 +318,8 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip4.get(6));
                 tripletas.add(trip4.get(7));
                 tripletas.add(trip4.get(8));
+                tripletas.add(trip4.get(9));
+                tripletas.add(trip4.get(10));
                 break;
 
             case ("cadenaIzquierda"):
@@ -349,7 +351,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip7.get(6));
                 tripletas.add(trip7.get(7));
                 tripletas.add(trip7.get(8));
-                tripletas.add(trip7.get(9));
                 break;
             case ("cadenaLongitud"):
             
@@ -367,7 +368,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip9.get(1));
                 tripletas.add(trip9.get(2));
                 tripletas.add(trip9.get(3));
-
+                tripletas.add(trip9.get(4));
                 break;
             case ("fwrite"):
                 ArrayList<String[]> trip10 = biblio.fwrite(cpila);
@@ -391,6 +392,8 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip12.get(0));
                 tripletas.add(trip12.get(1));
                 tripletas.add(trip12.get(2));
+                tripletas.add(trip12.get(3));
+                tripletas.add(trip12.get(4));
                 break;
             }
         }
