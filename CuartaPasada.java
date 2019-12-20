@@ -451,6 +451,53 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return visit(ctx.expr());
     }
 
+    public String visitComp(GramProgParser.CompContext ctx) {
+        visit(ctx.expr(0));
+        visit(ctx.expr(1));
+        String[] trip0 = { "", "", "" };
+        trip0[0] = "5";
+        trip0[1] = Integer.toString(cpila[0] - 2);
+        trip0[2] = "1";
+        tripletas.add(trip0);
+        String[] trip1 = { "", "", "" };
+        trip1[0] = "5";
+        trip1[1] = Integer.toString(cpila[0] - 1);
+        trip1[2] = "2";
+        tripletas.add(trip1);
+        String[] trip2 = { "", "", "" };
+        if (ctx.MENQ() != null) {
+            trip2[0] = "13";
+        } 
+        else if(ctx.MAYQ()!= null) {
+            trip2[0] = "14";
+        }
+        else if(ctx.IGUAL() != null){
+            trip2[0] = "15";
+        }
+        else{
+            trip2[0] = "16";
+        }
+        trip2[1] = "1";
+        trip2[2] = "2";
+        tripletas.add(trip2);
+        String[] trip3 = {"2"};
+        tripletas.add(trip3);
+        tripletas.add(trip3);
+        cpila[0] = cpila[0] - 1;
+        cpila[0] = cpila[0] - 1;
+        String[] trip4 = { "", "" };
+        trip4[0] = "1";
+        trip4[1] = "3";
+        cpila[0] = cpila[0] + 1;
+        tripletas.add(trip4);
+        String[] trip5 = { "", "", "" };
+        trip5[0] = "4";
+        trip5[1] = "0";
+        trip5[2] = Integer.toString(cpila[0] - 1);
+        tripletas.add(trip5);
+        return "";
+    }
+
     public String visitMul(GramProgParser.MulContext ctx) {
         int tipo = Integer.parseInt(visit(ctx.expr(0)));
         int tipo1 = Integer.parseInt(visit(ctx.expr(1)));
