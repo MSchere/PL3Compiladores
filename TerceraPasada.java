@@ -33,6 +33,11 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 	// FUNCIONES DE APOYO
 
 	public void cargarFunciones(){
+		ArrayList<String[]> funcTS = new ArrayList<String[]>(ts.extraeContenidoFuncionAll());
+        for(int i=0;i<funcTS.size();i++){
+            String[] aux = funcTS.get(i);
+			funciones.put(aux[0],aux[1]);
+		}
 		
 		funciones.put("sqrt","float");
 		funciones.put("cadenaDonde","int");
@@ -62,23 +67,27 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 	public void buscarCambioTipo(String nombre, String valor){
 
 		String contx = "";
+		String tipoaux= "";
 		String nombreaux = "";
 		String valoraux = "";
 		int loc = 0;
+		ArrayList<String> aux = new ArrayList<String>();
 		for(int i=0; i<almacen.size(); i++){
 
-			ArrayList<String> aux = almacen.get(i);
+			aux = almacen.get(i);
 			contx = aux.get(0);
+			tipoaux = aux.get(1);
 			nombreaux = aux.get(2);
 			valoraux = aux.get(3);
 			loc = i;
 			if(!contx.equals(contextoaux) && nombreaux.equals(nombre) && aux.get(1).equals("numero")) break;
 
 		}
-		if(!valoraux.equals("null")) almacen.get(loc).set(1,"int");
+		if(!valoraux.equals("null") && !tipoaux.equals("float")) almacen.get(loc).set(1,"int");
 		if(!valoraux.equals("null") && valor.contains(".")) almacen.get(loc).set(1,"float");
-		
-		
+		if(!valoraux.equals("null") && !tipoaux.equals("float")){
+			buscarFuncion(valor,aux);
+		}
 	 }
 
     @Override
@@ -87,12 +96,10 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 		visitChildren(ctx);
 		for(int i=0; i<almacen.size(); i++){
 			ArrayList<String> aux = almacen.get(i);
-			if(aux.get(4).equals("noesParam")) {System.out.println(aux.get(0)+ aux.get(2)+ aux.get(1)+ aux.get(3));
-			ts.rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(3));
+			if(aux.get(4).equals("noesParam")) ts.rellenaFilaPilaVar(aux.get(0), aux.get(2), aux.get(1), aux.get(3));
+		
+			else ts.rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
 		}
-			else {System.out.println(aux.get(0)+ aux.get(2)+ aux.get(1));
-			ts.rellenaFilaPilaArg(aux.get(0), aux.get(2), aux.get(1));
-		}}
 		return "";
     }
     @Override
@@ -126,7 +133,7 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 
 		variable.add(ctx.ID().getText());
 
-		if(ctx.expr().getText() == null){
+		if(ctx.expr().getText().equals("null")){
 			variable.add("null");
 
 		}else{
@@ -198,9 +205,6 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
         if(!ctx.expr().getText().equals("null"))  buscarCambioTipo(ctx.ID().getText(),ctx.expr().getText());
-		if(!aux.get(3).equals("null")){
-			buscarFuncion(ctx.expr.getText(),variable);
-		}
 		return visitChildren(ctx);
     }
 	
