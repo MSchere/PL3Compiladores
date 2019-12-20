@@ -1,7 +1,9 @@
 import java.util.Stack;
+import java.util.ArrayList;
 
 public class ContenidoFuncion {
 	Stack<String[]> pilaVar = new Stack<String[]>();
+	ArrayList<String[]> codigo = new ArrayList<String[]>();
 	int tipoRetorno = 0;
 	int numArgumentos = 0;
 	int desplazamiento = 0;

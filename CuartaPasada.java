@@ -41,9 +41,12 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
 
-            for (int j = 0; j < tripletas.size(); j++) {
+            ArrayList<String[]> codigo =  tb.funcion.get("main").codigo;
+            int max = tb.funcion.get("main").codigo.size();
+           
+            for (int j = 0; j < max; j++) {
                 String[] PrintPOS;
-                PrintPOS = tripletas.get(j);
+                PrintPOS = codigo.get(j);
 
                 bw.write("[");
                 bw.write(PrintPOS[0]);
@@ -72,6 +75,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
+        tripletas.clear();
         funcActual = ctx.ID().getText();
         
         TripletaInit[0] = "0";
@@ -122,6 +126,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         visitChildren(ctx);
         String[] trip = { "6" };
         tripletas.add(trip);
+        tb.funcion.get(funcActual).codigo = tripletas;
         return "";
     }
 
@@ -278,14 +283,22 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitDevolv(GramProgParser.DevolvContext ctx) {
-        return visitChildren(ctx);
+        visitChildren(ctx);
+        int puntPila = tb.funcion.get(funcActual).punteroPila;
+        int numArgs = tb.funcion.get(funcActual).numArgumentos;
+        String[] tri = {"5",Integer.toString(cpila[0]-1),"1"};
+        tripletas.add(tri);
+        String[] trip = {"4","1",Integer.toString(puntPila-numArgs)};
+        tripletas.add(trip);
+        cpila[0] = puntPila-numArgs;
+        return "";
     }
 
     @Override
     public String visitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx) {
         String nombre = ctx.ID().getText();
-        visitChildren(ctx);
         if (biblio.existe(nombre)) {
+            visitChildren(ctx);
             switch (nombre) {
             case ("imprimir"):
                 ArrayList<String[]> trip = biblio.imprimir(cpila);
@@ -420,10 +433,38 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 break;
             }
         }
-
+        else{// comprobar que este la funcion en la tabla del simbolos
+            if(tb.existeFuncion(nombre)){
+                String[] funcion = tb.extraeContenidoFuncion(nombre);
+                if(!funcion[2].equals("void")){
+                    String[] trip = { "", "" };
+                    trip[0] = "1";
+                    switch(funcion[2]){
+                        case "numero":
+                            trip[1] = "1";
+                            break;
+                        case "cadena":
+                            trip[1] = "2";
+                            break;
+                        case "booleano":
+                            trip[1] = "3";
+                            break;
+                    }
+                    cpila[0] = cpila[0] + 1;
+                    tripletas.add(trip);
+                }
+                visitChildren(ctx);
+                int max = tb.funcion.get(funcActual.toString()).codigo.size();
+                System.out.println(max);
+                for(int i = 0;i<max;i++){
+                    String[] trip = tb.funcion.get(funcActual).codigo.get(i);
+                    tripletas.add(trip);
+                    if(trip[0].equals("0") || trip[0].equals("1"))cpila[0] = cpila[0]+1;
+                    if(trip[0].equals("2"))cpila[0] = cpila[0]-1;
+                }
+            }
+        }
         // }
-
-        // comprobar que este la funcion en la tabla del simbolos y empezamos
         // tabla de simbolos y pillar de la funcion .getNumerosDeInputs y
         // .getNumerosDeOutputs
         // String[] PrintPOS = { " ", " ", " " };

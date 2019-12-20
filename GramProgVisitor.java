@@ -149,13 +149,6 @@ public interface GramProgVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTip(GramProgParser.TipContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code lista}
-	 * labeled alternative in {@link GramProgParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLista(GramProgParser.ListaContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code suma}
 	 * labeled alternative in {@link GramProgParser#expr}.
 	 * @param ctx the parse tree

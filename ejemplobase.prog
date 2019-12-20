@@ -1,7 +1,17 @@
 function main():void
-begin
-       numero x:=2;
-       numero y:=x+3;
-       imprimir(y+1);
-
+begin   
+        cadena c;
+        c := "hola";
+        if(3>2)
+        then
+                print(c);
+        else
+                print(8+2);
+        endif
+        numero x := 3;
+        while(x>0)
+        begin    
+                x := x-1;
+                print(x);
+        end
 end

@@ -162,6 +162,10 @@ public class TablaSimbolos extends ContenidoFuncion{
 
 		return almacenFunc;
 	}
+
+	public boolean existeFuncion(String nombre){
+		return funcion.containsKey(nombre);
+	}
 	/*
 	public ArrayList<String> extraeTiposArgumentos(String nombreFunc) {
 		ArrayList<String> tiposArgumentos = new ArrayList<String>();

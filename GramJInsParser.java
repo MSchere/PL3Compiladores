@@ -1,4 +1,4 @@
-// Generated from .\GramJIns.g4 by ANTLR 4.7.2
+// Generated from GramJIns.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -17,7 +17,7 @@ public class GramJInsParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		CI=1, CD=2, COM=3, LVI=4, LVD=5, COMA=6, PUNTO=7, WS=8, COMENTARIO_BLOQUE=9, 
-		INT=10, NEWLINE=11, CADENA=12, ARRAY=13;
+		INT=10, NEWLINE=11, CADENA=12, BOOL=13, ARRAY=14;
 	public static final int
 		RULE_prog = 0, RULE_tripleta = 1;
 	private static String[] makeRuleNames() {
@@ -36,7 +36,7 @@ public class GramJInsParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, "CI", "CD", "COM", "LVI", "LVD", "COMA", "PUNTO", "WS", "COMENTARIO_BLOQUE", 
-			"INT", "NEWLINE", "CADENA", "ARRAY"
+			"INT", "NEWLINE", "CADENA", "BOOL", "ARRAY"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -162,6 +162,7 @@ public class GramJInsParser extends Parser {
 		public TerminalNode COMA(int i) {
 			return getToken(GramJInsParser.COMA, i);
 		}
+		public TerminalNode BOOL() { return getToken(GramJInsParser.BOOL, 0); }
 		public TerminalNode CADENA() { return getToken(GramJInsParser.CADENA, 0); }
 		public TerminalNode ARRAY() { return getToken(GramJInsParser.ARRAY, 0); }
 		public TripletaContext(ParserRuleContext parent, int invokingState) {
@@ -210,7 +211,7 @@ public class GramJInsParser extends Parser {
 				match(COMA);
 				setState(19);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << CADENA) | (1L << ARRAY))) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << CADENA) | (1L << BOOL) | (1L << ARRAY))) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -237,9 +238,9 @@ public class GramJInsParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17\33\4\2\t\2\4\3"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\20\33\4\2\t\2\4\3"+
 		"\t\3\3\2\3\2\3\2\7\2\n\n\2\f\2\16\2\r\13\2\3\3\3\3\3\3\3\3\5\3\23\n\3"+
-		"\3\3\3\3\5\3\27\n\3\3\3\3\3\3\3\2\2\4\2\4\2\3\4\2\f\f\16\17\2\33\2\13"+
+		"\3\3\3\3\5\3\27\n\3\3\3\3\3\3\3\2\2\4\2\4\2\3\4\2\f\f\16\20\2\33\2\13"+
 		"\3\2\2\2\4\16\3\2\2\2\6\7\5\4\3\2\7\b\7\r\2\2\b\n\3\2\2\2\t\6\3\2\2\2"+
 		"\n\r\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\3\3\2\2\2\r\13\3\2\2\2\16\17"+
 		"\7\3\2\2\17\22\7\f\2\2\20\21\7\b\2\2\21\23\7\f\2\2\22\20\3\2\2\2\22\23"+

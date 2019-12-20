@@ -72,7 +72,6 @@ expr:	llamadaFuncion #llamafuncion
     |   CADENA #cadena
     |   numero #num
     |	ID #id
-    |   PI (expr COMA?)+ PD #lista
     ;
 
 

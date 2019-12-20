@@ -139,12 +139,9 @@ public class GramProgParser extends Parser {
 		}
 		public ProgPrincipalContext(ProgContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterProgPrincipal(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitProgPrincipal(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitProgPrincipal(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -214,12 +211,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
 		public IncluirContext(IncludeContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterIncluir(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitIncluir(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitIncluir(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -269,12 +263,9 @@ public class GramProgParser extends Parser {
 		}
 		public FuncContext(FuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterFunc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitFunc(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -327,12 +318,9 @@ public class GramProgParser extends Parser {
 		}
 		public DefinirFuncContext(DefineFuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDefinirFunc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDefinirFunc(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDefinirFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -394,12 +382,9 @@ public class GramProgParser extends Parser {
 		}
 		public ParamContext(ParametrosContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterParam(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitParam(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitParam(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -469,12 +454,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode END() { return getToken(GramProgParser.END, 0); }
 		public BloqueFuncContext(BloqueFuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueFunc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueFunc(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -527,12 +509,9 @@ public class GramProgParser extends Parser {
 		}
 		public BucleWhileContext(BucleContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBucleWhile(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBucleWhile(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBucleWhile(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -588,12 +567,9 @@ public class GramProgParser extends Parser {
 		}
 		public BloqueBucleWhileContext(BloqueCodigoBucleContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueBucleWhile(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueBucleWhile(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueBucleWhile(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -692,12 +668,9 @@ public class GramProgParser extends Parser {
 		}
 		public IfEexContext(IfexContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterIfEex(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitIfEex(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitIfEex(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -754,12 +727,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode ELSE() { return getToken(GramProgParser.ELSE, 0); }
 		public BloqueBucleIfContext(BloqueCodigoIfContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueBucleIf(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueBucleIf(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueBucleIf(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -822,12 +792,9 @@ public class GramProgParser extends Parser {
 		}
 		public ForEexContext(ForExContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterForEex(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitForEex(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitForEex(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -888,12 +855,9 @@ public class GramProgParser extends Parser {
 		}
 		public DefinirForContext(DefineForContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDefinirFor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDefinirFor(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDefinirFor(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -973,12 +937,9 @@ public class GramProgParser extends Parser {
 		}
 		public BloqueCodContext(BloqueCodigoContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBloqueCod(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBloqueCod(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBloqueCod(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1048,12 +1009,9 @@ public class GramProgParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_sentencia; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterSentencia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitSentencia(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitSentencia(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1179,12 +1137,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode CONST() { return getToken(GramProgParser.CONST, 0); }
 		public DeclararYasignContext(DeclararYasignarContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDeclararYasign(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDeclararYasign(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDeclararYasign(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1246,12 +1201,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode CONST() { return getToken(GramProgParser.CONST, 0); }
 		public DeclararContext(DeclaracionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDeclarar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDeclarar(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDeclarar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1309,12 +1261,9 @@ public class GramProgParser extends Parser {
 		}
 		public AsignarContext(AsignacionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterAsignar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitAsignar(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitAsignar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1363,12 +1312,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode FIN() { return getToken(GramProgParser.FIN, 0); }
 		public DevolvContext(DevolverContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterDevolv(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitDevolv(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitDevolv(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1425,12 +1371,9 @@ public class GramProgParser extends Parser {
 		}
 		public LlamadaFuncContext(LlamadaFuncionContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterLlamadaFunc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitLlamadaFunc(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitLlamadaFunc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1507,12 +1450,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode CORCHD() { return getToken(GramProgParser.CORCHD, 0); }
 		public TipContext(TipoContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterTip(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitTip(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitTip(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1570,29 +1510,6 @@ public class GramProgParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class ListaContext extends ExprContext {
-		public TerminalNode PI() { return getToken(GramProgParser.PI, 0); }
-		public TerminalNode PD() { return getToken(GramProgParser.PD, 0); }
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public List<TerminalNode> COMA() { return getTokens(GramProgParser.COMA); }
-		public TerminalNode COMA(int i) {
-			return getToken(GramProgParser.COMA, i);
-		}
-		public ListaContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterLista(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitLista(this);
-		}
-	}
 	public static class SumaContext extends ExprContext {
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
@@ -1604,12 +1521,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode REST() { return getToken(GramProgParser.REST, 0); }
 		public SumaContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterSuma(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitSuma(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitSuma(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class CompContext extends ExprContext {
@@ -1625,24 +1539,18 @@ public class GramProgParser extends Parser {
 		public TerminalNode DIF() { return getToken(GramProgParser.DIF, 0); }
 		public CompContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterComp(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitComp(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitComp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class BoolContext extends ExprContext {
 		public TerminalNode BOOL() { return getToken(GramProgParser.BOOL, 0); }
 		public BoolContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterBool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitBool(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitBool(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class MulContext extends ExprContext {
@@ -1656,24 +1564,18 @@ public class GramProgParser extends Parser {
 		public TerminalNode DIV() { return getToken(GramProgParser.DIV, 0); }
 		public MulContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterMul(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitMul(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitMul(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class CadenaContext extends ExprContext {
 		public TerminalNode CADENA() { return getToken(GramProgParser.CADENA, 0); }
 		public CadenaContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterCadena(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitCadena(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitCadena(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NumContext extends ExprContext {
@@ -1682,12 +1584,9 @@ public class GramProgParser extends Parser {
 		}
 		public NumContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterNum(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitNum(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitNum(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ParentesisContext extends ExprContext {
@@ -1698,12 +1597,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode PD() { return getToken(GramProgParser.PD, 0); }
 		public ParentesisContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterParentesis(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitParentesis(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitParentesis(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NegContext extends ExprContext {
@@ -1713,24 +1609,18 @@ public class GramProgParser extends Parser {
 		}
 		public NegContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterNeg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitNeg(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitNeg(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ArrayContext extends ExprContext {
 		public TerminalNode ARRAY() { return getToken(GramProgParser.ARRAY, 0); }
 		public ArrayContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterArray(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitArray(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitArray(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class AndContext extends ExprContext {
@@ -1744,12 +1634,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode OR() { return getToken(GramProgParser.OR, 0); }
 		public AndContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterAnd(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitAnd(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitAnd(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class LlamafuncionContext extends ExprContext {
@@ -1758,24 +1645,18 @@ public class GramProgParser extends Parser {
 		}
 		public LlamafuncionContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterLlamafuncion(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitLlamafuncion(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitLlamafuncion(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class IdContext extends ExprContext {
 		public TerminalNode ID() { return getToken(GramProgParser.ID, 0); }
 		public IdContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterId(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitId(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitId(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class IncContext extends ExprContext {
@@ -1786,12 +1667,9 @@ public class GramProgParser extends Parser {
 		public TerminalNode DEC() { return getToken(GramProgParser.DEC, 0); }
 		public IncContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterInc(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitInc(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitInc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1811,9 +1689,9 @@ public class GramProgParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(214);
+			setState(203);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
 			case 1:
 				{
 				_localctx = new LlamafuncionContext(_localctx);
@@ -1845,7 +1723,7 @@ public class GramProgParser extends Parser {
 				setState(196);
 				match(NEG);
 				setState(197);
-				expr(12);
+				expr(11);
 				}
 				break;
 			case 4:
@@ -1893,61 +1771,26 @@ public class GramProgParser extends Parser {
 				match(ID);
 				}
 				break;
-			case 9:
-				{
-				_localctx = new ListaContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-				setState(203);
-				match(PI);
-				setState(208); 
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				do {
-					{
-					{
-					setState(204);
-					expr(0);
-					setState(206);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-					if (_la==COMA) {
-						{
-						setState(205);
-						match(COMA);
-						}
-					}
-
-					}
-					}
-					setState(210); 
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ARRAY) | (1L << BOOL) | (1L << FLOAT) | (1L << INT) | (1L << ID) | (1L << CADENA) | (1L << PI) | (1L << NEG))) != 0) );
-				setState(212);
-				match(PD);
-				}
-				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(232);
+			setState(221);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(230);
+					setState(219);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,16,_ctx) ) {
 					case 1:
 						{
 						_localctx = new AndContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(216);
-						if (!(precpred(_ctx, 11))) throw new FailedPredicateException(this, "precpred(_ctx, 11)");
-						setState(217);
+						setState(205);
+						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						setState(206);
 						_la = _input.LA(1);
 						if ( !(_la==AND || _la==OR) ) {
 						_errHandler.recoverInline(this);
@@ -1957,17 +1800,17 @@ public class GramProgParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(218);
-						expr(12);
+						setState(207);
+						expr(11);
 						}
 						break;
 					case 2:
 						{
 						_localctx = new MulContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(219);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
-						setState(220);
+						setState(208);
+						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						setState(209);
 						_la = _input.LA(1);
 						if ( !(_la==MUL || _la==DIV) ) {
 						_errHandler.recoverInline(this);
@@ -1977,17 +1820,17 @@ public class GramProgParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(221);
-						expr(11);
+						setState(210);
+						expr(10);
 						}
 						break;
 					case 3:
 						{
 						_localctx = new SumaContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(222);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(223);
+						setState(211);
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						setState(212);
 						_la = _input.LA(1);
 						if ( !(_la==SUM || _la==REST) ) {
 						_errHandler.recoverInline(this);
@@ -1997,17 +1840,17 @@ public class GramProgParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(224);
-						expr(9);
+						setState(213);
+						expr(8);
 						}
 						break;
 					case 4:
 						{
 						_localctx = new CompContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(225);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(226);
+						setState(214);
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						setState(215);
 						_la = _input.LA(1);
 						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DIF) | (1L << IGUAL) | (1L << MAYQ) | (1L << MENQ))) != 0)) ) {
 						_errHandler.recoverInline(this);
@@ -2017,17 +1860,17 @@ public class GramProgParser extends Parser {
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(227);
-						expr(8);
+						setState(216);
+						expr(7);
 						}
 						break;
 					case 5:
 						{
 						_localctx = new IncContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(228);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(229);
+						setState(217);
+						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
+						setState(218);
 						_la = _input.LA(1);
 						if ( !(_la==INC || _la==DEC) ) {
 						_errHandler.recoverInline(this);
@@ -2042,9 +1885,9 @@ public class GramProgParser extends Parser {
 					}
 					} 
 				}
-				setState(234);
+				setState(223);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,19,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,17,_ctx);
 			}
 			}
 		}
@@ -2067,12 +1910,9 @@ public class GramProgParser extends Parser {
 		}
 		@Override public int getRuleIndex() { return RULE_numero; }
 		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).enterNumero(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramProgListener ) ((GramProgListener)listener).exitNumero(this);
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramProgVisitor ) return ((GramProgVisitor<? extends T>)visitor).visitNumero(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2083,7 +1923,7 @@ public class GramProgParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(235);
+			setState(224);
 			_la = _input.LA(1);
 			if ( !(_la==FLOAT || _la==INT) ) {
 			_errHandler.recoverInline(this);
@@ -2116,21 +1956,21 @@ public class GramProgParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 11);
-		case 1:
 			return precpred(_ctx, 10);
-		case 2:
-			return precpred(_ctx, 8);
-		case 3:
-			return precpred(_ctx, 7);
-		case 4:
+		case 1:
 			return precpred(_ctx, 9);
+		case 2:
+			return precpred(_ctx, 7);
+		case 3:
+			return precpred(_ctx, 6);
+		case 4:
+			return precpred(_ctx, 8);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66\u00f0\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66\u00e5\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\7\2\61\n\2"+
@@ -2145,16 +1985,15 @@ public class GramProgParser extends Parser {
 		"\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\7\24\u00b3"+
 		"\n\24\f\24\16\24\u00b6\13\24\5\24\u00b8\n\24\3\24\3\24\3\25\3\25\3\25"+
 		"\5\25\u00bf\n\25\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26"+
-		"\3\26\3\26\3\26\3\26\3\26\5\26\u00d1\n\26\6\26\u00d3\n\26\r\26\16\26\u00d4"+
-		"\3\26\3\26\5\26\u00d9\n\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26"+
-		"\3\26\3\26\3\26\3\26\3\26\7\26\u00e9\n\26\f\26\16\26\u00ec\13\26\3\27"+
+		"\3\26\3\26\5\26\u00ce\n\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26"+
+		"\3\26\3\26\3\26\3\26\3\26\7\26\u00de\n\26\f\26\16\26\u00e1\13\26\3\27"+
 		"\3\27\3\27\2\3*\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,\2\t"+
-		"\3\2\n\r\3\2./\3\2\64\65\3\2\62\63\3\2),\3\2\60\61\3\2\26\27\2\u00fe\2"+
+		"\3\2\n\r\3\2./\3\2\64\65\3\2\62\63\3\2),\3\2\60\61\3\2\26\27\2\u00f0\2"+
 		"\62\3\2\2\2\4\65\3\2\2\2\69\3\2\2\2\b<\3\2\2\2\nL\3\2\2\2\fN\3\2\2\2\16"+
 		"R\3\2\2\2\20_\3\2\2\2\22a\3\2\2\2\24g\3\2\2\2\26o\3\2\2\2\30r\3\2\2\2"+
 		"\32\u0081\3\2\2\2\34\u0095\3\2\2\2\36\u0098\3\2\2\2 \u00a0\3\2\2\2\"\u00a5"+
-		"\3\2\2\2$\u00a9\3\2\2\2&\u00ad\3\2\2\2(\u00bb\3\2\2\2*\u00d8\3\2\2\2,"+
-		"\u00ed\3\2\2\2.\61\5\4\3\2/\61\5\6\4\2\60.\3\2\2\2\60/\3\2\2\2\61\64\3"+
+		"\3\2\2\2$\u00a9\3\2\2\2&\u00ad\3\2\2\2(\u00bb\3\2\2\2*\u00cd\3\2\2\2,"+
+		"\u00e2\3\2\2\2.\61\5\4\3\2/\61\5\6\4\2\60.\3\2\2\2\60/\3\2\2\2\61\64\3"+
 		"\2\2\2\62\60\3\2\2\2\62\63\3\2\2\2\63\3\3\2\2\2\64\62\3\2\2\2\65\66\7"+
 		"\5\2\2\66\67\7\30\2\2\678\7!\2\28\5\3\2\2\29:\5\b\5\2:;\5\f\7\2;\7\3\2"+
 		"\2\2<=\7\6\2\2=>\7\30\2\2>?\7\35\2\2?@\5\n\6\2@A\7\36\2\2AB\7$\2\2BC\5"+
@@ -2190,25 +2029,21 @@ public class GramProgParser extends Parser {
 		"\2\2\u00b7\u00af\3\2\2\2\u00b7\u00b8\3\2\2\2\u00b8\u00b9\3\2\2\2\u00b9"+
 		"\u00ba\7\36\2\2\u00ba\'\3\2\2\2\u00bb\u00be\t\2\2\2\u00bc\u00bd\7\37\2"+
 		"\2\u00bd\u00bf\7 \2\2\u00be\u00bc\3\2\2\2\u00be\u00bf\3\2\2\2\u00bf)\3"+
-		"\2\2\2\u00c0\u00c1\b\26\1\2\u00c1\u00d9\5&\24\2\u00c2\u00c3\7\35\2\2\u00c3"+
-		"\u00c4\5*\26\2\u00c4\u00c5\7\36\2\2\u00c5\u00d9\3\2\2\2\u00c6\u00c7\7"+
-		"-\2\2\u00c7\u00d9\5*\26\16\u00c8\u00d9\7\24\2\2\u00c9\u00d9\7\25\2\2\u00ca"+
-		"\u00d9\7\31\2\2\u00cb\u00d9\5,\27\2\u00cc\u00d9\7\30\2\2\u00cd\u00d2\7"+
-		"\35\2\2\u00ce\u00d0\5*\26\2\u00cf\u00d1\7%\2\2\u00d0\u00cf\3\2\2\2\u00d0"+
-		"\u00d1\3\2\2\2\u00d1\u00d3\3\2\2\2\u00d2\u00ce\3\2\2\2\u00d3\u00d4\3\2"+
-		"\2\2\u00d4\u00d2\3\2\2\2\u00d4\u00d5\3\2\2\2\u00d5\u00d6\3\2\2\2\u00d6"+
-		"\u00d7\7\36\2\2\u00d7\u00d9\3\2\2\2\u00d8\u00c0\3\2\2\2\u00d8\u00c2\3"+
-		"\2\2\2\u00d8\u00c6\3\2\2\2\u00d8\u00c8\3\2\2\2\u00d8\u00c9\3\2\2\2\u00d8"+
-		"\u00ca\3\2\2\2\u00d8\u00cb\3\2\2\2\u00d8\u00cc\3\2\2\2\u00d8\u00cd\3\2"+
-		"\2\2\u00d9\u00ea\3\2\2\2\u00da\u00db\f\r\2\2\u00db\u00dc\t\3\2\2\u00dc"+
-		"\u00e9\5*\26\16\u00dd\u00de\f\f\2\2\u00de\u00df\t\4\2\2\u00df\u00e9\5"+
-		"*\26\r\u00e0\u00e1\f\n\2\2\u00e1\u00e2\t\5\2\2\u00e2\u00e9\5*\26\13\u00e3"+
-		"\u00e4\f\t\2\2\u00e4\u00e5\t\6\2\2\u00e5\u00e9\5*\26\n\u00e6\u00e7\f\13"+
-		"\2\2\u00e7\u00e9\t\7\2\2\u00e8\u00da\3\2\2\2\u00e8\u00dd\3\2\2\2\u00e8"+
-		"\u00e0\3\2\2\2\u00e8\u00e3\3\2\2\2\u00e8\u00e6\3\2\2\2\u00e9\u00ec\3\2"+
-		"\2\2\u00ea\u00e8\3\2\2\2\u00ea\u00eb\3\2\2\2\u00eb+\3\2\2\2\u00ec\u00ea"+
-		"\3\2\2\2\u00ed\u00ee\t\b\2\2\u00ee-\3\2\2\2\26\60\62IL]_kv\u0081\u0095"+
-		"\u0098\u00a0\u00b4\u00b7\u00be\u00d0\u00d4\u00d8\u00e8\u00ea";
+		"\2\2\2\u00c0\u00c1\b\26\1\2\u00c1\u00ce\5&\24\2\u00c2\u00c3\7\35\2\2\u00c3"+
+		"\u00c4\5*\26\2\u00c4\u00c5\7\36\2\2\u00c5\u00ce\3\2\2\2\u00c6\u00c7\7"+
+		"-\2\2\u00c7\u00ce\5*\26\r\u00c8\u00ce\7\24\2\2\u00c9\u00ce\7\25\2\2\u00ca"+
+		"\u00ce\7\31\2\2\u00cb\u00ce\5,\27\2\u00cc\u00ce\7\30\2\2\u00cd\u00c0\3"+
+		"\2\2\2\u00cd\u00c2\3\2\2\2\u00cd\u00c6\3\2\2\2\u00cd\u00c8\3\2\2\2\u00cd"+
+		"\u00c9\3\2\2\2\u00cd\u00ca\3\2\2\2\u00cd\u00cb\3\2\2\2\u00cd\u00cc\3\2"+
+		"\2\2\u00ce\u00df\3\2\2\2\u00cf\u00d0\f\f\2\2\u00d0\u00d1\t\3\2\2\u00d1"+
+		"\u00de\5*\26\r\u00d2\u00d3\f\13\2\2\u00d3\u00d4\t\4\2\2\u00d4\u00de\5"+
+		"*\26\f\u00d5\u00d6\f\t\2\2\u00d6\u00d7\t\5\2\2\u00d7\u00de\5*\26\n\u00d8"+
+		"\u00d9\f\b\2\2\u00d9\u00da\t\6\2\2\u00da\u00de\5*\26\t\u00db\u00dc\f\n"+
+		"\2\2\u00dc\u00de\t\7\2\2\u00dd\u00cf\3\2\2\2\u00dd\u00d2\3\2\2\2\u00dd"+
+		"\u00d5\3\2\2\2\u00dd\u00d8\3\2\2\2\u00dd\u00db\3\2\2\2\u00de\u00e1\3\2"+
+		"\2\2\u00df\u00dd\3\2\2\2\u00df\u00e0\3\2\2\2\u00e0+\3\2\2\2\u00e1\u00df"+
+		"\3\2\2\2\u00e2\u00e3\t\b\2\2\u00e3-\3\2\2\2\24\60\62IL]_kv\u0081\u0095"+
+		"\u0098\u00a0\u00b4\u00b7\u00be\u00cd\u00dd\u00df";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
