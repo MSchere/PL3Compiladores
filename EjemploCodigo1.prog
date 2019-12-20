@@ -16,9 +16,9 @@ begin
     return 2;
 end
 
-funcion unpar(numero x):numero
+function unpar(numero x):numero
 begin
-    numero temp := x*nopar()
+    numero temp := x*nopar();
     return temp;
 end
 
@@ -26,3 +26,4 @@ function dospar(numero x, numero y):numero
 begin
     return unpar(x) + unpar(y);
 end
+
