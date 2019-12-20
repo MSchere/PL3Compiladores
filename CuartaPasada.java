@@ -138,7 +138,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitIfEex(GramProgParser.IfEexContext ctx) {
-        ctx.expr();
+        visit(ctx.expr());
         String[] trip0 = {"","",""};
         trip0[0] = "5";
         trip0[1] = Integer.toString(cpila[0]-1);
@@ -146,32 +146,37 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         tripletas.add(trip0);
         String[] trip1 = {"2"};
         tripletas.add(trip1);
+        cpila[0] = cpila[0] - 1;
         String[] trip2 = {"", "",""};
-        trip2[0] = "41";
+        trip2[0] = "42";
         trip2[1] = "1";
-        trip2[0] = "0";
+        trip2[2] = "0";
         tripletas.add(trip2);
-        return visitChildren(ctx);
+        visit(ctx.bloqueCodigoIf());
+        return "";
     }
 
     @Override
     public String visitBloqueBucleIf(GramProgParser.BloqueBucleIfContext ctx) {
         int desp1 = tripletas.size();
-        ctx.bloqueCodigo(0);
-        String[] trip2 = { "", ""};
-        trip2[0] = "24";
-        trip2[1] = "-1";
-        tripletas.add(trip2);
+        visit(ctx.bloqueCodigo(0));
         int desp2 = tripletas.size();
         int salto = desp2-desp1;
         String[] tri = tripletas.get(tripletas.size()-1-salto);
         tri[2] = Integer.toString(desp2);
         tripletas.set(tripletas.size()-1-salto,tri);
-        ctx.bloqueCodigo(1);
-        int desp3 = tripletas.size();
-        String[] tri2 = tripletas.get(tripletas.size()-1-(desp3-desp2));
-        tri2[1] = Integer.toString(desp3);
-        tripletas.set(tripletas.size()-1-(desp3-desp2),tri);
+        if(ctx.ELSE() != null){
+            String[] trip2 = { "", ""};
+            trip2[0] = "24";
+            trip2[1] = "-1";
+            tripletas.add(trip2);
+            visit(ctx.bloqueCodigo(1));
+            int desp3 = tripletas.size();
+            String[] tri2 = tripletas.get(tripletas.size()-(desp3-desp2));
+            System.out.println(tri2[0]);
+            tri2[1] = Integer.toString(desp3);
+            tripletas.set(tripletas.size()-1-(desp3-desp2),tri2);
+        }
         return "";
     }
 
@@ -199,7 +204,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx) {
         String[] trip101 = { "1",""};
         trip101[1]=tb.extraeTipoVariable(funcActual,ctx.ID().getText());
-    
         tripletas.add(trip101);
         cpila[0]=cpila[0]+1;
         visitChildren(ctx);
@@ -343,6 +347,9 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
                 tripletas.add(trip7.get(4));
                 tripletas.add(trip7.get(5));
                 tripletas.add(trip7.get(6));
+                tripletas.add(trip7.get(7));
+                tripletas.add(trip7.get(8));
+                tripletas.add(trip7.get(9));
                 break;
             case ("cadenaLongitud"):
             
@@ -569,22 +576,21 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         return trip[1];
     }
     public String visitId(GramProgParser.IdContext ctx){
-
-            String[] trip0 = { "", "", "" };
-            trip0[0] = "5";
-            trip0[1] = String.valueOf(tb.extraeDesplazamientoVariable(funcActual,ctx.getText()));
-            trip0[2] =  "1";
-            tripletas.add(trip0);
-            String[] trip = { "", ""};
-            trip[0] = "1";
-            trip[1] = tb.extraeTipoVariable(funcActual,ctx.getText());
-            tripletas.add(trip);
-            cpila[0] = cpila[0] + 1;
-            String[] trip011 = { "", "", "" };
-            trip011[0] = "44";
-            trip011[1] = "1";
-            trip011[2] =  Integer.toString(cpila[0]-1);
-            tripletas.add(trip011);
-            return trip[1];
+        String[] trip0 = { "", "", "" };
+        trip0[0] = "5";
+        trip0[1] = String.valueOf(tb.extraeDesplazamientoVariable(funcActual,ctx.getText()));
+        trip0[2] =  "1";
+        tripletas.add(trip0);
+        String[] trip = { "", ""};
+        trip[0] = "1";
+        trip[1] = tb.extraeTipoVariable(funcActual,ctx.getText());
+        tripletas.add(trip);
+        cpila[0] = cpila[0] + 1;
+        String[] trip011 = { "", "", "" };
+        trip011[0] = "44";
+        trip011[1] = "1";
+        trip011[2] =  Integer.toString(cpila[0]-1);
+        tripletas.add(trip011);
+        return trip[1];
     }
 }
