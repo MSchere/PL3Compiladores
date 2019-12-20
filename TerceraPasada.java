@@ -11,11 +11,14 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 
 	public TerceraPasada(TablaSimbolos tabla){
 		this.ts = tabla;
+		cargarFunciones();
 	}
 	
     // CONTENEDORES
 
 	public static ArrayList<ArrayList<String>> almacen = new ArrayList<ArrayList<String>>();
+
+    HashMap<String, String> funciones = new HashMap<String, String>();
 
 	public ArrayList<String> variable = new ArrayList<String>();
 
@@ -28,6 +31,33 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 	String contextoaux = "";
 
 	// FUNCIONES DE APOYO
+
+	public void cargarFunciones(){
+		
+		funciones.put("sqrt","float");
+		funciones.put("cadenaDonde","int");
+		funciones.put("cadenaSinEspacios","cadena");
+		funciones.put("cadenaSustituida","cadena");
+		funciones.put("cadenaDerecha","cadena");
+		funciones.put("cadenaIzquierda","cadena");
+		funciones.put("cadenaDentro","bool");
+		funciones.put("cadenaLongitud","int");
+
+	}
+
+	public void buscarFuncion(String expr,ArrayList<String> aux){
+        
+		Set set = funciones.entrySet();
+        Iterator iterator = set.iterator();
+		while(iterator.hasNext()) {
+    		Map.Entry mentry = (Map.Entry)iterator.next();
+			if(expr.contains((String) mentry.getKey())){	
+				aux.set(1,(String) mentry.getValue());
+				break;
+			}
+        }
+
+	}
 
 	public void buscarCambioTipo(String nombre, String valor){
 
@@ -69,7 +99,7 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
     public String visitDefinirFunc(GramProgParser.DefinirFuncContext ctx) {
         variable.add(ctx.ID().getText());
 
-		 contextoaux = ctx.ID().getText();
+		contextoaux = ctx.ID().getText();
 		return visitChildren(ctx);
     }
 
@@ -116,8 +146,16 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
 		}
 		aux.add("noesParam");
 
+
+
+        System.out.println(aux.get(3));
+        
+
 		if(aux.get(1).equals("numero") && aux.get(3).contains(".")) aux.set(1,"float");
-	    if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
+	    else if(aux.get(1).equals("numero") && !aux.get(3).contains(".") && !aux.get(3).equals("null")) aux.set(1,"int");
+		if(!aux.get(3).equals("null")){
+			buscarFuncion(aux.get(3),aux);
+		}
 		aux.remove(3);
 		almacen.add(aux);
 		variable.remove(4);
@@ -160,12 +198,9 @@ public class TerceraPasada extends GramProgBaseVisitor<String> {
     @Override
     public String visitAsignar(GramProgParser.AsignarContext ctx) {
         if(!ctx.expr().getText().equals("null"))  buscarCambioTipo(ctx.ID().getText(),ctx.expr().getText());
-		return visitChildren(ctx);
-    }
-
-    @Override
-    public String visitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx) {
-		esNull=true;
+		if(!aux.get(3).equals("null")){
+			buscarFuncion(ctx.expr.getText(),variable);
+		}
 		return visitChildren(ctx);
     }
 	

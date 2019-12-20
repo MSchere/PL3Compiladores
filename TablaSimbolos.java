@@ -1,4 +1,8 @@
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.ArrayList;
 
 public class TablaSimbolos extends ContenidoFuncion{
 	
@@ -126,6 +130,37 @@ public class TablaSimbolos extends ContenidoFuncion{
 			contenidoFunc[2] = "void";
 		}
 		return contenidoFunc;
+	}
+
+	public ArrayList<String[]> extraeContenidoFuncionAll() {
+		ArrayList<String[]> almacenFunc = new ArrayList<String[]>();
+		String[] contenidoFunc = new String[2];
+
+		Set set = funcion.entrySet();
+        Iterator iterator = set.iterator();
+        while(iterator.hasNext()) {
+         Map.Entry mentry = (Map.Entry)iterator.next();
+		 ContenidoFuncion aux = new ContenidoFuncion();
+		 aux = (ContenidoFuncion) mentry.getValue();
+			contenidoFunc[0] = (String) mentry.getKey(); //nombreFuncion
+			if (funcion.get((String) mentry.getKey()).tipoRetorno == 1) {
+				contenidoFunc[1] = "numero";
+			}
+			if (funcion.get((String) mentry.getKey()).tipoRetorno == 2) {
+				contenidoFunc[1] = "string";
+			}
+			if (funcion.get((String) mentry.getKey()).tipoRetorno == 3) {
+				contenidoFunc[1] = "booleano";
+			}
+			if (funcion.get((String) mentry.getKey()).tipoRetorno == 4) {
+				contenidoFunc[1] = "void";
+			}
+            
+			almacenFunc.add(contenidoFunc);
+
+      }
+
+		return almacenFunc;
 	}
 	/*
 	public ArrayList<String> extraeTiposArgumentos(String nombreFunc) {
