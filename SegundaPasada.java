@@ -1,7 +1,12 @@
 import java.util.HashMap;
 public class SegundaPasada extends GramProgBaseVisitor<String> {
-	//Primer Valor:Nombre;SegundoValor:Tipo;
-	HashMap<String, String> tabla = new HashMap<String, String>();
+	TablaSimbolos ts;
+
+	HashMap<String, String> tabla;//para los tipos de las vars(1:nombre/2:tipo)
+	public SegundaPasada(TablaSimbolos tab){
+		this.ts=tab;
+		tabla=new HashMap<String, String>();
+	}
 
 	public String visitProgPrincipal(GramProgParser.ProgPrincipalContext ctx){
 		return visitChildren(ctx);
@@ -9,6 +14,9 @@ public class SegundaPasada extends GramProgBaseVisitor<String> {
 
 	public String visitFunc(GramProgParser.FuncContext ctx){
 		visitChildren(ctx);
+		/*Para los contextos, una vez salimos de la funcion eliminamos 
+		sus variables antes de pasar a la siguiente*/
+		tabla=new HashMap<String, String>();
 		return null;
 
 	}
@@ -16,7 +24,10 @@ public class SegundaPasada extends GramProgBaseVisitor<String> {
 	public String visitDefinirFunc(GramProgParser.DefinirFuncContext ctx){
 		String nombreFunc=ctx.getChild(1).getText();
 		String tipoReturn=visit(ctx.getChild(6));
-		tabla.put(nombreFunc,tipoReturn);
+		if(!(ts.extraeContenidoFuncion(nombreFunc)[2].equals(tipoReturn))){
+			System.out.println("Error con tipos en definición de la función:"+nombreFunc);
+			System.exit(-1);
+		}
 		return null;
 
 	}
@@ -24,66 +35,55 @@ public class SegundaPasada extends GramProgBaseVisitor<String> {
 		visitChildren(ctx);
 		return null;
 	}
-
 	public String visitBloqueFunc(GramProgParser.BloqueFuncContext ctx){
 		return visit(ctx.getChild(1));
 	}
-	public String visitBucle(GramProgParser.BucleContext ctx){
-		return visitChildren(ctx);}
-
-	public String visitBucleWhile(GramProgParser.BucleWhileContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitBloqueBucleWhile(GramProgParser.BloqueBucleWhileContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitIfEex(GramProgParser.IfEexContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitBloqueBucleIf(GramProgParser.BloqueBucleIfContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitForEex(GramProgParser.ForEexContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitDefinirFor(GramProgParser.DefinirForContext ctx){
-		return visitChildren(ctx);
-	}
-	public String visitBloqueCod(GramProgParser.BloqueCodContext ctx){
-		return visitChildren(ctx);
-	}
-
 	public String visitSentencia(GramProgParser.SentenciaContext ctx){
 		return visit(ctx.getChild(0));
 	}
 	public String visitDeclararYasign(GramProgParser.DeclararYasignContext ctx){
 		String tipoVar = visit(ctx.getChild(0));
-		String nombreVar = visit(ctx.getChild(1));
-		String tipoDato = visit(ctx.getChild(3));
-		if(tipoVar==tipoDato){
+		String tipoDato;
+		String nombreVar;
+		if(tipoVar.equals("const")){
+			tipoVar = visit(ctx.getChild(1));
+			nombreVar =ctx.getChild(2).getText();
+			tipoDato = visit(ctx.getChild(4));
+		}else{
+			nombreVar =ctx.getChild(1).getText();
+		 	tipoDato = visit(ctx.getChild(3));
+		}
+		if((tipoVar.equals(tipoDato))){
 			tabla.put(nombreVar,tipoVar);
-		}else{ErrorTipos();}
+		}else{
+			System.out.println("Error:Tipos no concuerdan al declarar y asignar:"+nombreVar);
+			System.exit(-1);
+		}
 		return null;
 	}
 	public String visitDeclarar(GramProgParser.DeclararContext ctx){
 		String tipoVar= visit(ctx.getChild(0));
-		String nombreVar=ctx.getChild(1).getText();
+		String nombreVar;
+		if(tipoVar.equals("const")){
+			tipoVar= visit(ctx.getChild(1));
+			nombreVar=ctx.getChild(2).getText();
+		}else{
+			nombreVar=ctx.getChild(1).getText();
+		}
 		tabla.put(nombreVar,tipoVar);
 		return null;
 	}
 	public String visitAsignar(GramProgParser.AsignarContext ctx){
-		String nombreVar= visit(ctx.getChild(0));
+		String nombreVar= ctx.getChild(0).getText();
 		String tipoVar=visit(ctx.getChild(2));
 		if((tabla.containsKey(nombreVar))==false){
-			System.out.println("Error,se intenta dar valor a una variable no declarada");
+			System.out.println("Error,se intenta dar valor a una variable no declarada:"+ nombreVar);
 			System.exit(-1);
 		}
-		if(tabla.get(nombreVar)!=tipoVar){ErrorTipos();}
+		if(!(tabla.get(nombreVar).equals(tipoVar))){
+			System.out.println("Error, se intenta asignar un tipo de datos distinto al declarado a:"+ nombreVar);
+			System.exit(-1);
+		}
 		return null;
 		
 	}
@@ -91,62 +91,54 @@ public class SegundaPasada extends GramProgBaseVisitor<String> {
 	public String visitTip(GramProgParser.TipContext ctx){
 		return ctx.getText();
 	}
-
-	public String visitInc(GramProgParser.ExprContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitNeg(GramProgParser.ExprContext ctx){
-		return visitChildren(ctx);
-	}
-
-	public String visitCadena(GramProgParser.ExprContext ctx){
+	public String visitCadena(GramProgParser.CadenaContext ctx){
 		return "cadena";
 	}
 
-	public String visitNum(GramProgParser.ExprContext ctx){
+	public String visitNum(GramProgParser.NumContext ctx){
 		return "numero";
 	}
 
-	public String visitMul(GramProgParser.ExprContext ctx){
+	public String visitMul(GramProgParser.MulContext ctx){
 		String tipoL=visit(ctx.getChild(0));
 		String tipoR=visit(ctx.getChild(2));
 		if(tipoL==tipoR && tipoL=="numero"){return "numero";}
-		else{ErrorTipos();}
+		else{System.out.println("Tipos erróneos en Mul");
+			System.exit(-1);
+		}
 		return null;
 	}
 
-	public String visitComp(GramProgParser.ExprContext ctx){
+	public String visitComp(GramProgParser.CompContext ctx){
 		String tipoL=visit(ctx.getChild(0));
 		String tipoR=visit(ctx.getChild(2));
-		if(tipoL==tipoR){return tipoL;}
-		else{ErrorTipos();}
+		if(tipoL==tipoR){return "booleano";}
+		else{System.out.println("Tipos distintos en Comp");
+			System.exit(0);}
 		return null;
 	}
 
-	public String visitID(GramProgParser.ExprContext ctx){
+	public String visitId(GramProgParser.IdContext ctx){
 		String var=ctx.getText();
-		if(tabla.containsKey(var)){return tabla.get(var);}
-		else{ErrorTipos();}
-		return null;
+		return var;
 	}
 
-	public String visitAnd(GramProgParser.ExprContext ctx){
+	public String visitAnd(GramProgParser.AndContext ctx){
 		String tipoL=visit(ctx.getChild(0));
 		String tipoR=visit(ctx.getChild(2));
 		if(tipoL==tipoR && tipoL=="booleano"){return "booleano";}
-		else{ErrorTipos();}
+		else{System.out.println("Error de tipos en operacion AND");
+			System.exit(-1);
+		}
 		return null;
 	}
 
-	public String visitFunCall(GramProgParser.ExprContext ctx){
-		String id=ctx.getChild(0).getText();
-		if(tabla.containsKey(id)){return tabla.get(id);}
-		else{ErrorTipos();}
-		return null;
+	public String visitLlamadaFunc(GramProgParser.LlamadaFuncContext ctx){
+		String nombreFunc=ctx.getChild(0).getText();
+		return ts.extraeContenidoFuncion(nombreFunc)[2];
 	}
 
-	public String visitSuma(GramProgParser.ExprContext ctx){
+	public String visitSuma(GramProgParser.SumaContext ctx){
 		String tipoL=visit(ctx.getChild(0));
 		String tipoR=visit(ctx.getChild(2));
 			if((tipoL=="cadena")||(tipoR=="cadena")){
@@ -154,14 +146,10 @@ public class SegundaPasada extends GramProgBaseVisitor<String> {
 			}
 			if((tipoL=="numero")&&(tipoR=="numero")){
 				return "numero";
-			}else{
-				ErrorTipos();
+			}else{System.out.println("Error de tipos al sumar");
+				System.exit(-1);
 			}
 			return null;
-	}
-	public void ErrorTipos(){
-		System.out.println("Error:tipos de datos no concuerdan");
-		System.exit(-1);
 	}
 }
 	
