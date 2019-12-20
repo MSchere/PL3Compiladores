@@ -66,13 +66,12 @@ expr:	llamadaFuncion #llamafuncion
     |   expr (MUL|DIV) expr #mul
     |   expr (INC| DEC) #inc
     |	expr (SUM|REST) expr #suma
-    |   expr (MENQ|MAYQ|MENIG|MAYIG|IGUAL|DIF) expr #comp
+    |   expr (MENQ|MAYQ|IGUAL|DIF) expr #comp
+    |   ARRAY #array
     |   BOOL #bool
     |   CADENA #cadena
     |   numero #num
     |	ID #id
-    |   ARRAY #array
-    |   PI (expr COMA?)+ PD #lista
     ;
 
 
@@ -104,12 +103,12 @@ ENDIF:'endif';
 ELSE: 'else';
 FOR: 'for';
 //Numeros y palabras
+ARRAY: ID CORCHIZ INT CORCHD;
 BOOL: 'true'|'false';
 FLOAT: [0-9]+'.'[0-9]+;
 INT: [0-9]+;
 ID: [a-zA-Z][a-zA-Z_0-9]*;
 CADENA: DCOMILLAS .*? DCOMILLAS;
-ARRAY: ID CORCHIZ INT CORCHD;
 
 //Caracteres
 ESC: '\\'[btnr"\\];
@@ -128,10 +127,8 @@ BARRAINV: '\\';
 DCOMILLAS: '"';
 INTERG: '?';
 //Operadores
-DIF: '!=';
+DIF: '!='|'<>';
 IGUAL: '==';
-MENIG: '<=';
-MAYIG: '>=';
 MAYQ: '>';
 MENQ: '<';
 NEG: '!';
