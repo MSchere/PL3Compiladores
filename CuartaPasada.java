@@ -13,6 +13,7 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
     private BibliotecaFunciones biblio = new BibliotecaFunciones();
     private TablaSimbolos tb;
     private String nombreruta;
+    private int punteroAux;
 
     public CuartaPasada(TablaSimbolos tb, String nombreruta) {
         this.nombreruta=nombreruta;
@@ -36,7 +37,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             if (file.exists()) {
                 file.delete();
             }
-            System.out.println("he creado "+nombreruta);
             file.createNewFile();
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -119,7 +119,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitBloqueFunc(GramProgParser.BloqueFuncContext ctx) {
-        System.out.println("bloquef");
         visitChildren(ctx);
         String[] trip = { "6" };
         tripletas.add(trip);
@@ -128,12 +127,38 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
 
     @Override
     public String visitBucleWhile(GramProgParser.BucleWhileContext ctx) {
-        return visitChildren(ctx);
+        punteroAux = tripletas.size();
+        visit(ctx.expr());
+        String[] trip0 = {"","",""};
+        trip0[0] = "5";
+        trip0[1] = Integer.toString(cpila[0]-1);
+        trip0[2] = "1";
+        tripletas.add(trip0);
+        String[] trip1 = {"2"};
+        tripletas.add(trip1);
+        cpila[0] = cpila[0] - 1;
+        String[] trip2 = {"", "",""};
+        trip2[0] = "42";
+        trip2[1] = "1";
+        trip2[2] = "0";
+        tripletas.add(trip2);
+        visit(ctx.bloqueCodigoBucle());
+        return "";
     }
 
     @Override
     public String visitBloqueBucleWhile(GramProgParser.BloqueBucleWhileContext ctx) {
-        return visitChildren(ctx);
+        int desp = tripletas.size();
+        if(ctx.bloqueCodigo()!= null) visit(ctx.bloqueCodigo());
+        else if(ctx.sentencia()!=null) visit(ctx.sentencia());
+        String[] trip2 = { "", ""};
+        trip2[0] = "24";
+        trip2[1] = Integer.toString(punteroAux);
+        tripletas.add(trip2);
+        String[] tri = tripletas.get(desp-1);
+        tri[2] = Integer.toString(tripletas.size()-1);
+        tripletas.set(desp-1,tri);
+        return "";
     }
 
     @Override
@@ -173,9 +198,8 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
             visit(ctx.bloqueCodigo(1));
             int desp3 = tripletas.size();
             String[] tri2 = tripletas.get(tripletas.size()-(desp3-desp2));
-            System.out.println(tri2[0]);
-            tri2[1] = Integer.toString(desp3);
-            tripletas.set(tripletas.size()-1-(desp3-desp2),tri2);
+            tri2[1] = Integer.toString(desp3-1);
+            tripletas.set(tripletas.size()-(desp3-desp2),tri2);
         }
         return "";
     }
@@ -262,7 +286,6 @@ public class CuartaPasada extends GramProgBaseVisitor<String> {
         String nombre = ctx.ID().getText();
         visitChildren(ctx);
         if (biblio.existe(nombre)) {
-            System.out.println(nombre);
             switch (nombre) {
             case ("imprimir"):
                 ArrayList<String[]> trip = biblio.imprimir(cpila);
